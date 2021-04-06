@@ -12,7 +12,8 @@ module.exports = {
         '@storybook/addon-a11y',
         '@storybook/addon-actions',
         '@storybook/addon-storysource',
-        'storybook-addon-designs',
+        '@storybook/addon-docs',
+        "@storybook/addon-storyshots"
     ],
     webpackFinal: async (config) => {
         // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

@@ -2257,6 +2257,28 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@storybook/addon-a11y@^6.2.3":
+  version "6.2.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.2.3.tgz#c725557e1d78955f363858c67f958e0cdf3d1a7f"
+  integrity sha512-PF8N+xFg7rCENwT8h9DTWFBZGiS3FcVz+OyUVnrklpkndu9DCUYU8JNYKQgXB8217Fk10/o9tVWVmBeHUr6psQ==
+  dependencies:
+    "@storybook/addons" "6.2.3"
+    "@storybook/api" "6.2.3"
+    "@storybook/channels" "6.2.3"
+    "@storybook/client-api" "6.2.3"
+    "@storybook/client-logger" "6.2.3"
+    "@storybook/components" "6.2.3"
+    "@storybook/core-events" "6.2.3"
+    "@storybook/theming" "6.2.3"
+    axe-core "^4.1.1"
+    core-js "^3.8.2"
+    global "^4.4.0"
+    lodash "^4.17.20"
+    react-sizeme "^3.0.1"
+    regenerator-runtime "^0.13.7"
+    ts-dedent "^2.0.0"
+    util-deprecate "^1.0.2"
+
 "@storybook/addon-actions@6.2.3", "@storybook/addon-actions@^6.2.3":
   version "6.2.3"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.2.3.tgz#9d31843c4eb0f24c8d1dc891f5bebe577d117296"
@@ -2312,7 +2334,7 @@
     core-js "^3.8.2"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-docs@6.2.3":
+"@storybook/addon-docs@6.2.3", "@storybook/addon-docs@^6.2.3":
   version "6.2.3"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-6.2.3.tgz#f2efaea39aeac673979ffd40f6c2a9064afa1364"
   integrity sha512-FJuHARQNzV2blvc1vzKp+M7mhLixiW69T83bQjdAA3/aeh67To3aBoCuRDN51uOpqTuR5Tpjbsf2uQ2IxtWIEQ==
@@ -2419,6 +2441,26 @@
     read-pkg-up "^7.0.1"
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
+
+"@storybook/addon-storysource@^6.2.3":
+  version "6.2.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.2.3.tgz#7b107959174d64eee5b77ba7722a16cb9de82569"
+  integrity sha512-voNu0lULl1BEp54VcPiTMEIg71nTvXbv75Ylcimq0+V6yByl/m11gVJi87uQ8GFy+9jkuASKb223NGtp1+kHNw==
+  dependencies:
+    "@storybook/addons" "6.2.3"
+    "@storybook/api" "6.2.3"
+    "@storybook/client-logger" "6.2.3"
+    "@storybook/components" "6.2.3"
+    "@storybook/router" "6.2.3"
+    "@storybook/source-loader" "6.2.3"
+    "@storybook/theming" "6.2.3"
+    core-js "^3.8.2"
+    estraverse "^5.2.0"
+    loader-utils "^2.0.0"
+    prettier "~2.2.1"
+    prop-types "^15.7.2"
+    react-syntax-highlighter "^13.5.3"
+    regenerator-runtime "^0.13.7"
 
 "@storybook/addon-toolbars@6.2.3":
   version "6.2.3"
@@ -4224,6 +4266,11 @@ axe-core@^4.0.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.1.2.tgz#7cf783331320098bfbef620df3b3c770147bc224"
   integrity sha512-V+Nq70NxKhYt89ArVcaNL9FDryB3vQOd+BFXZIfO3RP6rwtj+2yqqqdHEkacutglPaZLkJeuXKCjCJDMGPtPqg==
+
+axe-core@^4.1.1:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.1.4.tgz#f19cd99a84ee32a318b9c5b5bb8ed373ad94f143"
+  integrity sha512-Pdgfv6iP0gNx9ejRGa3zE7Xgkj/iclXqLfe7BnatdZz0QnLZ3jrRHUVH8wNSdN68w05Sk3ShGTb3ydktMTooig==
 
 axobject-query@^2.2.0:
   version "2.2.0"
