@@ -11,5 +11,5 @@ export const ${componentName}: React.VFC<I${componentName}Props> = () => {
   )
 }
 
-const ${componentName}Wrapper = div.styled``
+const ${componentName}Wrapper = styled
 `;

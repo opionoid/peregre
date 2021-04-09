@@ -3,9 +3,8 @@ const {makeMockPropsName} = require("../utils");
 module.exports = (componentName, dirName) => (
 `import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { ${componentName}, I${componentName}Props } $ from '~/components/${dirName}/${componentName}'
+import { ${componentName}, I${componentName}Props } from '~/components/${dirName}/${componentName}'
 import ${makeMockPropsName(componentName)} from '~/__mocks__/components/${dirName}/${componentName}'
-import { withDesign } from 'storybook-addon-designs'
 
 export default {
   title: 'components/${dirName}/${componentName}',
