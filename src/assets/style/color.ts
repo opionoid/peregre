@@ -1,9 +1,17 @@
 // TODO 命名
 
+export const colorPallet = {
+  greenTea: '#86ab7a', // 緑茶
+  white: '#fef8e7', // 象牙
+  beige: '#e0c3ac', // ベージュ
+  lightBlue: '#616f8d', // 薄花桜
+  darkBlue: '#2f3846', // 藍鉄
+}
+
 export const color = {
-  SAMPLE1: '#86ab7a', // 緑茶
-  SAMPLE2: '#fef8e7', // 象牙
-  SAMPLE3: '#e0c3ac', // ベージュ
-  SAMPLE4: '#616f8d', // 薄花桜
-  SAMPLE5: '#2f3846', // 藍鉄
+  font: colorPallet.darkBlue,
+  fontLight: colorPallet.lightBlue,
+  background: colorPallet.white,
+  backgroundDark: colorPallet.beige,
+  accent: colorPallet.greenTea
 }
