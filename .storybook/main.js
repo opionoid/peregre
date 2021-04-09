@@ -13,7 +13,8 @@ module.exports = {
         '@storybook/addon-actions',
         '@storybook/addon-storysource',
         '@storybook/addon-docs',
-        "@storybook/addon-storyshots"
+        '@storybook/addon-storyshots',
+        '@storybook/addon-options'
     ],
     webpackFinal: async (config) => {
         // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
