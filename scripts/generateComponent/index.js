@@ -10,7 +10,7 @@ const fs = require('fs/promises');
 const SRC_DIR = path.resolve(__dirname, '../../src');
 
 const COMPONENT_DIR = path.resolve(SRC_DIR, 'components');
-const TEST_DIR = path.resolve(SRC_DIR, '__test__/components');
+const TEST_DIR = path.resolve(SRC_DIR, '__tests__/components');
 const MOCK_DIR = path.resolve(SRC_DIR, '__mocks__/components');
 const STORY_DIR = path.resolve(SRC_DIR, '__stories__/components');
 const prefixUpper = (val) => val.charAt(0).toUpperCase() + val.slice(1);

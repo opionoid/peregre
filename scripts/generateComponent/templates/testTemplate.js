@@ -1,6 +1,6 @@
 const {makeMockPropsName} = require('../utils');
 module.exports = (componentName, dirName) => `import React from 'react';
-import ${componentName} from '~/components/${dirName}/${componentName}';
+import { ${componentName} } from '~/components/${dirName}/${componentName}';
 import ${makeMockPropsName(componentName)} from '~/__mocks__/components/${dirName}/${componentName}';
 import { render } from '@testing-library/react';
 
