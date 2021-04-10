@@ -1,4 +1,4 @@
-export const margin = {
+export const space = {
   xxs: '12px',
   xs : '20px',
   s  : '32px',
