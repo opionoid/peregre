@@ -1,0 +1,97 @@
+[
+  {
+    "name": "案内人のランタン",
+    "skills": [
+      {
+        "name": "導き",
+        "depth": "4",
+        "description": "自身を除く味方全員の深度を2上昇させる。",
+        "isOneTime": "TRUE",
+        "isUlt": ""
+      },
+      {
+        "name": "小さな魂たちの叫び",
+        "depth": "4",
+        "description": "5を与え深度を1低下させる。",
+        "isOneTime": "",
+        "isUlt": ""
+      },
+      {
+        "name": "霧幻の誘い",
+        "depth": "2",
+        "description": "AoE。挑発。自身は次の攻撃を回避する。",
+        "isOneTime": "TRUE",
+        "isUlt": ""
+      },
+      {
+        "name": "魂たちの共鳴",
+        "depth": "5",
+        "description": "AoE。4を与える。体力が1以下なら即死させる。",
+        "isOneTime": "",
+        "isUlt": ""
+      },
+      {
+        "name": "郷愁の囁き",
+        "depth": "1",
+        "description": "AoE。4を与え攻撃力デバフを与える。",
+        "isOneTime": "TRUE",
+        "isUlt": ""
+      },
+      {
+        "name": "追憶の光",
+        "depth": "-2",
+        "description": "次のターン開始時、味方全員の通常スキルは使用可能になる。",
+        "isOneTime": "",
+        "isUlt": ""
+      },
+      {
+        "name": "",
+        "depth": "",
+        "description": "",
+        "isOneTime": "",
+        "isUlt": ""
+      },
+      {
+        "name": "",
+        "depth": "",
+        "description": "",
+        "isOneTime": "",
+        "isUlt": ""
+      },
+      {
+        "name": "門を叩く者",
+        "depth": "",
+        "description": "敵か味方1人の深度を10にする",
+        "isOneTime": "",
+        "isUlt": "TRUE"
+      },
+      {
+        "name": "",
+        "depth": "",
+        "description": "",
+        "isOneTime": "",
+        "isUlt": ""
+      },
+      {
+        "name": "",
+        "depth": "",
+        "description": "",
+        "isOneTime": "",
+        "isUlt": ""
+      },
+      {
+        "name": "案内人たちの夜更け",
+        "depth": "",
+        "description": "攻撃力0%の「案内人の霧」を追加する。「案内人の霧」は毎ターン自身の通常スキルを一度ずつ深度を無視して使用し、全てのスキルを使用すると消滅する。「案内人の霧」はいかなるスキルの影響も受けず、防ぐこともない。",
+        "isOneTime": "TRUE"
+      },
+      {
+        "name": "門を叩く者",
+        "depth": "",
+        "description": "敵か味方1人の深度を10にする。",
+        "isOneTime": "",
+        "isUlt": "TRUE"
+      }
+    ]
+  }
+]
