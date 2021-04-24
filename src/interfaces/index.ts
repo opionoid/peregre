@@ -16,7 +16,7 @@ export interface ILink {
 export interface IAbility {
   name: string
   icon: IImage
-  text: string
+  description: string
   level: number
 }
 

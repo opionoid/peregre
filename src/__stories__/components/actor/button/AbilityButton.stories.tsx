@@ -1,4 +1,3 @@
-import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { AbilityButton, IAbilityButtonProps } from '~/components/actor/button/AbilityButton'
 import MOCK_ABILITY_BUTTON_PROPS from '~/__mocks__/components/actor/button/AbilityButton'
@@ -10,7 +9,13 @@ export default {
 } as Meta
 
 const Template: Story<IAbilityButtonProps> = (args) => <AbilityButton {...args} />
-export const Default = Template.bind({})
-Default.args = {
+export const BattleMode = Template.bind({})
+BattleMode.args = {
   ...MOCK_ABILITY_BUTTON_PROPS
+}
+
+export const EditMode = Template.bind({})
+EditMode.args = {
+  ...MOCK_ABILITY_BUTTON_PROPS,
+  ...{ isEditMode: true }
 }

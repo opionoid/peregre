@@ -1,4 +1,3 @@
-import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { ButtonBase, IButtonBaseProps } from '~/components/actor/button/ButtonBase'
 import MOCK_BUTTON_BASE_PROPS from '~/__mocks__/components/actor/button/ButtonBase'
