@@ -15,7 +15,9 @@ export const AbilityButton: React.VFC<IAbilityButtonProps> = ({ isEditMode }) =>
 
   return (
     <AbilityButtonWrapper>
-      <ButtonBase onClick={handleClick}>{isEditMode ? 'アビリティセット' : 'アビリティ使用'}</ButtonBase>
+      <ButtonBase onClick={handleClick}>
+        {isEditMode ? 'アビリティセット' : 'アビリティ使用'}
+      </ButtonBase>
     </AbilityButtonWrapper>
   )
 }

@@ -20,6 +20,7 @@ export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, type = 'butto
 // TODO: 押した時に中身を若干小さくする
 // TODO: もっとかわいい感じのアニメーション
 const ButtonBaseWrapper = styled.button`
+  width: 100%;
   background-color: inherit;
   color: ${color.font};
   padding: ${space.xs};
