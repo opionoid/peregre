@@ -1,4 +1,4 @@
-import { color} from './color'
+import { theme } from './color'
 import { space } from './spacing'
 
-export {color, space}
+export { theme, space }
