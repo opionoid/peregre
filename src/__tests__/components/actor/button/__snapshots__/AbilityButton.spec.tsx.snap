@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actor/button default test 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-gsDJrp dQqMLV"
+    >
+      <button
+        class="sc-bdvvaa jdcSrs"
+        type="button"
+      >
+        アビリティ使用
+      </button>
+    </div>
+  </div>
+</body>
+`;

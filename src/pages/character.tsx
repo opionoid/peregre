@@ -6,11 +6,10 @@ export interface ICharacterPageProps {}
 export const CharacterPage: React.VFC = () => {
   return (
     <>
-      {/** NAME  LEVEL  RESET  */}
-      {/** ABILITY      (x4)   */}
-      {/** PROFESSION   (x2)   */}
-      {/** SKILL        (x4)   */}
-      {/** SKILL_ULT  ADD_TURN */}
+      {/** NAV   OPTION        */}
+      {/** NAME  LEVEL         */}
+      {/** ABILITY      (x5)   */}
+      {/** SKILL        (x5)   */}
       {/** SNARE HIDDEN UNTOUCHABLE */}
       {/** NOTE */}
     </>

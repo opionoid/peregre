@@ -1,6 +1,7 @@
-import React from 'react';
+//import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { CharacterPage } from './pages/character';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           Learn React
         </a>
       </header>
+      {/** TODO: rooting */}
+      <CharacterPage />
     </div>
   );
 }

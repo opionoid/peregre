@@ -17,6 +17,8 @@ export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, type = 'butto
   )
 }
 
+// TODO: 押した時に中身を若干小さくする
+// TODO: もっとかわいい感じのアニメーション
 const ButtonBaseWrapper = styled.button`
   background-color: inherit;
   color: ${color.font};
@@ -25,10 +27,10 @@ const ButtonBaseWrapper = styled.button`
   border: 0;
   outline: 0;
   transition: box-shadow ease-out 0.3s;
-  box-shadow:  4px 4px 12px ${color.backgroundDarkShadowDarken},
-                 -4px -4px 12px ${color.backgroundDarkShadowLighten};
+  box-shadow:  2px 2px 6px ${color.backgroundDarkShadowDarken},
+                 -2px -2px 6px ${color.backgroundDarkShadowLighten};
   &:active {
-    box-shadow: inset 4px 4px 12px ${color.backgroundDarkShadowDarken},
-                inset -4px -4px 12px ${color.backgroundDarkShadowLighten};
+    box-shadow: inset 2px 2px 6px ${color.backgroundDarkShadowDarken},
+                inset -2px -2px 6px ${color.backgroundDarkShadowLighten};
   }
 `
