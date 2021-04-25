@@ -21,7 +21,7 @@ export const colorPallet = {
   darkBlueDarken: '#28303c'
 }
 
-const whiteTheme = {
+export const color = {
   /**
    * 文字
    */
@@ -36,7 +36,7 @@ const whiteTheme = {
   backgroundShadowLighten: colorPallet.whiteLighten,
   backgroundShadowDarken: colorPallet.whiteDarken,
   // ローコントラスト（暗め）
-  backgroundDaLowContrast: colorPallet.beige,
+  backgroundLowContrast: colorPallet.beige,
   backgroundLowContrastShadowLighten: colorPallet.beigeLighten,
   backgroundLowContrastShadowDarken: colorPallet.beigeDarken,
   // ハイコントラスト（フォントと一緒）
@@ -49,35 +49,3 @@ const whiteTheme = {
   accent: colorPallet.green
 }
 
-const darkTheme = {
-  /**
-   * 文字
-  */
-  font: colorPallet.white,
-  fontLight: colorPallet.beige,
-  fontInHighContrast: colorPallet.darkBlue,
-  /**
-   * 背景
-   */
-  // 基礎
-  background: colorPallet.darkBlue,
-  backgroundShadowLighten: colorPallet.darkBlueLighten,
-  backgroundShadowDarken: colorPallet.darkBlueDarken,
-  // ローコントラスト（明るめ）
-  backgroundLowContrast: colorPallet.lightBlue,
-  backgroundLowContrastShadowLighten: colorPallet.lightBlueLighten,
-  backgroundLowContrastShadowDarken: colorPallet.lightBlueDarken,
-  // ハイコントラスト（フォントと一緒）
-  backgroundHighContrast: colorPallet.white,
-  backgroundHighContrastShadowLighten: colorPallet.whiteLighten,
-  backgroundHighContrastShadowDarken: colorPallet.whiteDarken,
-  /**
-   * アクセント
-   */
-  accent: colorPallet.green
-}
-
-export const theme = {
-  white: whiteTheme,
-  dark: darkTheme
-}

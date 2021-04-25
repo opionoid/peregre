@@ -13,7 +13,7 @@ export interface IButtonBaseProps {
 
 export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isEditMode = false, type = 'button', onClick, unset = false }) => {
   return (
-    <ButtonBaseWrapper editMode={isEditMode} type={type} onClick={onClick} unset={unset}>
+    <ButtonBaseWrapper type={type} onClick={onClick} isEditMode={isEditMode} unset={unset}>
       {children}
     </ButtonBaseWrapper>
   )
@@ -22,7 +22,7 @@ export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isEditMode = 
 // TODO: 押した時に中身を若干小さくする
 // TODO: もっとかわいい感じのアニメーション
 // TODO: 型推論が効いていない
-const ButtonBaseWrapper = styled.button`
+const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   width: 100%;
   height: 100%;
   display flex;
@@ -36,14 +36,14 @@ const ButtonBaseWrapper = styled.button`
   border: 0;
   outline: 0;
   transition: box-shadow ease-out 0.3s;
-  box-shadow:  2px 2px 6px ${color.backgroundDarkShadowDarken},
-                 -2px -2px 6px ${color.backgroundDarkShadowLighten};
+  box-shadow:  2px 2px 6px ${color.backgroundLowContrastShadowDarken},
+                 -2px -2px 6px ${color.backgroundLowContrastShadowLighten};
   &:active {
-    box-shadow: inset 2px 2px 6px ${color.backgroundDarkShadowDarken},
-                inset -2px -2px 6px ${color.backgroundDarkShadowLighten};
+    box-shadow: inset 2px 2px 6px ${color.backgroundLowContrastShadowDarken},
+                inset -2px -2px 6px ${color.backgroundLowContrastShadowLighten};
   }
 
-  ${props => props.editMode && css `
+  ${props => props.isEditMode && css `
     border-radius: 20px;
   `}
 
