@@ -38,7 +38,7 @@ const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   border: 0;
   border-radius: inherit;
   outline: 0;
-  transition: box-shadow ease-out 0.3s;
+  transition: all ease-out 0.3s;
   font-size: calc(0.8rem + 0.5vmin);
   line-height: 1.8;
   box-shadow:  2px 2px 6px ${color.backgroundLowContrastShadowDarken},
@@ -46,6 +46,7 @@ const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   &:active {
     box-shadow: inset 2px 2px 6px ${color.backgroundLowContrastShadowDarken},
                 inset -2px -2px 6px ${color.backgroundLowContrastShadowLighten};
+    transform: scale3d(0.98, 0.98, 0.99)
   }
 
   ${props => props.isEditMode && css `
