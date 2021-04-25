@@ -2,6 +2,7 @@
 import React from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import styled from 'styled-components'
+import { color, space } from '~/assets/style'
 import { INITIAL_WEAPON } from '~/constants'
 import { abilityListAtom, allAbilityListAtom, allWeaponListAtom, mainWeaponAtom, nameAtom, subWeaponAtom } from '~/data/atom'
 import { IAbility, IWeapon } from '~/interfaces'
@@ -27,10 +28,10 @@ export interface ICharacterMakingProps {}
 // 余裕があったらここも csv -> json にまとめたほうがいい
 const WORDS = {
   question: {
-    weaponMain: 'メイン武器を選んでください',
-    weaponSub: 'サブ武器を選んでください',
-    ability: 'アビリティを選んでください',
-    name: '最後に、キャラクターの名前を入力してください。'
+    weaponMain: 'Main Weapon',
+    weaponSub: 'Sub Weapon',
+    ability: 'Abilities',
+    name: 'Name'
   },
   button: {
     next: '次へ',
@@ -122,10 +123,12 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
     switch (STEPS[currentStepIndex]) {
       case ('weaponMain'):
         setMainWeapon(weaponsTable[isFirstIndex ? 0 : 1])
+        setIsFirstIndex(true)
         setCurrentStepIndex(prev => prev + 1)
         return
       case ('weaponSub'):
         setSubWeapon(weaponsTable[isFirstIndex ? 3 : 4])
+        setIsFirstIndex(true)
         setCurrentStepIndex(prev => prev + 1)
         return
       // アビリティは5回選択する必要がある
@@ -133,13 +136,16 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         if (currentAbilityStep === 0) {
           setAbilities([abilitiesTable[isFirstIndex ? 0 : 1]]) // 1回目のみアビリティリストを選択したアビリティで初期化
           setCurrentAbilityStep(prev => prev + 1)
+          setIsFirstIndex(true)
         } else if (currentAbilityStep === 4) {
           setAbilities(prev => [...prev, abilitiesTable[isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1]])
           setCurrentAbilityStep(0) // 意図しない参照バグを防止
+          setIsFirstIndex(true)
           setCurrentStepIndex(prev => prev + 1) // 5回目のみ次のステップ（名前入力）へ移行
         } else {
           setAbilities(prev => [...prev, abilitiesTable[isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1]])
           setCurrentAbilityStep(prev => prev + 1)
+          setIsFirstIndex(true)
         }
         return
       case ('name'):
@@ -154,31 +160,82 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
   return (
     <CharacterMakingWrapper>
       <QuestionHeading>{WORDS.question[STEPS[currentStepIndex]]}</QuestionHeading>
-      {STEPS[currentStepIndex] !== 'name' &&
-        <ChoiceCardArea>
-          <ChoiceCard>
-            <ButtonBase onClick={handleChoice} value={choiceItems[currentAbilityStep][0]}>
-              {choiceItems[currentAbilityStep][0].name} : {currentAbilityStep}
-            </ButtonBase>
-          </ChoiceCard>
-          <ChoiceCard>
-            <ButtonBase onClick={handleChoice} value={choiceItems[currentAbilityStep][1]}>
-              {choiceItems[currentAbilityStep][1].name}
-            </ButtonBase>
-          </ChoiceCard>
-        </ChoiceCardArea>
+      {
+        STEPS[currentStepIndex] !== 'name' &&
+        <>
+          <ChoiceCardArea>
+            <ChoiceCard>
+              <ButtonBase onClick={handleChoice} value="first" lighten={!isFirstIndex}>
+                {choiceItems[currentAbilityStep][0].name}
+              </ButtonBase>
+            </ChoiceCard>
+            <ChoiceCard>
+              <ButtonBase onClick={handleChoice} value="second" lighten={isFirstIndex}>
+                {choiceItems[currentAbilityStep][1].name}
+              </ButtonBase>
+            </ChoiceCard>
+          </ChoiceCardArea>
+          <ChoiceDescription>{choiceItems[currentAbilityStep][isFirstIndex ? 0 : 1].description}</ChoiceDescription>
+        </>
       }
-      <ChoiceDescription></ChoiceDescription>
-      <ButtonBase onClick={handleClickToNextStep}>{buttonLabel}</ButtonBase>
+      {
+        STEPS[currentStepIndex] === 'name' &&
+        <InputField />
+      }
+      <NextButton>
+        <ButtonBase onClick={handleClickToNextStep}>{buttonLabel}</ButtonBase>
+      </NextButton>
       {/** TODO 戻るボタン */}
       {/** TODO 中断ボタン */}
     </CharacterMakingWrapper>
   )
 }
 
-const CharacterMakingWrapper = styled.div``
-const QuestionHeading = styled.p``
-const ChoiceCardArea = styled.div``
+const CharacterMakingWrapper = styled.div`
+  max-width: 90%;
+  min-width: 60%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+`
+const QuestionHeading = styled.h2`
+  font-size: calc(0.5rem + 3.6vmin);
+  line-height: 1.8;
+  margin: ${space.s} auto;
+`
+const ChoiceCardArea = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`
 // ページ固有のコンポーネントなので現状は切り出していない
-const ChoiceCard = styled.div``
-const ChoiceDescription = styled.p``
+const ChoiceCard = styled.div`
+  min-width: 180px;
+  margin: 0 ${space.xs};
+  margin-top: ${space.xs};
+  border-radius: 40px;
+`
+const ChoiceDescription = styled.p`
+  margin-top: ${space.s};
+  padding: calc(1rem + 2.4vmin);
+  display: block;
+  border-radius: 14px;
+  color: ${color.fontInHighContrast};
+  background-color: ${color.backgroundHighContrast};
+  text-align: start;
+  line-height: 1.5;
+  min-height: 80px;
+`
+const InputField = styled.input`
+  display: block;
+  margin: ${space.m} auto;
+  padding: calc(0.3rem + 1.4vmin);
+`
+const NextButton = styled.div`
+  max-width: 240px;
+  margin: 0 auto;
+  margin-top: calc(2rem + 2.3vh);
+  border-radius: 40px;
+  font-size: 6rem;
+`

@@ -4,13 +4,22 @@ exports[`actor/button default test 1`] = `
 <body>
   <div>
     <div
-      class="sc-gsDJrp dQqMLV"
+      class="sc-gsDJrp klUCAp"
     >
       <button
-        class="sc-bdvvaa jdcSrs"
+        class="sc-bdvvaa kOvQAv"
         type="button"
       >
-        アビリティ使用
+        <img
+          alt=""
+          class="sc-dkPtyc gsmpjX"
+          src=""
+        />
+        <p
+          class="sc-hKwCoD bpiNNo"
+        >
+          未設定
+        </p>
       </button>
     </div>
   </div>

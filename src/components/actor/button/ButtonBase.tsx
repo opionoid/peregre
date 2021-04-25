@@ -9,13 +9,14 @@ export interface IButtonBaseProps {
   type?: 'button' | 'submit' | 'reset'
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   unset?: boolean
+  lighten?: boolean
   name?: string;
   value?: any;
 }
 
-export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isEditMode = false, type = 'button', onClick, unset = false, name, value }) => {
+export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isEditMode = false, type = 'button', onClick, unset = false, lighten = false, name, value }) => {
   return (
-    <ButtonBaseWrapper type={type} onClick={onClick} isEditMode={isEditMode} unset={unset} name={name} value={value}>
+    <ButtonBaseWrapper type={type} onClick={onClick} isEditMode={isEditMode} unset={unset} lighten={lighten} name={name} value={value}>
       {children}
     </ButtonBaseWrapper>
   )
@@ -31,13 +32,15 @@ const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: inherit;
-  color: ${color.font};
+  background-color: ${color.backgroundHighContrast};
+  color: ${color.fontInHighContrast};
   padding: ${space.xs};
-  border-radius: 40px;
   border: 0;
+  border-radius: inherit;
   outline: 0;
   transition: box-shadow ease-out 0.3s;
+  font-size: calc(0.8rem + 0.5vmin);
+  line-height: 1.8;
   box-shadow:  2px 2px 6px ${color.backgroundLowContrastShadowDarken},
                  -2px -2px 6px ${color.backgroundLowContrastShadowLighten};
   &:active {
@@ -52,5 +55,10 @@ const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   ${props => props.unset && css `
     color: ${color.background};
     background-color: ${color.font};
+  `}
+
+  ${props => props.lighten && css`
+    color: ${color.font};
+    background-color: ${color.background};
   `}
 `
