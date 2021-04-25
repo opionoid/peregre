@@ -10,7 +10,7 @@ export interface IButtonBaseProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   unset?: boolean
   name?: string;
-  value?: string;
+  value?: any;
 }
 
 export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isEditMode = false, type = 'button', onClick, unset = false, name, value }) => {
@@ -27,7 +27,7 @@ export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isEditMode = 
 const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   width: 100%;
   height: 100%;
-  display flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
