@@ -22,6 +22,7 @@ export interface IAbility {
 
 export interface IWeapon {
   name: string
+  icon: IImage
   description: string
   hp: number
   skillList: ISkill[]

@@ -9,11 +9,13 @@ export interface IButtonBaseProps {
   type?: 'button' | 'submit' | 'reset'
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   unset?: boolean
+  name?: string;
+  value?: string;
 }
 
-export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isEditMode = false, type = 'button', onClick, unset = false }) => {
+export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isEditMode = false, type = 'button', onClick, unset = false, name, value }) => {
   return (
-    <ButtonBaseWrapper type={type} onClick={onClick} isEditMode={isEditMode} unset={unset}>
+    <ButtonBaseWrapper type={type} onClick={onClick} isEditMode={isEditMode} unset={unset} name={name} value={value}>
       {children}
     </ButtonBaseWrapper>
   )

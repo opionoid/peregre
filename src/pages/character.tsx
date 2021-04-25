@@ -1,18 +1,17 @@
 import React from 'react'
+import { RecoilRoot } from 'recoil'
+import { CharacterMaking } from '~/components/character/CharacterMaking'
+import { CharacterSheet } from '~/components/character/CharacterSheet'
 //import styled from 'styled-components'
 
 export interface ICharacterPageProps {}
 
 export const CharacterPage: React.VFC = () => {
   return (
-    <>
-      {/** NAV   OPTION        */}
-      {/** NAME  LEVEL         */}
-      {/** ABILITY      (x5)   */}
-      {/** SKILL        (x5)   */}
-      {/** SNARE HIDDEN UNTOUCHABLE */}
-      {/** NOTE */}
-    </>
+    <RecoilRoot>
+      <CharacterMaking />
+      <CharacterSheet />
+    </RecoilRoot>
   )
 }
 

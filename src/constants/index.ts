@@ -1,4 +1,4 @@
-import { IAbility } from "~/interfaces"
+import { IAbility, ISkill, IWeapon } from "~/interfaces"
 
 // 項目が増えてきたら別ファイルにする
 export type IRollResult = typeof ROLL_RESULT[keyof typeof ROLL_RESULT]
@@ -9,13 +9,31 @@ export const ROLL_RESULT = {
   FUMBLE: 'fumble'
 } as const
 
-// TODO: 文言組み込み
 export const INITIAL_ABILITY: IAbility = {
   name: '未設定',
-  description: 'このアビリティは未設定です。アビリティ設定モードにしますか？',
+  description: 'このアビリティは未設定です。本来表示されない画面なのでバグが疑われます。@EggoggE にご連絡くださると大変うれしいです。',
   icon: {
     src: '',
     alt: ''
   },
   level: 0,
-} 
+}
+
+export const INITIAL_SKILL: ISkill = {
+  name: '未設定',
+  description: 'このスキルは未設定です。アビリティ設定モードにしますか？',
+  depth: 0,
+  shouldCast: false,
+  isUlt: false,
+}
+
+export const INITIAL_WEAPON: IWeapon = {
+  name: '未設定',
+  description: 'このアビリティは未設定です。本来表示されない画面なのでバグが疑われます。@EggoggE にご連絡くださると大変うれしいです。',
+  icon: {
+    src: '',
+    alt: ''
+  },
+  hp: 0,
+  skillList: [INITIAL_SKILL]
+}

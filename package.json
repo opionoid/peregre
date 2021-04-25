@@ -39,7 +39,7 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "generate-component": "node ./scripts/generateComponent/index.js",
-    "csv2json": "csvtojson ./src/data/csv/ability-Peregre.csv > ./src/data/json/ability.json | csvtojson ./src/data/csv/wording-Peregre.csv > ./src/data/json/wording.json | csvtojson ./src/data/csv/weapon-Peregre.csv > ./src/data/json/weapon.json"
+    "csv2json": "csvtojson ./src/data/csv/ability-Peregre.csv > ./src/data/json/ability.json | csvtojson ./src/data/csv/words-Peregre.csv > ./src/data/json/words.json | csvtojson ./src/data/csv/weapon-Peregre.csv > ./src/data/json/weapon.json"
   },
   "eslintConfig": {
     "extends": [
@@ -81,6 +81,7 @@
     "@storybook/node-logger": "^6.2.3",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.2.3",
+    "@types/recoil": "^0.0.1",
     "@types/styled-components": "^5.1.9",
     "babel-plugin-styled-components": "^1.12.0",
     "csvtojson": "^2.0.10",
