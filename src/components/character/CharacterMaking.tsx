@@ -11,21 +11,7 @@ import { ButtonBase } from '../actor/button/ButtonBase'
 
 export interface ICharacterMakingProps {}
 
-/**
- * 質問事項
- * - ストーリーで決められた事項について質問です。
- * 1. 武器の数は？
- *   -（ロール中のアニメーション画面: ガチャ画面的なの）
- *   - 2pick方式で武器の数だけ選ぶ
- * 2. 総合レベルは？
- *   -（ロール中のアニメーション画面: ガチャ画面的なの）
- *   - 2pick方式で5回選ぶ
- * - 最後に、キャラクターの名前を入力してください。
- *   - input...
- *   - サインするようなアニメーション
- */
-
-// 余裕があったらここも csv -> json にまとめたほうがいい
+// TODO 文言は constants > words とかにいれたほうがいい？
 const WORDS = {
   question: {
     weaponMain: 'Main Weapon',
@@ -36,7 +22,7 @@ const WORDS = {
   button: {
     next: '次へ',
     back: '戻る',
-    finish: '完成！'
+    finish: '　作成完了！'
   },
   cancel: {
     annotation: 'キャラクター作成を中断しても、24時間は同じ武器／アビリティ構成で作成が再開されます。中断しますか？'
@@ -50,11 +36,12 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
    * シード
    */
   const seed = /** TODO */1111
+  const getRD = (i: number): number => randomizeXorShift(seed + i);
 
   // 武器テーブル作成
   const weaponsData = useRecoilValue(allWeaponListAtom)
   const weaponsTable: IWeapon[] = [...Array(4)].map((_, i) => {
-    const dirtyData = weaponsData[randomizeXorShift(seed + i) % weaponsData.length]
+    const dirtyData = weaponsData[getRD(i) % weaponsData.length]
     return {
       name: dirtyData.name,
       range: dirtyData.range,
@@ -77,7 +64,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
   // アビリティテーブル作成
   const abilitiesData = useRecoilValue(allAbilityListAtom)
   const abilitiesTable: IAbility[] = [...Array(10)].map((_, i) => {
-    const dirtyData = abilitiesData[randomizeXorShift(seed + i) % abilitiesData.length]
+    const dirtyData = abilitiesData[getRD(i) % abilitiesData.length]
     return {
       name: dirtyData.name,
       description: dirtyData.description,
@@ -85,7 +72,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         src: dirtyData.icon,
         alt: "" // nameと同じなのでからっぽ
       },
-      level: randomizeXorShift(seed + i) % 3 + 1
+      level: Math.max(getRD(i) % 4, getRD(i) % 3, 1)
     }
   })
 
