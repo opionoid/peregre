@@ -1,10 +1,12 @@
-const {makeMockPropsName} = require("../utils");
+const { makeMockPropsName } = require('../utils')
 
-module.exports = (componentName, dirName) => (
-`import React from 'react'
+module.exports = (componentName, dirName) =>
+  `import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { ${componentName}, I${componentName}Props } from '~/components/${dirName}/${componentName}'
-import ${makeMockPropsName(componentName)} from '~/__mocks__/components/${dirName}/${componentName}'
+import { ${componentName}, I${componentName}Props } from 'src/components/${dirName}/${componentName}'
+import ${makeMockPropsName(
+    componentName,
+  )} from 'src/__mocks__/components/${dirName}/${componentName}'
 
 export default {
   title: 'components/${dirName}/${componentName}',
@@ -17,4 +19,3 @@ export const Default = Template.bind({})
 Default.args = {
   ...${makeMockPropsName(componentName)}
 }`
-);

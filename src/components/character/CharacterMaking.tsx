@@ -2,11 +2,11 @@
 import React from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import styled from 'styled-components'
-import { color, space } from '~/assets/style'
-import { INITIAL_WEAPON } from '~/constants'
-import { abilityListAtom, allAbilityListAtom, allWeaponListAtom, mainWeaponAtom, nameAtom, subWeaponAtom } from '~/data/atom'
-import { IAbility, IWeapon } from '~/interfaces'
-import { randomizeXorShift } from '~/utils/Math'
+import { color, space } from 'src/assets/style'
+import { INITIAL_WEAPON } from 'src/constants'
+import { abilityListAtom, allAbilityListAtom, allWeaponListAtom, mainWeaponAtom, nameAtom, subWeaponAtom } from 'src/data/atom'
+import { IAbility, IWeapon } from 'src/interfaces'
+import { randomizeXorShift } from 'src/utils/Math'
 import { ButtonBase } from '../actor/button/ButtonBase'
 
 export interface ICharacterMakingProps {}
@@ -114,7 +114,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         setCurrentStepIndex(prev => prev + 1)
         return
       case ('weaponSub'):
-        setSubWeapon(weaponsTable[isFirstIndex ? 3 : 4])
+        setSubWeapon(weaponsTable[isFirstIndex ? 2 : 3])
         setIsFirstIndex(true)
         setCurrentStepIndex(prev => prev + 1)
         return

@@ -1,7 +1,7 @@
-import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { CharacterSheet, ICharacterSheetProps } from '~/components/character/CharacterSheet'
-import MOCK_CHARACTER_SHEET_PROPS from '~/__mocks__/components/character/CharacterSheet'
+import { CharacterSheet, ICharacterSheetProps } from 'src/components/character/CharacterSheet'
+import MOCK_CHARACTER_SHEET_PROPS from 'src/__mocks__/components/character/CharacterSheet'
+import { RecoilRoot } from 'recoil'
 
 export default {
   title: 'components/character/CharacterSheet',
@@ -9,7 +9,7 @@ export default {
   decorators: [(Story) => <div style={{ padding: '32px', backgroundColor: '#fef8e7' }}><Story/></div>]
 } as Meta
 
-const Template: Story<ICharacterSheetProps> = (args) => <CharacterSheet {...args} />
+const Template: Story<ICharacterSheetProps> = (args) => <RecoilRoot><CharacterSheet {...args} /></RecoilRoot>
 export const Default = Template.bind({})
 Default.args = {
   ...MOCK_CHARACTER_SHEET_PROPS

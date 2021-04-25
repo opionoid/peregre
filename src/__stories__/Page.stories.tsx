@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 
-import { Page, PageProps } from '~/components/common/Page';
+import { Page, PageProps } from 'src/components/common/Page';
 import * as HeaderStories from './Header.stories';
 
 export default {

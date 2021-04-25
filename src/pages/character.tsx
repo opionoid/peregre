@@ -1,7 +1,7 @@
 import React from 'react'
 import { RecoilRoot } from 'recoil'
-import { CharacterMaking } from '~/components/character/CharacterMaking'
-import { CharacterSheet } from '~/components/character/CharacterSheet'
+import { CharacterMaking } from 'src/components/character/CharacterMaking'
+import { CharacterSheet } from 'src/components/character/CharacterSheet'
 //import styled from 'styled-components'
 
 export interface ICharacterPageProps {}

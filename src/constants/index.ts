@@ -1,4 +1,4 @@
-import { IAbility, ISkill, IWeapon } from "~/interfaces"
+import { IAbility, ISkill, IWeapon } from "src/interfaces"
 
 // 項目が増えてきたら別ファイルにする
 export type IRollResult = typeof ROLL_RESULT[keyof typeof ROLL_RESULT]

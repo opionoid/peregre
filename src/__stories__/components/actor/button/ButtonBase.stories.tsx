@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
-import { ButtonBase, IButtonBaseProps } from '~/components/actor/button/ButtonBase'
-import MOCK_BUTTON_BASE_PROPS from '~/__mocks__/components/actor/button/ButtonBase'
-import { color, space } from '~/assets/style'
+import { ButtonBase, IButtonBaseProps } from 'src/components/actor/button/ButtonBase'
+import MOCK_BUTTON_BASE_PROPS from 'src/__mocks__/components/actor/button/ButtonBase'
+import { space } from 'src/assets/style'
 
 export default {
   title: 'Components/actor/button/ButtonBase',

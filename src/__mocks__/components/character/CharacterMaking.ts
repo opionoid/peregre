@@ -1,4 +1,4 @@
-import { ICharacterMakingProps } from '~/components/character/CharacterMaking';
+import { ICharacterMakingProps } from 'src/components/character/CharacterMaking';
 
 const MOCK_CHARACTER_MAKING_PROPS: ICharacterMakingProps = {};
 

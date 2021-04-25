@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react'
-import { AbilityButton, IAbilityButtonProps } from '~/components/actor/button/AbilityButton'
-import MOCK_ABILITY_BUTTON_PROPS from '~/__mocks__/components/actor/button/AbilityButton'
+import { AbilityButton, IAbilityButtonProps } from 'src/components/actor/button/AbilityButton'
+import MOCK_ABILITY_BUTTON_PROPS from 'src/__mocks__/components/actor/button/AbilityButton'
 
 export default {
   title: 'components/actor/button/AbilityButton',

@@ -1,6 +1,6 @@
 import { atom, RecoilState } from 'recoil'
-import { INITIAL_ABILITY, INITIAL_WEAPON } from '~/constants'
-import { IAbility, IWeapon } from '~/interfaces'
+import { INITIAL_ABILITY, INITIAL_WEAPON } from 'src/constants'
+import { IAbility, IWeapon } from 'src/interfaces'
 import ability from '../json/ability.json'
 import weapon from '../json/weapon.json'
 

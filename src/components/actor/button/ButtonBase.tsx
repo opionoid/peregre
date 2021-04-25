@@ -1,7 +1,7 @@
 
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { color, space } from '~/assets/style'
+import { color, space } from 'src/assets/style'
 
 export interface IButtonBaseProps {
   children?: React.ReactNode

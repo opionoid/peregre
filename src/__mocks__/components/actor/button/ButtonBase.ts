@@ -1,4 +1,4 @@
-import { IButtonBaseProps } from '~/components/actor/button/ButtonBase';
+import { IButtonBaseProps } from 'src/components/actor/button/ButtonBase';
 
 const MOCK_BUTTON_BASE_PROPS: IButtonBaseProps = {};
 

@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": false,
   "jest": {
-    "moduleNameMapper": {
-      "^~/(.+)": "<rootDir>/src/$1"
-    },
     "testMatch": [
       "**/__tests__/**/*.+(ts|tsx|js)",
       "**/?(*.)+(spec|test).+(ts|tsx|js)"
@@ -70,6 +67,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-syntax-typescript": "^7.12.13",
     "@storybook/addon-a11y": "^6.2.3",
     "@storybook/addon-actions": "^6.2.3",
     "@storybook/addon-docs": "^6.2.3",

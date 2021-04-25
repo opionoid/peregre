@@ -1,4 +1,4 @@
-import * as UtilMath from '~/utils/Math'
+import * as UtilMath from 'src/utils/Math'
 
 /*
 test('Math/randomizeXorShift', () => {
