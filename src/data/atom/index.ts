@@ -1,12 +1,12 @@
 import { atom, RecoilState } from 'recoil'
 import { INITIAL_ABILITY, INITIAL_WEAPON } from 'src/constants'
-import { IAbility, IWeapon } from 'src/interfaces'
+import { IAbility, IDirtyAbility, IDirtyWeapon, IWeapon } from 'src/interfaces'
 import ability from '../json/ability.json'
 import weapon from '../json/weapon.json'
 
-export const allAbilityListAtom = atom({
+export const allAbilityListAtom: RecoilState<IDirtyAbility[]> = atom({
   key: 'allAbilityListAtom',
-  default: ability,
+  default: ability as IDirtyAbility[],
 })
 
 export const abilityListAtom: RecoilState<IAbility[]> = atom({
@@ -14,9 +14,9 @@ export const abilityListAtom: RecoilState<IAbility[]> = atom({
   default: [...Array(4)].fill(INITIAL_ABILITY)
 })
 
-export const allWeaponListAtom = atom({
+export const allWeaponListAtom: RecoilState<IDirtyWeapon[]> = atom({
   key: 'allWeaponListAtom',
-  default: weapon
+  default: weapon as IDirtyWeapon[]
 })
 
 export const mainWeaponAtom: RecoilState<IWeapon> = atom({

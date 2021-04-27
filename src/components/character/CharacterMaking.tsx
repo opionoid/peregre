@@ -8,7 +8,7 @@ import { abilityListAtom, allAbilityListAtom, allWeaponListAtom, mainWeaponAtom,
 import { IAbility, IWeapon } from 'src/interfaces'
 import { randomizeXorShift } from 'src/utils/Math'
 import { ButtonBase } from '../actor/button/ButtonBase'
-import icons from 'src/assets/icons/index'
+import Icons from 'src/assets/icons/index'
 
 export interface ICharacterMakingProps {}
 
@@ -48,7 +48,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
       range: dirtyData.range,
       description: dirtyData.description,
       icon: {
-        src: '',
+        src: Icons[dirtyData.icon],
         alt: ''
       },
       hp: parseInt(dirtyData.hp),
@@ -70,7 +70,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
       name: dirtyData.name,
       description: dirtyData.description,
       icon: {
-        src: icons.Navigation,
+        src: Icons[dirtyData.icon],
         alt: "" // nameと同じなのでからっぽ
       },
       level: Math.max(getRD(i) % 4, getRD(i) % 3, 1)

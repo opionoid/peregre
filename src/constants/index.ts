@@ -30,6 +30,7 @@ export const INITIAL_SKILL: ISkill = {
 
 export const INITIAL_WEAPON: IWeapon = {
   name: '未設定',
+  range: '中距離',
   description: 'このアビリティは未設定です。本来表示されない画面なのでバグが疑われます。@EggoggE にご連絡くださると大変うれしいです。',
   icon: {
     src: '',
