@@ -1,4 +1,5 @@
 import { IAbility, ISkill, IWeapon } from "src/interfaces"
+import Icons from 'src/assets/icons'
 
 // 項目が増えてきたら別ファイルにする
 export type IRollResult = typeof ROLL_RESULT[keyof typeof ROLL_RESULT]
@@ -13,7 +14,7 @@ export const INITIAL_ABILITY: IAbility = {
   name: '未設定',
   description: 'このアビリティは未設定です。本来表示されない画面なのでバグが疑われます。@EggoggE にご連絡くださると大変うれしいです。',
   icon: {
-    src: '',
+    src: Icons.Navigation,
     alt: ''
   },
   level: 0,

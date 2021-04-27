@@ -1,12 +1,24 @@
+import styled from 'styled-components';
+import { color } from './assets/style';
 import { CharacterPage } from './pages/character';
 
 function App() {
   return (
-    <div className="App">
+    <AppStyle>
       {/** TODO: rooting */}
       <CharacterPage />
-    </div>
+    </AppStyle>
   );
 }
+
+const AppStyle = styled.div`
+  img {
+    color: ${color.fontInHighContrast};
+
+    &:active {
+      color: ${color.accent};
+    }
+  }
+`
 
 export default App;

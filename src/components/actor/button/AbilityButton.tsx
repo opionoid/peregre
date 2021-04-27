@@ -45,12 +45,22 @@ export const AbilityButton: React.VFC<IAbilityButtonProps> = ({ ability }) => {
 }
 
 const AbilityButtonWrapper = styled.div`
-  width: 120px;
-  height: 120px;
+  width: 142px;
+  height: 160px;
+  border-radius: 40px;
+  transition: all 0.1s ease-out;
+
+  &:hover {
+    border-radius: 24px;
+    opacity: 0.98;
+    transform: translateZ(1.8)
+  }
 `
 
 const Icon = styled.img`
-  padding: ${space.xxs};
+  margin-top: ${space.xs};
+  width: 60px;
+  height: 60px;
 `
 
 const Label = styled.p`
