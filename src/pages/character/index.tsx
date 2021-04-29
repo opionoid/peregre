@@ -6,8 +6,6 @@ import { CharacterSheet } from 'src/components/character/CharacterSheet'
 import styled from 'styled-components'
 //import styled from 'styled-components'
 
-export interface ICharacterPageProps {}
-
 export const CharacterPage: React.VFC = () => {
   return (
     <Page>
