@@ -56,9 +56,6 @@ h6 {
   font-variant-numeric: lining-nums;
 }
 p {
-  text-indent: 1.5em;
-  color: #28303c;
-  margin-bottom: 1.7em;
   font-variant-numeric: oldstyle-nums; /** 1回拡大すると表示がおかしくなる */
 }
 
@@ -161,6 +158,11 @@ article {
   max-width: 38em;
   margin-left: auto;
   margin-right: auto;
+}
+article p {
+  color: #28303c;
+  text-indent: 1.5em;
+  margin-bottom: 1.7em;
 }
 aside {
   margin: 1em;

@@ -22,9 +22,6 @@ export const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isEditMode = 
   )
 }
 
-// TODO: 押した時に中身を若干小さくする
-// TODO: もっとかわいい感じのアニメーション
-// TODO: 型推論が効いていない
 const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   width: 100%;
   height: 100%;
@@ -39,8 +36,7 @@ const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   border-radius: inherit;
   outline: 0;
   transition: all ease-out 0.3s;
-  font-size: calc(0.8rem + 0.5vmin);
-  line-height: 1.8;
+  font-size: 1.125rem;
   box-shadow:  2px 2px 6px ${color.backgroundLowContrastShadowDarken},
                  -2px -2px 6px ${color.backgroundLowContrastShadowLighten};
   &:active {
