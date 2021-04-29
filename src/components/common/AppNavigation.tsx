@@ -95,6 +95,8 @@ const Top = styled.li`
 
   @media screen and (max-width: 46em) {
     margin-bottom: 2.25rem;
+    padding-right: 2.25em;
+    width: calc(100% - 2.25em);
   }
 `
 const HamburgerMenu = styled.button`
