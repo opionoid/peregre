@@ -1,4 +1,4 @@
-import Icons from "src/assets/icons";
+import { Icons } from "src/assets/icons";
 
 /**
  * 汎用的な interface の定義場所
@@ -26,7 +26,7 @@ export interface IAbility {
   name: string
   icon: IIconImage
   description: string
-  level: number
+  successRate: number
 }
 
 export interface IDirtyAbility {

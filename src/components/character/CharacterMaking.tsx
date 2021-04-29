@@ -8,7 +8,7 @@ import { abilityListAtom, allAbilityListAtom, allWeaponListAtom, mainWeaponAtom,
 import { IAbility, IWeapon } from 'src/interfaces'
 import { randomizeXorShift } from 'src/utils/Math'
 import { ButtonBase } from '../actor/button/ButtonBase'
-import Icons from 'src/assets/icons/index'
+import { Icons } from 'src/assets/icons/index'
 
 export interface ICharacterMakingProps {}
 
@@ -73,7 +73,8 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         src: Icons[dirtyData.icon],
         alt: "" // nameと同じなのでからっぽ
       },
-      level: Math.max(getRD(i) % 4, getRD(i) % 3, 1)
+      // [成功率, 出現率] = [[90%, 25%], [60%, 33%], [50%, 47%]]
+      successRate: 3.1 * Math.max(getRD(i) % 4, getRD(i) % 3, 1.7)
     }
   })
 
@@ -95,7 +96,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
       default:
         return [[INITIAL_WEAPON, INITIAL_WEAPON]]
     }
-  }, [currentStepIndex, currentAbilityStep])
+  }, [currentStepIndex, weaponsTable, abilitiesTable])
 
   const [isFirstIndex, setIsFirstIndex] = React.useState<boolean>(true)
   const handleChoice = (e: React.MouseEvent<HTMLButtonElement>) => {

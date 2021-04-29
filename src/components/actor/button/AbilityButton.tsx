@@ -25,7 +25,7 @@ export const AbilityButton: React.VFC<IAbilityButtonProps> = ({ ability }) => {
     const rollResult: IRollResult = (() => {
       if (diceNumber === 1) return ROLL_RESULT.CRITICAL
       else if (diceNumber === 10) return ROLL_RESULT.FUMBLE
-      else if (diceNumber < 3 * ability.level) return ROLL_RESULT.SUCCESS
+      else if (diceNumber < ability.successRate) return ROLL_RESULT.SUCCESS
       else return ROLL_RESULT.FAILURE
     })()
     const message = `${ability.name}: ${diceNumber}${rollResult}`

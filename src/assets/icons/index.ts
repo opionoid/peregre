@@ -27,7 +27,7 @@ import Torture from './Torture.svg'
 import Training from './Training.svg'
 import Writing from './Writing.svg'
 
-export default {
+export const Icons = {
   Acting,
   Agitation,
   AncientKnowledge,

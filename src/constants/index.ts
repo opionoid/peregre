@@ -1,5 +1,5 @@
 import { IAbility, ISkill, IWeapon } from "src/interfaces"
-import Icons from 'src/assets/icons'
+import { Icons } from 'src/assets/icons'
 
 // 項目が増えてきたら別ファイルにする
 export type IRollResult = typeof ROLL_RESULT[keyof typeof ROLL_RESULT]
@@ -17,7 +17,7 @@ export const INITIAL_ABILITY: IAbility = {
     src: Icons.Navigation,
     alt: ''
   },
-  level: 0,
+  successRate: 0,
 }
 
 export const INITIAL_SKILL: ISkill = {
