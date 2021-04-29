@@ -13,27 +13,39 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
   return (
     <AppNavigationWrapper>
       <Top>
-        <Link to={ROUTE.top}>Peregre</Link>
+        <Link className="link" to={ROUTE.top}>
+          Peregre
+        </Link>
         <HamburgerMenu aria-expanded={expanded} onClick={handleClick}>
           {expanded ? 'χ' : 'ξ'}
         </HamburgerMenu>
       </Top>
       <Links>
         <Item aria-hidden={!expanded}>
-          <Link to={ROUTE.rules}>RULES</Link>
+          <Link className="link" to={ROUTE.rules}>
+            RULES
+          </Link>
         </Item>
         <Item aria-hidden={!expanded}>
-          <Link to={ROUTE.character}>CHARACTER</Link>
+          <Link className="link" to={ROUTE.character}>
+            CHARACTER
+          </Link>
         </Item>
         <Item aria-hidden={!expanded}>
-          <Link to={ROUTE.stories}>STORIES</Link>
+          <Link className="link" to={ROUTE.stories}>
+            STORIES
+          </Link>
         </Item>
         <Item aria-hidden={!expanded}>
-          <Link to={ROUTE.news}>NEWS</Link>
+          <Link className="link" to={ROUTE.news}>
+            NEWS
+          </Link>
         </Item>
       </Links>
       <Config aria-hidden={!expanded}>
-        <Link to={ROUTE.config}>Config</Link>
+        <Link className="link" to={ROUTE.config}>
+          Config
+        </Link>
       </Config>
     </AppNavigationWrapper>
   )
@@ -46,6 +58,7 @@ const AppNavigationWrapper = styled.ul`
   justify-content: space-between;
   padding-inline-start: 0;
   height: max-content;
+  border-bottom: 1px solid ${color.accent};
 
   @media screen and (max-width: 46em) {
     display: block;
@@ -74,18 +87,19 @@ const ItemCss = css`
   }
 
   &:hover {
-    border-bottom: 1px solid ${color.accent};
     background-color: ${color.backgroundHighContrast};
     color: ${color.fontInHighContrast};
 
-    > a {
+    > a.link {
       color: ${color.fontInHighContrast};
+      border-bottom: 0;
     }
   }
 
-  > a {
+  > a.link {
     color: ${color.font};
-    text-decoration: none;
+    border-bottom: 0;
+    font-family: 'Helvetica Neue' sans-serif;
   }
 `
 const Top = styled.li`
