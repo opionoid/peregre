@@ -3,10 +3,12 @@ import { Icons } from 'src/assets/icons'
 
 // 項目が増えてきたら別ファイルにする
 export const ROUTE = {
+  top: '/',
   rules: '/rules',
   character: '/character',
   stories: '/stories',
   news: '/news',
+  config: '/config',
 }
 
 export type IRollResult = typeof ROLL_RESULT[keyof typeof ROLL_RESULT]
