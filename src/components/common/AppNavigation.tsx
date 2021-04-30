@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useClickAway, useToggle } from 'react-use'
+import { useToggle } from 'react-use'
 import { color } from 'src/assets/style'
 import { ROUTE } from 'src/constants'
 import styled, { css } from 'styled-components'
@@ -11,10 +11,12 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
   const [expanded, toggleHamburger] = useToggle(false)
   const handleClick = () => toggleHamburger()
 
+  /* TODO: FIXME: ルーティング前に走る
   const hamburgerRef = React.useRef(null)
   useClickAway(hamburgerRef, () => {
     toggleHamburger(false)
   })
+  */
 
   return (
     <AppNavigationWrapper className={expanded ? '-expanded' : ''}>
@@ -25,7 +27,6 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
         <HamburgerMenu
           aria-expanded={expanded}
           onClick={handleClick}
-          ref={hamburgerRef}
         >
           {expanded ? 'χ' : 'ξ'}
         </HamburgerMenu>
