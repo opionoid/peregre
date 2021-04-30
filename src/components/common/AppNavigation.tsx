@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useToggle } from 'react-use'
+import { useClickAway, useToggle } from 'react-use'
 import { color } from 'src/assets/style'
 import { ROUTE } from 'src/constants'
 import styled, { css } from 'styled-components'
@@ -10,13 +10,23 @@ export interface IAppNavigationProps {}
 export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
   const [expanded, toggleHamburger] = useToggle(false)
   const handleClick = () => toggleHamburger()
+
+  const hamburgerRef = React.useRef(null)
+  useClickAway(hamburgerRef, () => {
+    toggleHamburger(false)
+  })
+
   return (
-    <AppNavigationWrapper>
+    <AppNavigationWrapper className={expanded ? '-expanded' : ''}>
       <Top>
         <Link className="link" to={ROUTE.top}>
           Peregre
         </Link>
-        <HamburgerMenu aria-expanded={expanded} onClick={handleClick}>
+        <HamburgerMenu
+          aria-expanded={expanded}
+          onClick={handleClick}
+          ref={hamburgerRef}
+        >
           {expanded ? 'χ' : 'ξ'}
         </HamburgerMenu>
       </Top>
@@ -52,18 +62,28 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
 }
 
 const AppNavigationWrapper = styled.ul`
+  width: 100%;
   text-decoration: none;
   display: flex;
   text-align: center;
   justify-content: space-between;
   padding-inline-start: 0;
-  height: max-content;
+  height: fit-content;
   border-bottom: 1px solid ${color.accent};
+  position: fixed;
+  backdrop-filter: blur(4px) grayscale(0.03);
 
   @media screen and (max-width: 46em) {
     display: block;
     width: 100%;
-    min-height: 90vh;
+    border: 0;
+    margin: 0;
+    height: 3.8125em;
+
+    &.-expanded {
+      min-height: 95vh;
+      background-color: rgba(254, 248, 231, 0.7);
+    }
   }
 `
 const Links = styled.div`
@@ -122,9 +142,10 @@ const HamburgerMenu = styled.button`
     top: -2px;
     right: -2px;
     border: 0;
+    border-bottom: 1px solid ${color.accent};
     color: inherit;
     font-size: 1.125em;
-    padding: 0.7em 1.53em;
+    padding: 0.86em 1.53em;
     background-color: inherit;
     cursor: pointer;
 
