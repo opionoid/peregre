@@ -70,9 +70,11 @@ article p:first-of-type::first-letter {
 
 /** フルーロン */
 hr {
-  height: 1em;
+  margin: 4.5em auto;
+  height: calc(2em + 1.6vmin);
   border: 0;
-  background: url('src/assets/icons/Navigation.svg') center no-repeat;
+  content: '#10086';
+  background: url('src/assets/icons/fleuron.svg') center no-repeat;
   background-size: contain;
 }
 

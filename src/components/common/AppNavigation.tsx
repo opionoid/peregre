@@ -20,6 +20,7 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
   */
 
   return (
+    <nav>
     <AppNavigationWrapper className={expanded ? '-expanded' : ''}>
       <Top>
         <Link className="link" to={ROUTE.top}>
@@ -60,6 +61,7 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
         </Link>
       </Config>
     </AppNavigationWrapper>
+    </nav>
   )
 }
 

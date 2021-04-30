@@ -9,6 +9,7 @@ import { CharacterPage } from './pages/character'
 import { NewsPage } from './pages/news'
 import { RulesPage } from './pages/rules'
 import { StoriesPage } from './pages/stories'
+import { TopPage } from './pages/top'
 
 function App() {
   return (
@@ -24,8 +25,8 @@ function App() {
             <Route exact path={ROUTE.character} component={CharacterPage} />
             <Route exact path={ROUTE.stories} component={StoriesPage} />
             <Route exact path={ROUTE.news} component={NewsPage} />
-            <Route exact path={ROUTE.top} component={NewsPage} />
-            <Route component={NewsPage} />
+            <Route exact path={ROUTE.top} component={TopPage} />
+            <Route component={TopPage} />
           </Switch>
         </Body>
         </Reveal>
