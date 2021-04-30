@@ -10,6 +10,7 @@ export interface IAppNavigationProps {}
 export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
   const [expanded, toggleHamburger] = useToggle(false)
   const handleClick = React.useCallback(() => toggleHamburger(), [toggleHamburger])
+  const close = React.useCallback(() => toggleHamburger(false), [toggleHamburger])
 
   /* TODO: FIXME: ルーティング前に走る
   const hamburgerRef = React.useRef(null)
@@ -33,28 +34,28 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
       </Top>
       <Links>
         <Item aria-hidden={!expanded}>
-          <Link className="link" to={ROUTE.rules}>
+          <Link className="link" to={ROUTE.rules} onClick={close}>
             RULES
           </Link>
         </Item>
         <Item aria-hidden={!expanded}>
-          <Link className="link" to={ROUTE.character}>
+          <Link className="link" to={ROUTE.character} onClick={close}>
             CHARACTER
           </Link>
         </Item>
         <Item aria-hidden={!expanded}>
-          <Link className="link" to={ROUTE.stories}>
+          <Link className="link" to={ROUTE.stories} onClick={close}>
             STORIES
           </Link>
         </Item>
         <Item aria-hidden={!expanded}>
-          <Link className="link" to={ROUTE.news}>
+          <Link className="link" to={ROUTE.news} onClick={close}>
             NEWS
           </Link>
         </Item>
       </Links>
       <Config aria-hidden={!expanded}>
-        <Link className="link" to={ROUTE.config}>
+        <Link className="link" to={ROUTE.config} onClick={close}>
           Config
         </Link>
       </Config>
@@ -97,30 +98,26 @@ const Links = styled.div`
 `
 
 const ItemCss = css`
-  display: block;
-  font-size: 1.125em;
-  padding: 0.85em 1.7em;
-  cursor: pointer;
-
-  @media screen and (max-width: 46em) {
-    width: 100%;
-    padding: 0.85em 0;
-  }
-
   &:hover {
-    background-color: ${color.backgroundHighContrast};
-    color: ${color.fontInHighContrast};
-
     > a.link {
       color: ${color.fontInHighContrast};
       border-bottom: 0;
+      background-color: ${color.backgroundHighContrast};
     }
   }
 
   > a.link {
+    font-size: 1.125em;
+    display: block;
+    padding: 0.85em 1.7em;
     color: ${color.font};
     border-bottom: 0;
     font-family: 'Helvetica Neue' sans-serif;
+
+    @media screen and (max-width: 46em) {
+      width: 100%;
+      padding: 0.85em 0;
+    }
   }
 `
 const Top = styled.li`
@@ -130,8 +127,8 @@ const Top = styled.li`
 
   @media screen and (max-width: 46em) {
     margin-bottom: 2.25rem;
-    padding-right: 2.25em;
-    width: calc(100% - 2.25em);
+    padding-right: 4em;
+    width: calc(100% - 4em);
   }
 `
 const HamburgerMenu = styled.button`
@@ -141,12 +138,12 @@ const HamburgerMenu = styled.button`
     display: block;
     position: absolute;
     top: -2px;
-    right: -2px;
+    right: 0px;
     border: 0;
     border-bottom: 1px solid ${color.accent};
     color: inherit;
     font-size: 1.125em;
-    padding: 0.86em 1.53em;
+    padding: 1.12em 1.53em;
     background-color: inherit;
     cursor: pointer;
 
