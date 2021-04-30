@@ -57,7 +57,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
         {
           isAdventureMode &&
           abilities.map(ability => (
-            <Card>
+            <Card key={ability.name}>
               <AbilityButton ability={ability} />
             </Card>
           ))
@@ -65,7 +65,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
         {
           !isAdventureMode &&
           skills.map(skill => (
-            <Card>
+            <Card key={skill.name}>
               {skill.name}
             </Card>
           ))

@@ -5,7 +5,6 @@ import { CharacterMaking } from 'src/components/character/CharacterMaking'
 import { CharacterSheet } from 'src/components/character/CharacterSheet'
 import { isMakingFinishedAtom } from 'src/data/atom'
 import styled from 'styled-components'
-//import styled from 'styled-components'
 
 export const CharacterPage: React.VFC = () => {
   const shouldShowSheet = useRecoilValue(isMakingFinishedAtom);

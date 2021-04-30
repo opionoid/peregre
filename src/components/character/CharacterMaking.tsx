@@ -171,7 +171,8 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
       }
       {
         STEPS[currentStepIndex] === 'name' &&
-        <InputField />
+        /*<InputField />*/
+        <p>本来なら名前入力</p>
       }
       <NextButton>
         <ButtonBase onClick={handleClickToNextStep}>{buttonLabel}</ButtonBase>
@@ -218,11 +219,13 @@ const ChoiceDescription = styled.p`
   line-height: 1.5;
   min-height: 80px;
 `
+/*
 const InputField = styled.input`
   display: block;
   margin: ${space.m} auto;
   padding: calc(0.3rem + 1.4vmin);
 `
+*/
 const NextButton = styled.div`
   max-width: 240px;
   margin: 0 auto;

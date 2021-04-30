@@ -9,7 +9,7 @@ export interface IAppNavigationProps {}
 
 export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
   const [expanded, toggleHamburger] = useToggle(false)
-  const handleClick = () => toggleHamburger()
+  const handleClick = React.useCallback(() => toggleHamburger(), [toggleHamburger])
 
   /* TODO: FIXME: ルーティング前に走る
   const hamburgerRef = React.useRef(null)
