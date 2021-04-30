@@ -1,18 +1,18 @@
 import React from 'react'
-import { RecoilRoot } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { color } from 'src/assets/style'
 import { CharacterMaking } from 'src/components/character/CharacterMaking'
 import { CharacterSheet } from 'src/components/character/CharacterSheet'
+import { isMakingFinishedAtom } from 'src/data/atom'
 import styled from 'styled-components'
 //import styled from 'styled-components'
 
 export const CharacterPage: React.VFC = () => {
+  const shouldShowSheet = useRecoilValue(isMakingFinishedAtom);
+
   return (
     <Page>
-      <RecoilRoot>
-        <CharacterMaking />
-        <CharacterSheet />
-      </RecoilRoot>
+        {shouldShowSheet ? <CharacterSheet /> : <CharacterMaking />}
     </Page>
   )
 }

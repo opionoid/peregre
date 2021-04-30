@@ -4,7 +4,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil'
 import styled from 'styled-components'
 import { color, space } from 'src/assets/style'
 import { INITIAL_WEAPON } from 'src/constants'
-import { abilityListAtom, allAbilityListAtom, allWeaponListAtom, mainWeaponAtom, nameAtom, subWeaponAtom } from 'src/data/atom'
+import { abilityListAtom, allAbilityListAtom, allWeaponListAtom, isMakingFinishedAtom, mainWeaponAtom, nameAtom, subWeaponAtom } from 'src/data/atom'
 import { IAbility, IWeapon } from 'src/interfaces'
 import { randomizeXorShift } from 'src/utils/Math'
 import { ButtonBase } from '../actor/button/ButtonBase'
@@ -107,6 +107,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
   const setSubWeapon = useSetRecoilState(subWeaponAtom)
   const setAbilities = useSetRecoilState(abilityListAtom)
   const setName = useSetRecoilState(nameAtom)
+  const setIsMakingFinished = useSetRecoilState(isMakingFinishedAtom)
 
   const handleClickToNextStep = () => {
     switch (STEPS[currentStepIndex]) {
@@ -140,6 +141,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
       case ('name'):
         setName('たなかたろう')
         // TODO go to character sheet
+        setIsMakingFinished(true)
         return
     }
   }

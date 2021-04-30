@@ -34,3 +34,7 @@ export const nameAtom: RecoilState<string> = atom({
   default: ''
 })
 
+export const isMakingFinishedAtom: RecoilState<boolean> = atom({
+  key: 'isMakingFinishedAtom',
+  default: false as boolean,
+})
