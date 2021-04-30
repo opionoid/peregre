@@ -72,6 +72,7 @@ const AppNavigationWrapper = styled.ul`
   padding-inline-start: 0;
   height: fit-content;
   border-bottom: 1px solid ${color.accent};
+  list-style: none;
   position: fixed;
   backdrop-filter: blur(4px) grayscale(0.03);
 

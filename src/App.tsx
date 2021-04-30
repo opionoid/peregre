@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
+import { Reveal } from 'react-genie'
+import { ReactGenieAnimations, Animation } from 'react-genie-styled-components'
 import styled from 'styled-components'
 import { AppNavigation } from './components/common/AppNavigation'
 import { ROUTE } from './constants'
@@ -10,9 +12,12 @@ import { StoriesPage } from './pages/stories'
 
 function App() {
   return (
+    <>
+    <ReactGenieAnimations />
     <RecoilRoot>
       <Router>
         <AppNavigation />
+        <Reveal animation={Animation.FadeInUp}>
         <Body>
           <Switch>
             <Route exact path={ROUTE.rules} component={RulesPage} />
@@ -23,8 +28,10 @@ function App() {
             <Route component={NewsPage} />
           </Switch>
         </Body>
+        </Reveal>
       </Router>
     </RecoilRoot>
+    </>
   )
     
 }
