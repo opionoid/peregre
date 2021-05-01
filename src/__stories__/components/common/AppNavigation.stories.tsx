@@ -9,13 +9,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 export default {
   title: 'components/common/AppNavigation',
   component: AppNavigation,
-  decorators: [
-    (Story) => (
-      <div style={{ backgroundColor: '#fef8e7' }}>
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta
 
 const Template: Story<IAppNavigationProps> = (args) => (

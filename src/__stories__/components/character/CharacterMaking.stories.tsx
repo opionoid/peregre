@@ -6,7 +6,6 @@ import { RecoilRoot } from 'recoil'
 export default {
   title: 'components/character/CharacterMaking',
   component: CharacterMaking,
-  decorators: [(Story) => <div style={{ padding: '32px', backgroundColor: '#fef8e7' }}><Story/></div>]
 } as Meta
 
 const Template: Story<ICharacterMakingProps> = (args) => <RecoilRoot><CharacterMaking {...args} /></RecoilRoot>

@@ -11,7 +11,6 @@ import ${makeMockPropsName(
 export default {
   title: 'components/${dirName}/${componentName}',
   component: ${componentName},
-  decorators: [(Story) => <div style={{ padding: '32px', backgroundColor: '#fef8e7' }}><Story/></div>]
 } as Meta
 
 const Template: Story<I${componentName}Props> = (args) => <${componentName} {...args} />
