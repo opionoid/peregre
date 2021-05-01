@@ -12,18 +12,12 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
   const handleClick = React.useCallback(() => toggleHamburger(), [toggleHamburger])
   const close = React.useCallback(() => toggleHamburger(false), [toggleHamburger])
 
-  /* TODO: FIXME: ルーティング前に走る
-  const hamburgerRef = React.useRef(null)
-  useClickAway(hamburgerRef, () => {
-    toggleHamburger(false)
-  })
-  */
-
+  /** Chrome では Link に text-decoration: none を直接指定しない限り消えない（Safariは消える） */
   return (
     <nav>
     <AppNavigationWrapper className={expanded ? '-expanded' : ''}>
       <Top>
-        <Link className="link" to={ROUTE.top}>
+        <Link className="link" to={ROUTE.top} style={{ textDecoration: 'none' }}>
           Peregre
         </Link>
         <HamburgerMenu
@@ -35,28 +29,28 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
       </Top>
       <Links>
         <Item aria-hidden={!expanded}>
-          <Link className="link" to={ROUTE.rules} onClick={close}>
+          <Link className="link" to={ROUTE.rules} onClick={close} style={{ textDecoration: 'none' }}>
             RULES
           </Link>
         </Item>
         <Item aria-hidden={!expanded}>
-          <Link className="link" to={ROUTE.character} onClick={close}>
+          <Link className="link" to={ROUTE.character} onClick={close} style={{ textDecoration: 'none' }}>
             CHARACTER
           </Link>
         </Item>
         <Item aria-hidden={!expanded}>
-          <Link className="link" to={ROUTE.stories} onClick={close}>
+          <Link className="link" to={ROUTE.stories} onClick={close} style={{ textDecoration: 'none' }}>
             STORIES
           </Link>
         </Item>
         <Item aria-hidden={!expanded}>
-          <Link className="link" to={ROUTE.news} onClick={close}>
+          <Link className="link" to={ROUTE.news} onClick={close} style={{ textDecoration: 'none' }}>
             NEWS
           </Link>
         </Item>
       </Links>
       <Config aria-hidden={!expanded}>
-        <Link className="link" to={ROUTE.config} onClick={close}>
+        <Link className="link" to={ROUTE.config} onClick={close} style={{ textDecoration: 'none' }}>
           Config
         </Link>
       </Config>

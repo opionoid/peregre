@@ -1,3 +1,5 @@
+import { Reveal } from "react-genie"
+import { Animation } from "react-genie-styled-components"
 import { Link } from "react-router-dom"
 import { color } from "src/assets/style"
 import { ROUTE } from "src/constants"
@@ -25,34 +27,46 @@ export const TopPage: React.VFC = () => {
         </Wave>
       </div>
       <article>
+      <Reveal animation={Animation.FadeInUp}>
         <section>
           <TitleH2>目指すは、廃都ラトリス</TitleH2>
           <p>あなたたちは、あるときは鍛冶屋として、またあるときは水売りとして、呪いを解くため巡礼の旅に出る。目指すは忌まわしき廃都ラトリス。神に触れようとしたため裁きを受けたとされる地は、いまなお人々に罰を与え続けているという。</p>
         </section>
+        </Reveal>
+        <Reveal animation={Animation.FadeInUp}>
         <hr />
           <Aphorism>
             かねて種に水はあり、朽ちて湖へ還る。<br />芽生えし者よ、空を恐れたまえ。
           </Aphorism>
         <hr />
+        </Reveal>
+        <Reveal animation={Animation.FadeInUp}>
         <section>
           <TitleH2Right>ROGUELITE<br/>TRPG</TitleH2Right>
           <ImageAndText>
             <TextRight>遊ぶたび、新たな巡礼者として旅路を行く。そのだれもが異なる器と異なる技術を持ち、紡がれる物語もまた、それぞれ変化していくことだろう。</TextRight>
           </ImageAndText>
         </section>
+        </Reveal>
+        <Reveal animation={Animation.FadeInUp}>
         <NavSection>
           <TitleH2Center>旅が、はじまる</TitleH2Center>
           <NavLinks>
-            <Link to={ROUTE.rules}>
-              <NavLinkToRules>RULES</NavLinkToRules>
+            {/** Chrome対策 */}
+            <Link to={ROUTE.rules} style={{ textDecoration: 'none' }}>
+              <NavLinkToRules>RULES<span /></NavLinkToRules>
             </Link>
-            <Link to={ROUTE.character}>
-              <NavLinkToCharacter>Character</NavLinkToCharacter>
+            <Link to={ROUTE.character} style={{ textDecoration: 'none' }}>
+              <NavLinkToCharacter>CHARACTER</NavLinkToCharacter>
             </Link>
           </NavLinks>
+          <footer>{/** footerはどこにいれてもいいらしい。今回はアーティクル内 */}
+              <FooterItem>
+                ©︎ 2021, ことれの
+              </FooterItem>
+          </footer>
         </NavSection>
-        <section>
-        </section>
+        </Reveal>
       </article>
     </Top>
   )
@@ -75,7 +89,7 @@ const Hero = styled.div`
 `
 const Title = styled.h1`
   color: ${color.fontInHighContrast};
-  font-size: calc(6rem + 2.0vmin);
+  font-size: calc(5rem + 2.6vmin);
   text-shadow: 2px 1px ${color.font};
 `
 const Wave = styled.svg`
@@ -88,7 +102,7 @@ const Wave = styled.svg`
 `
 const Parallax = styled.g`
 > use {
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
 }
 > use:nth-child(1) {
   animation-delay: -4s;
@@ -124,23 +138,17 @@ const Aphorism = styled.p`
 
 /**
  * TODO: 以下はタイトルにマージンを持たせているが
- * セクションに持たせるのが正しいし、タイトルも共通部分を切り出すべき
+ * セクションに持たせるのが正しい
  */
 const TitleH2 = styled.h2`
   margin-top: 2.25em;
-  font-family: 'Shippori Mincho';
-  font-weight: 500;
 `
 const TitleH2Right = styled.h2`
   margin-top: 3.375em;
-  font-family: 'Shippori Mincho';
-  font-weight: 500;
   text-align: end;
   line-height: 1.4;
 `
 const TitleH2Center = styled.h2`
-  font-family: 'Shippori Mincho';
-  font-weight: 500;
   text-align: center;
 `
 const ImageAndText = styled.div`
@@ -164,22 +172,36 @@ const TextRight = styled.p`
 `
 const NavSection = styled.section`
   width: 100vw;
-  margin-left: calc(-0.5 * (100vw - 38em));
+  margin-left: min(calc(-0.5 * (100vw - 38em)), -2em);
   color: ${color.fontInHighContrast};
   background-color: ${color.backgroundHighContrast};
-  padding: 3.375em 0;
+  padding: 3.375em 0 1.125em 0;
   margin-top: 6.75em;
 `
 const NavLinks = styled.div`
-  width: 38em;
+  width: 100%;
+  max-width: min(38em, calc(100% - 48px));
   margin: 0 auto;
 `
 const NavLinkCss = css`
+  display: block;
   color: ${color.fontInHighContrast};
   font-size: 2.25rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid ${color.backgroundHighContrast};
+  transition: all .3s ease-out;
+  background-size: cover;
+  background-size: 1% 1%;
+
+  &:hover {
+    transform-origin: left;
+    border-color: ${color.background};
+    background-size: 20% auto;
+    letter-spacing: 0.2em; // 可読性を下げるしあんまりいいアニメーションじゃない
+  }
 `
-/** TODO: いい感じの背景画像とホバーエフェクト */
-/** 種から芽が出て伸びるみたいなよくあるやつがいい */
+
 const NavLinkToRules = styled.div`
   ${NavLinkCss};
   margin-top: 2.25em;
@@ -189,4 +211,12 @@ const NavLinkToCharacter = styled.div`
   ${NavLinkCss};
   margin: 2.25rem auto 0 0;
   text-align: end;
+`
+/**
+ * Footer
+ */
+const FooterItem = styled.div`
+  text-align: center;
+  margin-top: 9em;
+  color: ${color.fontInHighContrast};
 `
