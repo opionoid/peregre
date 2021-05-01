@@ -60,11 +60,6 @@ export const TopPage: React.VFC = () => {
               <NavLinkToCharacter>CHARACTER</NavLinkToCharacter>
             </Link>
           </NavLinks>
-          <footer>{/** footerはどこにいれてもいいらしい。今回はアーティクル内 */}
-              <FooterItem>
-                ©︎ 2021, ことれの
-              </FooterItem>
-          </footer>
         </NavSection>
         </Reveal>
       </article>
@@ -175,7 +170,7 @@ const NavSection = styled.section`
   margin-left: min(calc(-0.5 * (100vw - 38em)), -2em);
   color: ${color.fontInHighContrast};
   background-color: ${color.backgroundHighContrast};
-  padding: 3.375em 0 1.125em 0;
+  padding: 3.375em 0 11em;
   margin-top: 6.75em;
 `
 const NavLinks = styled.div`
@@ -201,22 +196,12 @@ const NavLinkCss = css`
     letter-spacing: 0.2em; // 可読性を下げるしあんまりいいアニメーションじゃない
   }
 `
-
 const NavLinkToRules = styled.div`
   ${NavLinkCss};
   margin-top: 2.25em;
 `
-
 const NavLinkToCharacter = styled.div`
   ${NavLinkCss};
   margin: 2.25rem auto 0 0;
   text-align: end;
-`
-/**
- * Footer
- */
-const FooterItem = styled.div`
-  text-align: center;
-  margin-top: 9em;
-  color: ${color.fontInHighContrast};
 `

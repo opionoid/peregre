@@ -73,8 +73,8 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         src: Icons[dirtyData.icon],
         alt: "" // nameと同じなのでからっぽ
       },
-      // [成功率, 出現率] = [[90%, 25%], [60%, 33%], [50%, 47%]]
-      successRate: 3.1 * Math.max(getRD(i) % 4, getRD(i) % 3, 1.7)
+      // [成功率, 出現率] = [[90%, 25%], [70%, 33%], [60%, 47%]]
+      successRate: 2 * Math.max(getRD(i) % 4, getRD(i) % 3, 1.7) + 0.3
     }
   })
 
