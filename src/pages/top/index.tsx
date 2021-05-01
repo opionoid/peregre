@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom"
 import { color } from "src/assets/style"
-import styled from "styled-components"
+import { ROUTE } from "src/constants"
+import styled, { css } from "styled-components"
 
 export const TopPage: React.VFC = () => {
   return (
@@ -33,9 +35,23 @@ export const TopPage: React.VFC = () => {
           </Aphorism>
         <hr />
         <section>
-          <h2>SIMPLE TRPG</h2>
-          <p>てきとうなかんじゔぁvなんゔぉあんゔぁ：んゔぁで</p>
-          <p>vioa;vno:anvo:anbvoi:anvoanvanvao</p>
+          <TitleH2Right>ROGUELITE<br/>TRPG</TitleH2Right>
+          <ImageAndText>
+            <TextRight>遊ぶたび、新たな巡礼者として旅路を行く。そのだれもが異なる器と異なる技術を持ち、紡がれる物語もまた、それぞれ変化していくことだろう。</TextRight>
+          </ImageAndText>
+        </section>
+        <NavSection>
+          <TitleH2Center>旅が、はじまる</TitleH2Center>
+          <NavLinks>
+            <Link to={ROUTE.rules}>
+              <NavLinkToRules>RULES</NavLinkToRules>
+            </Link>
+            <Link to={ROUTE.character}>
+              <NavLinkToCharacter>Character</NavLinkToCharacter>
+            </Link>
+          </NavLinks>
+        </NavSection>
+        <section>
         </section>
       </article>
     </Top>
@@ -52,6 +68,7 @@ const Hero = styled.div`
   height: 80vh;
   background: url('winter.jpg') center no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,11 +117,76 @@ const Parallax = styled.g`
 `
 const Aphorism = styled.p`
   font-family: 'New Tegomin';
-  font-size: 1.3rem;
+  font-size: 1.125rem;
   text-indent: 0;
   text-align: center;
 `
+
+/**
+ * TODO: 以下はタイトルにマージンを持たせているが
+ * セクションに持たせるのが正しいし、タイトルも共通部分を切り出すべき
+ */
 const TitleH2 = styled.h2`
+  margin-top: 2.25em;
   font-family: 'Shippori Mincho';
   font-weight: 500;
+`
+const TitleH2Right = styled.h2`
+  margin-top: 3.375em;
+  font-family: 'Shippori Mincho';
+  font-weight: 500;
+  text-align: end;
+  line-height: 1.4;
+`
+const TitleH2Center = styled.h2`
+  font-family: 'Shippori Mincho';
+  font-weight: 500;
+  text-align: center;
+`
+const ImageAndText = styled.div`
+  margin-top: -3.375em;
+  display: flex;
+  min-height: 15.657em;
+  justify-content: end;
+  background: url('winter.jpg') left no-repeat;
+  background-size: cover;
+  background-size: 66% auto;
+  //border-radius: 12em 0 0 1em;
+`
+const TextRight = styled.p`
+  width: 24em;
+  height: fit-content;
+  padding: 2.25em;
+  padding-right: 0;
+  margin: 4.5em 0 0 auto;
+  background-color: ${color.background}; //rgba(254, 248, 231, 0.8);
+  backdrop-filter: blur(6px) grayscale(1);
+`
+const NavSection = styled.section`
+  width: 100vw;
+  margin-left: calc(-0.5 * (100vw - 38em));
+  color: ${color.fontInHighContrast};
+  background-color: ${color.backgroundHighContrast};
+  padding: 3.375em 0;
+  margin-top: 6.75em;
+`
+const NavLinks = styled.div`
+  width: 38em;
+  margin: 0 auto;
+`
+const NavLinkCss = css`
+  color: ${color.fontInHighContrast};
+  font-size: 2.25rem;
+`
+/** TODO: いい感じの背景画像とホバーエフェクト */
+/** 種から芽が出て伸びるみたいなよくあるやつがいい */
+const NavLinkToRules = styled.div`
+  ${NavLinkCss};
+  margin-top: 2.25em;
+`
+
+const NavLinkToCharacter = styled.div`
+  ${NavLinkCss};
+  margin: 2.25rem auto 0 0;
+  text-align: end;
 `

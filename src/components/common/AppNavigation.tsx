@@ -77,6 +77,7 @@ const AppNavigationWrapper = styled.ul`
   list-style: none;
   position: fixed;
   backdrop-filter: blur(4px) grayscale(0.03);
+  z-index: 100;
 
   @media screen and (max-width: 46em) {
     display: block;
