@@ -1,9 +1,12 @@
+import { Reveal } from "react-genie"
+import { Animation } from "react-genie-styled-components"
 import styled from "styled-components"
 
 export const RulesPage: React.VFC = () => {
   return (
     <Rules>
       <h1>RULES</h1>
+      <Reveal animation={Animation.FadeInUp}>
       <section>
         <h2>基本的なルール</h2>
         <h3>概要</h3>
@@ -53,7 +56,9 @@ export const RulesPage: React.VFC = () => {
           </ul>
         </p>
       </section>
+      </Reveal>
       <hr />
+      <Reveal animation={Animation.FadeInUp}>
       <section>
         <h2>探索</h2>
         <h3>探索とは</h3>
@@ -84,7 +89,9 @@ export const RulesPage: React.VFC = () => {
           </details>
         </p>
       </section>
+      </Reveal>
       <hr />
+      <Reveal animation={Animation.FadeInUp}>
       <section>
         <h2>戦闘</h2>
         <h3>勝利条件</h3>
@@ -250,6 +257,7 @@ export const RulesPage: React.VFC = () => {
           </li>
         </ol>
       </section>
+      </Reveal>
     </Rules>
   )
 }

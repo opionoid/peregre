@@ -17,7 +17,7 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
     <nav>
     <AppNavigationWrapper className={expanded ? '-expanded' : ''}>
       <Top>
-        <Link className="link" to={ROUTE.top} style={{ textDecoration: 'none' }}>
+        <Link className="link" to={ROUTE.top} onClick={close} style={{ textDecoration: 'none' }}>
           Peregre
         </Link>
         <HamburgerMenu
@@ -72,6 +72,7 @@ const AppNavigationWrapper = styled.ul`
   position: fixed;
   backdrop-filter: blur(4px) grayscale(0.03);
   z-index: 100;
+  margin-top: 0;
 
   @media screen and (max-width: 46em) {
     display: block;
@@ -81,8 +82,8 @@ const AppNavigationWrapper = styled.ul`
     height: 3.8125em;
 
     &.-expanded {
-      min-height: 95vh;
-      background-color: rgba(254, 248, 231, 0.7);
+      min-height: 99vh;
+      background-color: rgba(254, 248, 231, 0.86);
     }
   }
 `
@@ -124,7 +125,7 @@ const Top = styled.li`
   position: relative;
 
   @media screen and (max-width: 46em) {
-    margin-bottom: 2.25rem;
+    margin-bottom: 25vh;
     padding-right: 4em;
     width: calc(100% - 4em);
   }
@@ -135,13 +136,15 @@ const HamburgerMenu = styled.button`
   @media screen and (max-width: 46em) {
     display: block;
     position: absolute;
-    top: -2px;
-    right: 0px;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 61px;
     border: 0;
     border-bottom: 1px solid ${color.accent};
     color: inherit;
     font-size: 1.125em;
-    padding: 1.12em 1.53em;
+    padding: 1.115em 1.5em;
     background-color: inherit;
     cursor: pointer;
 
@@ -164,7 +167,7 @@ const Config = styled.li`
   font-style: italic;
 
   @media screen and (max-width: 46em) {
-    margin-top: 2.25rem;
+    margin-top: 2.25em;
     &[aria-hidden='true'] {
       display: none;
     }
