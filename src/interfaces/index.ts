@@ -4,20 +4,20 @@ import { Icons } from "src/assets/icons";
  * 汎用的な interface の定義場所
  * 増えてきたらファイルを分ける
  */
-export interface IImage {
-  src: string
-  alt?: string // 画像近くの文が画像と同じ内容のときのみ空になる
+export type IImage = {
+  readonly src: string
+  readonly alt?: string // 画像近くの文が画像と同じ内容のときのみ空になる
 }
 
-export interface IIconImage {
-  src: IIconKey | string
-  alt?: string;
+export type IIconImage = {
+  readonly src: IIconKey | string
+  readonly alt?: string;
 }
 
-export interface ILink {
-  href: string
-  target?: string
-  text?: string
+export type ILink = {
+  readonly href: string
+  readonly target?: string
+  readonly text?: string
 }
 
 export type IIconKey = keyof (typeof Icons)
