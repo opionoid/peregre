@@ -10,6 +10,7 @@ export interface IToggleButtonProps {
   readonly reversedImage: IImage
   readonly reversedLabel: string
   readonly isReversed?: boolean
+  readonly lighten?: boolean
   readonly onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
@@ -19,15 +20,16 @@ export const ToggleButton: React.VFC<IToggleButtonProps> = ({
   reversedImage,
   reversedLabel,
   isReversed = false,
+  lighten = false,
   onClick,
 }) => {
   return (
     <ToggleButtonWrapper isReversed={isReversed}>
-      <ButtonBase onClick={onClick}>
+      <ButtonBase onClick={onClick} lighten={lighten && isReversed}>
         {isReversed ? (
           <Content>
-            <Icon {...reversedImage} />
             <p>{reversedLabel}</p>
+            {!lighten && <Icon {...reversedImage} />}
           </Content>
         ) : (
           <Content>

@@ -9,9 +9,36 @@ import {
 } from 'src/data/atom'
 import { IAbility, ISkill } from 'src/interfaces'
 import { useToggle } from 'react-use'
-import { ButtonBase } from '../actor/button/ButtonBase'
 import { AbilityButton } from '../actor/button/AbilityButton'
 import { space } from 'src/assets/style'
+import { IToggleButtonProps, ToggleButton } from '../actor/button/ToggleButton'
+import { Icons } from 'src/assets/icons'
+
+const EditToggle: IToggleButtonProps = {
+  defaultImage: {
+    src: Icons.Acting, // TODO
+    alt: 'モード',
+  },
+  defaultLabel: '編集',
+  reversedImage: {
+    src: Icons.Agitation,
+    alt: '',
+  },
+  reversedLabel: '編集中...',
+}
+
+const AdventureToggle: IToggleButtonProps = {
+  defaultImage: {
+    src: Icons.Oration,
+    alt: '',
+  },
+  defaultLabel: '戦闘',
+  reversedImage: {
+    src: Icons.Navigation,
+    alt: '',
+  },
+  reversedLabel: '探索',
+}
 
 export interface ICharacterSheetProps {}
 
@@ -45,15 +72,20 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
 
   return (
     <CharacterSheetWrapper>
-      <HeadWrapper>
-        <Name>{name}</Name>
-        <EditButton>
-          <ButtonBase onClick={toggleEditMode}>編集</ButtonBase>
-        </EditButton>
-        <EditButton>
-          <ButtonBase onClick={toggleAdventureMode}>戦闘/探索</ButtonBase>
-        </EditButton>
-      </HeadWrapper>
+      <Name>{name}</Name>
+      <ToggleWrapper>
+        <ToggleButton
+          {...EditToggle}
+          onClick={toggleEditMode}
+          isReversed={isEditMode}
+          lighten
+        />
+        <ToggleButton
+          {...AdventureToggle}
+          onClick={toggleAdventureMode}
+          isReversed={isAdventureMode}
+        />
+      </ToggleWrapper>
       <StatusWrapper>
         <Hp>
           <CurrentHp value={hp} onInput={() => setHp} />
@@ -85,21 +117,20 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
 }
 
 const CharacterSheetWrapper = styled.div``
-const HeadWrapper = styled.div`
+const ToggleWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  column-gap: ${space.xs};
+  margin-top: ${space.l};
 `
 const Name = styled.h1``
-const EditButton = styled.div`
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-`
+
 const StatusWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: ${space.m};
 `
 const Hp = styled.div`
   display: flex;
@@ -129,8 +160,10 @@ const CardList = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  column-gap: ${space.xs};
 `
 
 const Card = styled.div`
-  margin: ${space.xxs};
+  margin-top: ${space.xs};
 `
