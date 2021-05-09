@@ -1,9 +1,9 @@
 export const space = {
-  xxs: '12px',
-  xs : '20px',
-  s  : '32px',
-  m  : '48px',
-  l  : '60px',
-  xl : '72px',
-  xxl: '84px'
+  xxs: '0.75rem',
+  xs : '1.25rem',
+  s  : '2rem',
+  m  : '3rem',
+  l  : '5rem',
+  xl : '6rem',
+  xxl: '7rem'
 }

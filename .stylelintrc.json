@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-prettier",
+    "stylelint-config-idiomatic-order"
+  ],
+  "rules": {
+    "no-empty-source": null
+  },
+  "syntax": "scss"
+}

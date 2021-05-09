@@ -7,7 +7,7 @@ import { rollDice10 } from 'src/utils/Math'
 import { ButtonBase } from './ButtonBase'
 
 export interface IAbilityButtonProps {
-  ability: IAbility;
+  ability: IAbility
 }
 
 // dummy function
@@ -45,23 +45,21 @@ export const AbilityButton: React.VFC<IAbilityButtonProps> = ({ ability }) => {
 }
 
 const AbilityButtonWrapper = styled.div`
+  border-radius: 40px;
   width: 142px;
   height: 160px;
-  border-radius: 40px;
   transition: all 0.1s ease-out;
-
   &:hover {
     border-radius: 24px;
     opacity: 0.98;
-    transform: translateZ(1.8)
+    transform: translateZ(1.8);
   }
 `
 
 const Icon = styled.img`
-  margin-top: ${space.xs};
   width: 60px;
   height: 60px;
+  margin-top: ${space.xs};
 `
 
-const Label = styled.p`
-`
+const Label = styled.p``

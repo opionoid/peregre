@@ -1,0 +1,12 @@
+{
+  "extends": ["react-app" /*, "react-app/jest"*/],
+  "overrides": [
+    {
+      "files": ["**/*.stories.*"],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+        // "jest/no-mocks-import": "off" https://stackoverflow.com/questions/63493285/jest-rule-mock-should-not-be-manually-imported-from-a-mocks-directory
+      }
+    }
+  ]
+}

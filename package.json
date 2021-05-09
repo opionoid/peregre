@@ -39,24 +39,9 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
+    "lint": "eslint --fix ./src",
     "generate-component": "node ./scripts/generateComponent/index.js",
     "csv2json": "csvtojson ./src/data/csv/ability-Peregre.csv > ./src/data/json/ability.json | csvtojson ./src/data/csv/words-Peregre.csv > ./src/data/json/words.json | csvtojson ./src/data/csv/weapon-Peregre.csv > ./src/data/json/weapon.json"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
   },
   "browserslist": {
     "production": [
@@ -97,6 +82,10 @@
     "react-router-dom": "^5.2.0",
     "react-test-renderer": "^17.0.2",
     "snake-case": "^3.0.4",
+    "stylelint": "^13.13.1",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^5.0.0",
     "ts-jest": "^26.5.4",
     "tsconfig-paths-webpack-plugin": "^3.5.1"
   },
