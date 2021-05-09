@@ -1,8 +1,12 @@
-
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import styled from 'styled-components'
-import { abilityListAtom, mainWeaponAtom, nameAtom, subWeaponAtom } from 'src/data/atom'
+import {
+  abilityListAtom,
+  mainWeaponAtom,
+  nameAtom,
+  subWeaponAtom,
+} from 'src/data/atom'
 import { IAbility, ISkill } from 'src/interfaces'
 import { useToggle } from 'react-use'
 import { ButtonBase } from '../actor/button/ButtonBase'
@@ -18,12 +22,19 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   // 戦闘系ステータス
   const mainWeapon = useRecoilValue(mainWeaponAtom)
   const subWeapon = useRecoilValue(subWeaponAtom)
-  const maxHp = React.useMemo(() => Math.ceil(mainWeapon.hp * 0.6 + subWeapon.hp * 0.4), [mainWeapon, subWeapon])
+  const maxHp = React.useMemo(
+    () => Math.ceil(mainWeapon.hp * 0.6 + subWeapon.hp * 0.4),
+    [mainWeapon, subWeapon],
+  )
   const [hp, setHp] = React.useState<number>(maxHp) // TODO 0~maxHp の整数に制限する
   const [depth, setDepth] = React.useState<0 | 1 | 2 | 3 | 4>(1)
-  const skills: ISkill[] = React.useMemo(() => (
-    [...mainWeapon.skillList, ...subWeapon.skillList.filter(skill => skill.isUlt !== true)]
-    ), [mainWeapon, subWeapon])
+  const skills: ISkill[] = React.useMemo(
+    () => [
+      ...mainWeapon.skillList,
+      ...subWeapon.skillList.filter((skill) => skill.isUlt !== true),
+    ],
+    [mainWeapon, subWeapon],
+  )
 
   // 探索系ステータス
   const abilities: IAbility[] = useRecoilValue(abilityListAtom)
@@ -37,10 +48,10 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
       <HeadWrapper>
         <Name>{name}</Name>
         <EditButton>
-          <ButtonBase onClick={toggleEditMode}>＠＠</ButtonBase>
+          <ButtonBase onClick={toggleEditMode}>編集</ButtonBase>
         </EditButton>
         <EditButton>
-          <ButtonBase onClick={toggleAdventureMode}>＠＠</ButtonBase>
+          <ButtonBase onClick={toggleAdventureMode}>戦闘/探索</ButtonBase>
         </EditButton>
       </HeadWrapper>
       <StatusWrapper>
@@ -54,26 +65,21 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
         </Depth>
       </StatusWrapper>
       <CardList>
-        {
-          isAdventureMode &&
-          abilities.map(ability => (
+        {isAdventureMode &&
+          abilities.map((ability) => (
             <Card key={ability.name}>
               <AbilityButton ability={ability} />
             </Card>
-          ))
-        }
-        {
-          !isAdventureMode &&
-          skills.map(skill => (
-            <Card key={skill.name}>
-              {skill.name}
-            </Card>
-          ))
-        }
+          ))}
+        {!isAdventureMode &&
+          skills.map((skill, i) => {
+            if (i > 4) return
+            else {
+              return <Card key={skill.name}>{skill.name}</Card>
+            }
+          })}
       </CardList>
-      {
-        isEditMode && <p>TODO: エディット</p>
-      }
+      {isEditMode && <p>TODO: エディット</p>}
     </CharacterSheetWrapper>
   )
 }
@@ -84,8 +90,7 @@ const HeadWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `
-const Name = styled.h1`
-`
+const Name = styled.h1``
 const EditButton = styled.div`
   border-radius: 50%;
   width: 80px;
@@ -107,7 +112,7 @@ const CurrentHp = styled.input`
 `
 const MaxHp = styled.p`
   display: block;
-` 
+`
 const Depth = styled.div`
   display: flex;
   justify-content: center;
@@ -119,7 +124,7 @@ const CurrentDepth = styled.input`
 `
 const MaxDepth = styled.p`
   display: block;
-` 
+`
 const CardList = styled.div`
   display: flex;
   justify-content: center;
