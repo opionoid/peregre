@@ -1,40 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import { space } from 'src/assets/style'
-import { IRollResult, ROLL_RESULT } from 'src/constants'
 import { IAbility } from 'src/interfaces'
-import { rollDice10 } from 'src/utils/Math'
 import { ButtonBase } from './ButtonBase'
 
 export interface IAbilityButtonProps {
   ability: IAbility
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-// dummy function
-const sendMessageToDiscord = (type: string, message: string) => {
-  console.log(type)
-  console.log(message)
-  return
-}
-
-export const AbilityButton: React.VFC<IAbilityButtonProps> = ({ ability }) => {
-  const handleClick = () => {
-    if (ability == null) return
-
-    const diceNumber = rollDice10()
-    const rollResult: IRollResult = (() => {
-      if (diceNumber === 1) return ROLL_RESULT.CRITICAL
-      else if (diceNumber === 10) return ROLL_RESULT.FUMBLE
-      else if (diceNumber < ability.successRate) return ROLL_RESULT.SUCCESS
-      else return ROLL_RESULT.FAILURE
-    })()
-    const message = `${ability.name}: ${diceNumber}${rollResult}`
-    sendMessageToDiscord('ability', message)
-  }
-
+export const AbilityButton: React.VFC<IAbilityButtonProps> = ({
+  ability,
+  onClick,
+}) => {
   return (
     <AbilityButtonWrapper>
-      <ButtonBase onClick={handleClick}>
+      <ButtonBase onClick={onClick}>
         <Icon {...ability.icon} />
         <Label>{ability.name}</Label>
       </ButtonBase>

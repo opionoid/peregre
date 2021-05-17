@@ -10,10 +10,13 @@ import {
 import { IAbility, ISkill } from 'src/interfaces'
 import { useToggle } from 'react-use'
 import { AbilityButton } from '../actor/button/AbilityButton'
-import { space } from 'src/assets/style'
+import { color, space } from 'src/assets/style'
 import { IToggleButtonProps, ToggleButton } from '../actor/button/ToggleButton'
 import { Icons } from 'src/assets/icons'
 import { WeaponButton } from '../actor/button/WeaponButton'
+import { ButtonBase } from '../actor/button/ButtonBase'
+import { IRollResult, ROLL_RESULT } from 'src/constants'
+import { rollDice10 } from 'src/utils/Math'
 
 const EditToggle: IToggleButtonProps = {
   defaultImage: {
@@ -63,13 +66,46 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     ],
     [mainWeapon, subWeapon],
   )
+  const [skillHand, setSkillHand] = React.useState(
+    [...Array(5)].map((_, i) => skills[i]),
+  )
+  const [currentSkill, setCurrentSkill] = React.useState<ISkill>(skillHand[0])
 
   // 探索系ステータス
   const abilities: IAbility[] = useRecoilValue(abilityListAtom)
+  const [currentAbility, setCurrentAbility] = React.useState<IAbility>(
+    abilities[0],
+  )
 
   // モード
-  const [isEditMode, toggleEditMode] = useToggle(false)
-  const [isAdventureMode, toggleAdventureMode] = useToggle(false)
+  const [isAdventureMode, toggleAdventureMode] = useToggle(false) // 探索 / 戦闘
+  const [isEditMode, toggleEditMode] = useToggle(false) // 編集モードは戦闘モードの子要素
+
+  // 編集
+  const handleClick = () => {
+    if (isAdventureMode) {
+      const diceNumber = rollDice10()
+      const rollResult: IRollResult = (() => {
+        if (diceNumber === 1) return ROLL_RESULT.CRITICAL
+        else if (diceNumber === 10) return ROLL_RESULT.FUMBLE
+        else if (diceNumber < currentAbility.successRate)
+          return ROLL_RESULT.SUCCESS
+        else return ROLL_RESULT.FAILURE
+      })()
+      console.log(`${currentAbility.name}: ${diceNumber}${rollResult}`)
+      // const message = `${currentAbility.name}: ${diceNumber}${rollResult}`
+      // sendMessageToDiscord('ability', message)
+    } else {
+      if (isEditMode) {
+        // TODO
+        setSkillHand(skills)
+      }
+      if (!isEditMode) {
+        // sendMessageToDiscord
+        console.log(currentSkill)
+      }
+    }
+  }
 
   return (
     <CharacterSheetWrapper>
@@ -101,22 +137,25 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
         {isAdventureMode &&
           abilities.map((ability) => (
             <Card key={ability.name}>
-              <AbilityButton ability={ability} />
+              <AbilityButton
+                ability={ability}
+                onClick={() => setCurrentAbility(ability)}
+              />
             </Card>
           ))}
         {!isAdventureMode &&
-          skills.map((skill, i) => {
-            if (i > 4) return
-            else {
-              return (
-                <Card key={skill.name}>
-                  <WeaponButton skill={skill} setCurrentSkill={() => {}} />
-                </Card>
-              )
-            }
-          })}
+          skillHand.map((skill) => (
+            <Card key={skill.name}>
+              <WeaponButton
+                skill={skill}
+                setCurrentSkill={() => setCurrentSkill(skill)}
+              />
+            </Card>
+          ))}
       </CardList>
-      {isEditMode && <p>TODO: エディット</p>}
+      <InfoArea>
+        <ButtonBase onClick={handleClick}>テストする</ButtonBase>
+      </InfoArea>
     </CharacterSheetWrapper>
   )
 }
@@ -168,7 +207,9 @@ const CardList = styled.div`
   flex-wrap: wrap;
   column-gap: ${space.xs};
 `
-
 const Card = styled.div`
   margin-top: ${space.xs};
+`
+const InfoArea = styled.div`
+  background-color: ${color.backgroundHighContrast};
 `
