@@ -81,7 +81,21 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   const [isAdventureMode, toggleAdventureMode] = useToggle(false) // 探索 / 戦闘
   const [isEditMode, toggleEditMode] = useToggle(false) // 編集モードは戦闘モードの子要素
 
-  // 編集
+  // インフォ
+  const abilityInfo = <div>TODO: アビリティ</div>
+  const skillInfo = <div>TODO: スキル</div>
+
+  // 編集エリア
+  const editArea = <div>TODO: 編集エリアつくる</div>
+
+  // コンテンツ
+  const content = isAdventureMode
+    ? abilityInfo
+    : isEditMode
+    ? editArea
+    : skillInfo
+
+  // クリック
   const handleClick = () => {
     if (isAdventureMode) {
       const diceNumber = rollDice10()
@@ -98,7 +112,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     } else {
       if (isEditMode) {
         // TODO
-        setSkillHand(skills)
+        setSkillHand([skills[0], skills[1]])
       }
       if (!isEditMode) {
         // sendMessageToDiscord
@@ -111,12 +125,6 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     <CharacterSheetWrapper>
       <Name>{name}</Name>
       <ToggleWrapper>
-        <ToggleButton
-          {...EditToggle}
-          onClick={toggleEditMode}
-          isReversed={isEditMode}
-          lighten
-        />
         <ToggleButton
           {...AdventureToggle}
           onClick={toggleAdventureMode}
@@ -153,9 +161,18 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
             </Card>
           ))}
       </CardList>
-      <InfoArea>
+      <ContentArea>
+        {!isAdventureMode && (
+          <ToggleButton
+            {...EditToggle}
+            onClick={toggleEditMode}
+            isReversed={isEditMode}
+            lighten
+          />
+        )}
+        {content}
         <ButtonBase onClick={handleClick}>テストする</ButtonBase>
-      </InfoArea>
+      </ContentArea>
     </CharacterSheetWrapper>
   )
 }
@@ -210,6 +227,9 @@ const CardList = styled.div`
 const Card = styled.div`
   margin-top: ${space.xs};
 `
-const InfoArea = styled.div`
+const ContentArea = styled.div`
+  padding: ${space.l} 0;
+  margin: ${space.l} auto;
   background-color: ${color.backgroundHighContrast};
+  color: ${color.fontInHighContrast};
 `
