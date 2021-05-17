@@ -1,4 +1,4 @@
-import { Icons } from "src/assets/icons";
+import { Icons } from 'src/assets/icons'
 
 /**
  * 汎用的な interface の定義場所
@@ -11,7 +11,7 @@ export type IImage = {
 
 export type IIconImage = {
   readonly src: IIconKey | string
-  readonly alt?: string;
+  readonly alt?: string
 }
 
 export type ILink = {
@@ -20,7 +20,7 @@ export type ILink = {
   readonly text?: string
 }
 
-export type IIconKey = keyof (typeof Icons)
+export type IIconKey = keyof typeof Icons
 
 export interface IAbility {
   name: string
@@ -54,6 +54,7 @@ export interface IDirtyWeapon {
 }
 
 export interface ISkill {
+  icon: IIconImage
   name: string
   description: string
   depth: number

@@ -1,10 +1,17 @@
-
 import React from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import styled from 'styled-components'
 import { color, space } from 'src/assets/style'
 import { INITIAL_WEAPON } from 'src/constants'
-import { abilityListAtom, allAbilityListAtom, allWeaponListAtom, isMakingFinishedAtom, mainWeaponAtom, nameAtom, subWeaponAtom } from 'src/data/atom'
+import {
+  abilityListAtom,
+  allAbilityListAtom,
+  allWeaponListAtom,
+  isMakingFinishedAtom,
+  mainWeaponAtom,
+  nameAtom,
+  subWeaponAtom,
+} from 'src/data/atom'
 import { IAbility, IWeapon } from 'src/interfaces'
 import { randomizeXorShift } from 'src/utils/Math'
 import { ButtonBase } from '../actor/button/ButtonBase'
@@ -18,16 +25,17 @@ const WORDS = {
     weaponMain: 'Main Weapon',
     weaponSub: 'Sub Weapon',
     ability: 'Abilities',
-    name: 'Name'
+    name: 'Name',
   },
   button: {
     next: '次へ',
     back: '戻る',
-    finish: '　作成完了！'
+    finish: '　作成完了！',
   },
   cancel: {
-    annotation: 'キャラクター作成を中断しても、24時間は同じ武器／アビリティ構成で作成が再開されます。中断しますか？'
-  }
+    annotation:
+      'キャラクター作成を中断しても、24時間は同じ武器／アビリティ構成で作成が再開されます。中断しますか？',
+  },
 } as const
 
 const STEPS = ['weaponMain', 'weaponSub', 'ability', 'name'] as const
@@ -36,8 +44,8 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
   /**
    * シード
    */
-  const seed = /** TODO */1111
-  const getRD = (i: number): number => randomizeXorShift(seed + i);
+  const seed = /** TODO */ 1111
+  const getRD = (i: number): number => randomizeXorShift(seed + i)
 
   // 武器テーブル作成
   const weaponsData = useRecoilValue(allWeaponListAtom)
@@ -49,16 +57,20 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
       description: dirtyData.description,
       icon: {
         src: Icons[dirtyData.icon],
-        alt: ''
+        alt: '',
       },
       hp: parseInt(dirtyData.hp),
-      skillList: dirtyData.skills.map(skill => ({
+      skillList: dirtyData.skills.map((skill) => ({
+        icon: {
+          src: dirtyData.icon,
+          alt: '',
+        },
         name: skill.name || '',
         depth: parseInt(skill.depth) || 0,
         description: skill.description || '',
         shouldCast: skill.shouldCast === 'TRUE',
-        isUlt: skill.isUlt === 'TRUE'
-      }))
+        isUlt: skill.isUlt === 'TRUE',
+      })),
     }
   })
 
@@ -71,10 +83,10 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
       description: dirtyData.description,
       icon: {
         src: Icons[dirtyData.icon],
-        alt: "" // nameと同じなのでからっぽ
+        alt: '', // nameと同じなのでからっぽ
       },
       // [成功率, 出現率] = [[90%, 25%], [70%, 33%], [60%, 47%]]
-      successRate: 2 * Math.max(getRD(i) % 4, getRD(i) % 3, 1.7) + 0.3
+      successRate: 2 * Math.max(getRD(i) % 4, getRD(i) % 3, 1.7) + 0.3,
     }
   })
 
@@ -85,14 +97,19 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
   const [currentAbilityStep, setCurrentAbilityStep] = React.useState<number>(0)
 
   // 2pick用タプル
-  const choiceItems: [IAbility, IAbility][] | [IWeapon, IWeapon][] = React.useMemo(() => {
+  const choiceItems:
+    | [IAbility, IAbility][]
+    | [IWeapon, IWeapon][] = React.useMemo(() => {
     switch (STEPS[currentStepIndex]) {
-      case ('weaponMain'):
+      case 'weaponMain':
         return [[weaponsTable[0], weaponsTable[1]]]
-      case ('weaponSub'):
+      case 'weaponSub':
         return [[weaponsTable[2], weaponsTable[3]]]
-      case ('ability'):
-        return [...Array(5)].map((_, i) => [abilitiesTable[i * 2], abilitiesTable[i * 2 + 1]])
+      case 'ability':
+        return [...Array(5)].map((_, i) => [
+          abilitiesTable[i * 2],
+          abilitiesTable[i * 2 + 1],
+        ])
       default:
         return [[INITIAL_WEAPON, INITIAL_WEAPON]]
     }
@@ -100,7 +117,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
 
   const [isFirstIndex, setIsFirstIndex] = React.useState<boolean>(true)
   const handleChoice = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setIsFirstIndex(e.currentTarget.value === "first")
+    setIsFirstIndex(e.currentTarget.value === 'first')
   }
 
   const setMainWeapon = useSetRecoilState(mainWeaponAtom)
@@ -111,34 +128,44 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
 
   const handleClickToNextStep = () => {
     switch (STEPS[currentStepIndex]) {
-      case ('weaponMain'):
+      case 'weaponMain':
         setMainWeapon(weaponsTable[isFirstIndex ? 0 : 1])
         setIsFirstIndex(true)
-        setCurrentStepIndex(prev => prev + 1)
+        setCurrentStepIndex((prev) => prev + 1)
         return
-      case ('weaponSub'):
+      case 'weaponSub':
         setSubWeapon(weaponsTable[isFirstIndex ? 2 : 3])
         setIsFirstIndex(true)
-        setCurrentStepIndex(prev => prev + 1)
+        setCurrentStepIndex((prev) => prev + 1)
         return
       // アビリティは5回選択する必要がある
-      case ('ability'):
+      case 'ability':
         if (currentAbilityStep === 0) {
           setAbilities([abilitiesTable[isFirstIndex ? 0 : 1]]) // 1回目のみアビリティリストを選択したアビリティで初期化
-          setCurrentAbilityStep(prev => prev + 1)
+          setCurrentAbilityStep((prev) => prev + 1)
           setIsFirstIndex(true)
         } else if (currentAbilityStep === 4) {
-          setAbilities(prev => [...prev, abilitiesTable[isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1]])
+          setAbilities((prev) => [
+            ...prev,
+            abilitiesTable[
+              isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
+            ],
+          ])
           setCurrentAbilityStep(0) // 意図しない参照バグを防止
           setIsFirstIndex(true)
-          setCurrentStepIndex(prev => prev + 1) // 5回目のみ次のステップ（名前入力）へ移行
+          setCurrentStepIndex((prev) => prev + 1) // 5回目のみ次のステップ（名前入力）へ移行
         } else {
-          setAbilities(prev => [...prev, abilitiesTable[isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1]])
-          setCurrentAbilityStep(prev => prev + 1)
+          setAbilities((prev) => [
+            ...prev,
+            abilitiesTable[
+              isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
+            ],
+          ])
+          setCurrentAbilityStep((prev) => prev + 1)
           setIsFirstIndex(true)
         }
         return
-      case ('name'):
+      case 'name':
         setName('たなかたろう')
         // TODO go to character sheet
         setIsMakingFinished(true)
@@ -146,34 +173,47 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
     }
   }
 
-  const buttonLabel = currentStepIndex === STEPS.length - 1 ? WORDS.button.finish : WORDS.button.next
+  const buttonLabel =
+    currentStepIndex === STEPS.length - 1
+      ? WORDS.button.finish
+      : WORDS.button.next
 
   return (
     <CharacterMakingWrapper>
-      <QuestionHeading>{WORDS.question[STEPS[currentStepIndex]]}</QuestionHeading>
-      {
-        STEPS[currentStepIndex] !== 'name' &&
+      <QuestionHeading>
+        {WORDS.question[STEPS[currentStepIndex]]}
+      </QuestionHeading>
+      {STEPS[currentStepIndex] !== 'name' && (
         <>
           <ChoiceCardArea>
             <ChoiceCard>
-              <ButtonBase onClick={handleChoice} value="first" lighten={!isFirstIndex}>
+              <ButtonBase
+                onClick={handleChoice}
+                value="first"
+                lighten={!isFirstIndex}
+              >
                 {choiceItems[currentAbilityStep][0].name}
               </ButtonBase>
             </ChoiceCard>
             <ChoiceCard>
-              <ButtonBase onClick={handleChoice} value="second" lighten={isFirstIndex}>
+              <ButtonBase
+                onClick={handleChoice}
+                value="second"
+                lighten={isFirstIndex}
+              >
                 {choiceItems[currentAbilityStep][1].name}
               </ButtonBase>
             </ChoiceCard>
           </ChoiceCardArea>
-          <ChoiceDescription>{choiceItems[currentAbilityStep][isFirstIndex ? 0 : 1].description}</ChoiceDescription>
+          <ChoiceDescription>
+            {choiceItems[currentAbilityStep][isFirstIndex ? 0 : 1].description}
+          </ChoiceDescription>
         </>
-      }
-      {
-        STEPS[currentStepIndex] === 'name' &&
+      )}
+      {STEPS[currentStepIndex] === 'name' && (
         /*<InputField />*/
         <p>本来なら名前入力</p>
-      }
+      )}
       <NextButton>
         <ButtonBase onClick={handleClickToNextStep}>{buttonLabel}</ButtonBase>
       </NextButton>

@@ -13,6 +13,7 @@ import { AbilityButton } from '../actor/button/AbilityButton'
 import { space } from 'src/assets/style'
 import { IToggleButtonProps, ToggleButton } from '../actor/button/ToggleButton'
 import { Icons } from 'src/assets/icons'
+import { WeaponButton } from '../actor/button/WeaponButton'
 
 const EditToggle: IToggleButtonProps = {
   defaultImage: {
@@ -107,7 +108,11 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
           skills.map((skill, i) => {
             if (i > 4) return
             else {
-              return <Card key={skill.name}>{skill.name}</Card>
+              return (
+                <Card key={skill.name}>
+                  <WeaponButton skill={skill} setCurrentSkill={() => {}} />
+                </Card>
+              )
             }
           })}
       </CardList>

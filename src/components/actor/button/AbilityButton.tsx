@@ -34,9 +34,7 @@ export const AbilityButton: React.VFC<IAbilityButtonProps> = ({ ability }) => {
 
   return (
     <AbilityButtonWrapper>
-      {/** TODO: 文言組み込み */}
-      <ButtonBase onClick={handleClick} unset={ability.name === '未設定'}>
-        {/** TODO: NO_IMAGE */}
+      <ButtonBase onClick={handleClick}>
         <Icon {...ability.icon} />
         <Label>{ability.name}</Label>
       </ButtonBase>

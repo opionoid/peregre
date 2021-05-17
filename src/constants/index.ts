@@ -31,6 +31,10 @@ export const INITIAL_ABILITY: IAbility = {
 }
 
 export const INITIAL_SKILL: ISkill = {
+  icon: {
+    src: Icons.FirstAid,
+    alt: '',
+  },
   name: '未設定',
   description: 'このスキルは未設定です。スキル設定モードにしますか？',
   depth: 0,
