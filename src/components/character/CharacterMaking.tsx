@@ -62,7 +62,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
       hp: parseInt(dirtyData.hp),
       skillList: dirtyData.skills.map((skill) => ({
         icon: {
-          src: dirtyData.icon,
+          src: Icons[dirtyData.icon],
           alt: '',
         },
         name: skill.name || '',
