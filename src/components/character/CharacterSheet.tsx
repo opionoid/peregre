@@ -161,15 +161,15 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
             </Card>
           ))}
       </CardList>
+      {!isAdventureMode && (
+        <ToggleButton
+          {...EditToggle}
+          onClick={toggleEditMode}
+          isReversed={isEditMode}
+          lighten
+        />
+      )}
       <ContentArea>
-        {!isAdventureMode && (
-          <ToggleButton
-            {...EditToggle}
-            onClick={toggleEditMode}
-            isReversed={isEditMode}
-            lighten
-          />
-        )}
         {content}
         <ButtonBase onClick={handleClick}>テストする</ButtonBase>
       </ContentArea>
@@ -222,10 +222,10 @@ const CardList = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  column-gap: ${space.xs};
+  column-gap: ${space.s};
 `
 const Card = styled.div`
-  margin-top: ${space.xs};
+  margin-top: ${space.s};
 `
 const ContentArea = styled.div`
   padding: ${space.l} 0;
