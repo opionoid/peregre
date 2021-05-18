@@ -1,3 +1,6 @@
+/**
+ * TODO: 要リファクタリング
+ */
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import styled from 'styled-components'
@@ -82,18 +85,20 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   const [isEditMode, toggleEditMode] = useToggle(false) // 編集モードは戦闘モードの子要素
 
   // インフォ
-  const abilityInfo = <div>TODO: アビリティ</div>
-  const skillInfo = <div>TODO: スキル</div>
-
-  // 編集エリア
-  const editArea = <div>TODO: 編集エリアつくる</div>
-
-  // コンテンツ
-  const content = isAdventureMode
-    ? abilityInfo
-    : isEditMode
-    ? editArea
-    : skillInfo
+  const abilityInfo = (
+    <>
+      <h3>{currentAbility.name}</h3>
+      <p>{currentAbility.description}</p>
+    </>
+  )
+  const skillInfo = (
+    <>
+      <h3>{currentSkill.name}</h3>
+      <p>深度: {currentSkill.depth}</p>
+      <p>{currentSkill.description}</p>
+    </>
+  )
+  const infoArea = isAdventureMode ? abilityInfo : skillInfo
 
   // クリック
   const handleClick = () => {
@@ -120,6 +125,65 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
       }
     }
   }
+
+  const [hasEditError, setHasEditError] = React.useState(false)
+  // 編集
+  const handleClickOnEditMode = (skill: ISkill) => {
+    if (hasEditError) setHasEditError(false)
+    if (skillHand.includes(skill)) {
+      const tmp = skillHand.filter((hand) => hand.name !== skill.name)
+      console.log(`${skill.name} is included`)
+      setSkillHand(tmp)
+    } else if (skillHand.length < 5) {
+      const tmp = skillHand
+      console.log(`${skill.name} is pushed`)
+      setSkillHand([...tmp, skill])
+    } else {
+      setHasEditError(true)
+    }
+  }
+
+  // 編集エリア(jsx)
+  const editArea = (
+    <>
+      <EditWeapon>
+        <EditWeaponIcon {...mainWeapon.icon} />
+        <h2>{mainWeapon.name}</h2>
+      </EditWeapon>
+      <EditScrollX>
+        {mainWeapon.skillList.map((skill, i) => (
+          <div
+            key={`${i}-${skill.name}`}
+            style={{ width: '142px', marginRight: space.xs }}
+          >
+            <WeaponButton
+              skill={skill}
+              accent={skillHand.includes(skill)}
+              onClick={() => handleClickOnEditMode(skill)}
+            />
+          </div>
+        ))}
+      </EditScrollX>
+      <EditWeapon>
+        <EditWeaponIcon {...subWeapon.icon} />
+        <h2>{subWeapon.name}</h2>
+      </EditWeapon>
+      <EditScrollX>
+        {subWeapon.skillList.map((skill, i) => (
+          <div
+            key={`${i}-${skill.name}`}
+            style={{ width: '142px', marginRight: space.xs }}
+          >
+            <WeaponButton
+              skill={skill}
+              accent={skillHand.includes(skill)}
+              onClick={() => handleClickOnEditMode(skill)}
+            />
+          </div>
+        ))}
+      </EditScrollX>
+    </>
+  )
 
   return (
     <CharacterSheetWrapper>
@@ -156,28 +220,41 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
             <Card key={skill.name}>
               <WeaponButton
                 skill={skill}
-                setCurrentSkill={() => setCurrentSkill(skill)}
+                accent={!isEditMode && currentSkill.name === skill.name}
+                onClick={() => setCurrentSkill(skill)}
               />
             </Card>
           ))}
       </CardList>
-      {!isAdventureMode && (
-        <ToggleButton
-          {...EditToggle}
-          onClick={toggleEditMode}
-          isReversed={isEditMode}
-          lighten
-        />
-      )}
-      <ContentArea>
-        {content}
-        <ButtonBase onClick={handleClick}>テストする</ButtonBase>
-      </ContentArea>
+      {!isAdventureMode && isEditMode && <EditArea>{editArea}</EditArea>}
+      <InfoArea>{infoArea}</InfoArea>
+      <ButtonsWrapper>
+        {!isAdventureMode && (
+          <ToggleButton
+            {...EditToggle}
+            onClick={toggleEditMode}
+            isReversed={isEditMode}
+            lighten
+          />
+        )}
+        {!isEditMode && (
+          <ActionButton>
+            <ButtonBase onClick={handleClick} accent={hasEditError}>
+              使用
+            </ButtonBase>
+          </ActionButton>
+        )}
+      </ButtonsWrapper>
     </CharacterSheetWrapper>
   )
 }
 
-const CharacterSheetWrapper = styled.div``
+const CharacterSheetWrapper = styled.div`
+  max-width: 90%;
+  min-width: 60%;
+  height: 100%;
+  margin: 0 auto;
+`
 const ToggleWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -227,9 +304,53 @@ const CardList = styled.div`
 const Card = styled.div`
   margin-top: ${space.s};
 `
-const ContentArea = styled.div`
-  padding: ${space.l} 0;
-  margin: ${space.l} auto;
-  background-color: ${color.backgroundHighContrast};
+const InfoArea = styled.div`
+  margin-top: ${space.s};
+  padding: calc(0.8rem + 1.2vmin) calc(1.2rem + 2.6vmin) calc(1rem + 2.4vmin)
+    calc(1.2rem + 2.6vmin);
+  border-radius: 1.5em;
   color: ${color.fontInHighContrast};
+  background-color: ${color.backgroundHighContrast};
+  min-height: 80px;
+`
+const EditArea = styled.div``
+const EditWeapon = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: ${space.xxs};
+  margin-top: ${space.s};
+`
+const EditWeaponIcon = styled.img`
+  width: 2em;
+  height: 2em;
+  background-color: ${color.backgroundHighContrast};
+  border-radius: 1em;
+`
+const EditScrollX = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: ${space.xxs};
+  overflow-x: scroll;
+`
+const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: ${space.xs};
+  margin: ${space.m} auto ${space.l} auto;
+`
+const ActionButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 60px;
+  transition: border-radius 0.3s ease-in-out;
+  border-radius: 0.75em;
+
+  &:hover {
+    border-radius: 24px;
+    opacity: 0.98;
+    transform: translateZ(1.8);
+  }
 `

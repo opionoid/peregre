@@ -6,21 +6,23 @@ import { ButtonBase } from './ButtonBase'
 
 export interface IWeaponButtonProps {
   skill: ISkill
-  setCurrentSkill: any
+  accent?: boolean
+  onClick?: any
 }
 
 export const WeaponButton: React.VFC<IWeaponButtonProps> = ({
   skill,
-  setCurrentSkill,
+  accent = false,
+  onClick,
 }) => {
   const handleClick = () => {
     if (skill == null) return
-    setCurrentSkill()
+    onClick()
   }
 
   return (
     <WeaponButtonWrapper>
-      <ButtonBase onClick={handleClick}>
+      <ButtonBase onClick={handleClick} accent={accent}>
         <Icon {...skill.icon} />
         <Label>{skill.name}</Label>
       </ButtonBase>

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actor/button default test 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-gsDJrp kntnyI"
+    >
+      <button
+        class="sc-bdvvaa lfkahD"
+        type="button"
+      >
+        <div
+          class="sc-dkPtyc bVVxKk"
+        >
+          <p>
+            ON
+          </p>
+          <img
+            alt="でふぉ"
+            class="sc-hKwCoD flvpqd"
+            src="Hidden.svg"
+          />
+        </div>
+      </button>
+    </div>
+  </div>
+</body>
+`;
