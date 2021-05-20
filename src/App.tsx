@@ -15,43 +15,40 @@ import { color } from './assets/style'
 function App() {
   return (
     <>
-    <ReactGenieAnimations />
-    <RecoilRoot>
-      <Router>
-        <AppNavigation />
-        <Reveal animation={Animation.FadeInUp}>
-        <Body>
-          <Switch>
-            <Route exact path={ROUTE.rules} component={RulesPage} />
-            <Route exact path={ROUTE.character} component={CharacterPage} />
-            <Route exact path={ROUTE.stories} component={StoriesPage} />
-            <Route exact path={ROUTE.news} component={NewsPage} />
-            <Route exact path={ROUTE.top} component={TopPage} />
-            <Route component={TopPage} />
-          </Switch>
-          <footer>
-              <FooterItem>
-                ©︎ 2021, ことれの
-              </FooterItem>
-          </footer>
-        </Body>
-        </Reveal>
-      </Router>
-    </RecoilRoot>
+      <ReactGenieAnimations />
+      <RecoilRoot>
+        <Router>
+          <AppNavigation />
+          <Reveal animation={Animation.FadeInUp}>
+            <Body>
+              <Switch>
+                <Route exact path={ROUTE.rules} component={RulesPage} />
+                <Route exact path={ROUTE.character} component={CharacterPage} />
+                <Route exact path={ROUTE.stories} component={StoriesPage} />
+                <Route exact path={ROUTE.news} component={NewsPage} />
+                <Route exact path={ROUTE.top} component={TopPage} />
+                <Route component={TopPage} />
+              </Switch>
+              <footer>
+                <FooterItem>©︎ 2021, ことれの</FooterItem>
+              </footer>
+            </Body>
+          </Reveal>
+        </Router>
+      </RecoilRoot>
     </>
   )
-    
 }
 
 const Body = styled.div`
   padding-top: 7.875rem;
 `
- const FooterItem = styled.div`
- width: 100%;
- padding: 1.125em 0;
- background-color: ${color.backgroundHighContrast};
- text-align: center;
- color: ${color.fontInHighContrast};
+const FooterItem = styled.div`
+  width: 100%;
+  padding: 1.125em 0;
+  background-color: ${color.backgroundHighContrast};
+  text-align: center;
+  color: ${color.fontInHighContrast};
 `
 
 export default App

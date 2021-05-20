@@ -49,7 +49,7 @@ export const TopPage: React.VFC = () => {
               xlinkHref="#gentle-wave"
               x="48"
               y="7"
-              fill={color.background}
+              fill="rgb(254, 248, 231)"
             />
           </Parallax>
         </Wave>
