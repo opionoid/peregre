@@ -5,6 +5,7 @@ import Astrology from './Astrology.svg'
 import Bird from './Bird.svg'
 import Bribery from './Bribery.svg'
 import Cheating from './Cheating.svg'
+import Depth from './Depth.svg'
 import Dissociative from './Dissociative.svg'
 import Drink from './Drink.svg'
 import Enlightenment from './Enlightenment.svg'
@@ -37,6 +38,7 @@ export const Icons = {
   Bird,
   Bribery,
   Cheating,
+  Depth,
   Dissociative,
   Drink,
   Enlightenment,

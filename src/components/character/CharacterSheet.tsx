@@ -96,8 +96,18 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   )
   const skillInfo = (
     <>
-      <h3>{currentSkill.name}</h3>
-      <p>深度: {currentSkill.depth}</p>
+      <div style={{ display: 'flex', columnGap: '32px', alignItems: 'center' }}>
+        <h3 style={{ minWidth: '25%' }}>{currentSkill.name}</h3>
+        <p style={{ fontSize: '1.4rem', lineHeight: '1', margin: '0' }}>
+          <img
+            src={Icons.Depth}
+            width={24}
+            height={24}
+            style={{ marginRight: '0.625rem' }}
+          />
+          {currentSkill.depth}
+        </p>
+      </div>
       <p>{currentSkill.description}</p>
     </>
   )
