@@ -13,6 +13,8 @@ import Hidden from './Hidden.svg'
 import Indoctrinating from './Indoctrinating.svg'
 import LockPicking from './LockPicking.svg'
 import MalleusMaleficarum from './MalleusMaleficarum.svg'
+import MaxDepth from './MaxDepth.svg'
+import MaxHp from './MaxHp.svg'
 import Narrative from './Narrative.svg'
 import Navigation from './Navigation.svg'
 import Negotiation from './Negotiation.svg'
@@ -43,6 +45,8 @@ export const Icons = {
   Indoctrinating,
   LockPicking,
   MalleusMaleficarum,
+  MaxDepth,
+  MaxHp,
   Narrative,
   Navigation,
   Negotiation,
@@ -55,5 +59,5 @@ export const Icons = {
   Theology,
   Torture,
   Training,
-  Writing
+  Writing,
 }

@@ -188,23 +188,27 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   return (
     <CharacterSheetWrapper>
       <Name>{name}</Name>
-      <ToggleWrapper>
-        <ToggleButton
-          {...AdventureToggle}
-          onClick={toggleAdventureMode}
-          isReversed={isAdventureMode}
-        />
-      </ToggleWrapper>
-      <StatusWrapper>
-        <Hp>
-          <CurrentHp value={hp} onInput={() => setHp} />
-          <MaxHp> / {maxHp}</MaxHp>
-        </Hp>
-        <Depth>
-          <CurrentDepth value={depth} onInput={() => setDepth} />
-          <MaxDepth> / 4</MaxDepth>
-        </Depth>
-      </StatusWrapper>
+      <HeadWrapper>
+        <ToggleWrapper>
+          <ToggleButton
+            {...AdventureToggle}
+            onClick={toggleAdventureMode}
+            isReversed={isAdventureMode}
+          />
+        </ToggleWrapper>
+        <StatusWrapper>
+          <Hp>
+            <StatusIcon src={Icons.MaxHp} alt="魂魄量" />
+            <CurrentHp value={hp} onInput={() => setHp} />
+            <MaxHp>{maxHp}</MaxHp>
+          </Hp>
+          <Depth>
+            <StatusIcon src={Icons.MaxDepth} alt="深度" />
+            <CurrentDepth value={depth} onInput={() => setDepth} />
+            <MaxDepth>4</MaxDepth>
+          </Depth>
+        </StatusWrapper>
+      </HeadWrapper>
       <CardList>
         {isAdventureMode &&
           abilities.map((ability) => (
@@ -256,44 +260,92 @@ const CharacterSheetWrapper = styled.div`
   min-height: 84vh;
   margin: 0 auto;
 `
+const Name = styled.h1``
+const HeadWrapper = styled.div`
+  display: flex;
+  column-gap: ${space.xl};
+  margin: 0 auto;
+  width: fit-content;
+  align-items: center;
+
+  @media screen and (max-width: 35rem) {
+    display: block;
+  }
+`
 const ToggleWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: ${space.xs};
-  margin-top: ${space.l};
+  margin-top: ${space.m};
 `
-const Name = styled.h1``
-
 const StatusWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  column-gap: ${space.m};
   margin-top: ${space.m};
 `
 const Hp = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  position: relative;
+`
+const StatusIcon = styled.img`
+  width: 4em;
+  height: 4em;
 `
 const CurrentHp = styled.input`
   display: block;
-  padding: 10px;
+  width: 3rem;
+  padding: ${space.xxs} 0;
+  box-sizing: border-box;
+  border: 0;
+  background-color: inherit;
+  font-size: 2rem;
+  text-align: center;
+  outline-color: ${color.accent};
 `
 const MaxHp = styled.p`
-  display: block;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  top: 1.5rem;
+  left: 0;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 50%;
+  background-color: ${color.backgroundHighContrast};
+  color: ${color.fontInHighContrast};
 `
 const Depth = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `
 const CurrentDepth = styled.input`
   display: block;
-  padding: 10px;
+  width: 3rem;
+  padding: 4px 0;
+  box-sizing: border-box;
+  border: 0;
+  background-color: inherit;
+  font-size: 2rem;
+  text-align: center;
+  outline-color: ${color.accent};
 `
 const MaxDepth = styled.p`
-  display: block;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  top: 1.5rem;
+  left: 0;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 50%;
+  background-color: ${color.backgroundHighContrast};
+  color: ${color.fontInHighContrast};
 `
 const CardList = styled.div`
   display: flex;
@@ -301,6 +353,7 @@ const CardList = styled.div`
   align-items: center;
   flex-wrap: wrap;
   column-gap: ${space.s};
+  margin-top: ${space.m};
 `
 const Card = styled.div`
   margin-top: ${space.s};
