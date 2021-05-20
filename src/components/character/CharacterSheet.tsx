@@ -199,12 +199,21 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
         <StatusWrapper>
           <Hp>
             <StatusIcon src={Icons.MaxHp} alt="魂魄量" />
-            <CurrentHp value={hp} onInput={() => setHp} />
+            <CurrentHp
+              value={hp}
+              onChange={(e) => setHp(parseInt(e.currentTarget.value))}
+            />
             <MaxHp>{maxHp}</MaxHp>
           </Hp>
           <Depth>
             <StatusIcon src={Icons.MaxDepth} alt="深度" />
-            <CurrentDepth value={depth} onInput={() => setDepth} />
+            <CurrentDepth
+              value={depth}
+              onChange={(e) => {
+                const dirtyValue = parseInt(e.currentTarget.value)
+                setDepth(dirtyValue < 5 ? (dirtyValue as 0 | 1 | 2 | 3 | 4) : 4)
+              }}
+            />
             <MaxDepth>4</MaxDepth>
           </Depth>
         </StatusWrapper>
@@ -259,8 +268,11 @@ const CharacterSheetWrapper = styled.div`
   min-width: 60%;
   min-height: 84vh;
   margin: 0 auto;
+  width: 100%;
 `
-const Name = styled.h1``
+const Name = styled.h1`
+  margin-bottom: ${space.l};
+`
 const HeadWrapper = styled.div`
   display: flex;
   column-gap: ${space.xl};
@@ -298,7 +310,7 @@ const StatusIcon = styled.img`
 const CurrentHp = styled.input`
   display: block;
   width: 3rem;
-  padding: ${space.xxs} 0;
+  padding: 4px 0;
   box-sizing: border-box;
   border: 0;
   background-color: inherit;
@@ -392,7 +404,7 @@ const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: ${space.xs};
+  column-gap: ${space.m};
   margin: ${space.m} auto ${space.l} auto;
 `
 const ActionButton = styled.div`

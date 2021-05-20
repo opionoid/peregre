@@ -166,8 +166,6 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         }
         return
       case 'name':
-        setName('たなかたろう')
-        // TODO go to character sheet
         setIsMakingFinished(true)
         return
     }
@@ -211,8 +209,10 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         </>
       )}
       {STEPS[currentStepIndex] === 'name' && (
-        /*<InputField />*/
-        <p>本来なら名前入力</p>
+        <NameInputField
+          placeholder="名前を入力"
+          onChange={(e) => setName(e.currentTarget.value)}
+        />
       )}
       <NextButton>
         <ButtonBase onClick={handleClickToNextStep}>{buttonLabel}</ButtonBase>
@@ -259,13 +259,16 @@ const ChoiceDescription = styled.p`
   line-height: 1.5;
   min-height: 80px;
 `
-/*
-const InputField = styled.input`
+const NameInputField = styled.input`
   display: block;
+  box-sizing: border-box;
   margin: ${space.m} auto;
-  padding: calc(0.3rem + 1.4vmin);
+  padding: calc(1rem + 1.4vmin);
+  background-color: inherit;
+  border: 0;
+  font-size: 1.5rem;
+  text-align: center;
 `
-*/
 const NextButton = styled.div`
   max-width: 240px;
   margin: 0 auto;
