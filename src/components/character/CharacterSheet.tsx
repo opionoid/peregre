@@ -11,13 +11,14 @@ import {
   subWeaponAtom,
 } from 'src/data/atom'
 import { IAbility, ISkill } from 'src/interfaces'
-import { useToggle } from 'react-use'
+import { useLocation, useToggle } from 'react-use'
 import { AbilityButton } from '../actor/button/AbilityButton'
 import { color, space } from 'src/assets/style'
 import { IToggleButtonProps, ToggleButton } from '../actor/button/ToggleButton'
 import { Icons } from 'src/assets/icons'
 import { WeaponButton } from '../actor/button/WeaponButton'
 import { ButtonBase } from '../actor/button/ButtonBase'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { IRollResult, ROLL_RESULT } from 'src/constants'
 import { rollDice10 } from 'src/utils/Math'
 
@@ -50,6 +51,8 @@ const AdventureToggle: IToggleButtonProps = {
 export interface ICharacterSheetProps {}
 
 export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
+  const location = useLocation()
+
   // プロフィール
   const name = useRecoilValue(nameAtom)
 
@@ -100,8 +103,8 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   )
   const infoArea = isAdventureMode ? abilityInfo : skillInfo
 
-  // クリック
-  const handleClick = () => {
+  // 使用
+  const handleClickToUse = () => {
     if (isAdventureMode) {
       const diceNumber = rollDice10()
       const rollResult: IRollResult = (() => {
@@ -115,19 +118,13 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
       // const message = `${currentAbility.name}: ${diceNumber}${rollResult}`
       // sendMessageToDiscord('ability', message)
     } else {
-      if (isEditMode) {
-        // TODO
-        setSkillHand([skills[0], skills[1]])
-      }
-      if (!isEditMode) {
-        // sendMessageToDiscord
-        console.log(currentSkill)
-      }
+      // sendMessageToDiscord
+      console.log(currentSkill)
     }
   }
 
-  const [hasEditError, setHasEditError] = React.useState(false)
   // 編集
+  const [hasEditError, setHasEditError] = React.useState(false)
   const handleClickOnEditMode = (skill: ISkill) => {
     if (hasEditError) setHasEditError(false)
     if (skillHand.includes(skill)) {
@@ -201,7 +198,10 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
             <StatusIcon src={Icons.MaxHp} alt="魂魄量" />
             <CurrentHp
               value={hp}
-              onChange={(e) => setHp(parseInt(e.currentTarget.value))}
+              onChange={(e) => {
+                const dirtyValue = parseInt(e.currentTarget.value) | 0
+                setHp(dirtyValue < maxHp ? dirtyValue : maxHp)
+              }}
             />
             <MaxHp>{maxHp}</MaxHp>
           </Hp>
@@ -210,7 +210,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
             <CurrentDepth
               value={depth}
               onChange={(e) => {
-                const dirtyValue = parseInt(e.currentTarget.value)
+                const dirtyValue = parseInt(e.currentTarget.value) | 0
                 setDepth(dirtyValue < 5 ? (dirtyValue as 0 | 1 | 2 | 3 | 4) : 4)
               }}
             />
@@ -253,12 +253,22 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
         )}
         {!isEditMode && (
           <ActionButton>
-            <ButtonBase onClick={handleClick} accent={hasEditError}>
+            <ButtonBase onClick={handleClickToUse} accent={hasEditError}>
               使用
             </ButtonBase>
           </ActionButton>
         )}
       </ButtonsWrapper>
+      <CopyWrapper>
+        <CopyToClipboard
+          text={`${location}?seed=${/** TODO */ 111}&name=${name}&hp=${hp}`}
+          onCopy={() => alert('data is saved!')}
+        >
+          <CopyButtonWrapper>
+            <ButtonBase>保存</ButtonBase>
+          </CopyButtonWrapper>
+        </CopyToClipboard>
+      </CopyWrapper>
     </CharacterSheetWrapper>
   )
 }
@@ -422,3 +432,5 @@ const ActionButton = styled.div`
     transform: translateZ(1.8);
   }
 `
+const CopyWrapper = styled.div``
+const CopyButtonWrapper = styled.div``
