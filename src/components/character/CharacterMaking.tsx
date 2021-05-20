@@ -226,7 +226,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
 const CharacterMakingWrapper = styled.div`
   max-width: 90%;
   min-width: 60%;
-  height: 100%;
+  min-height: 84vh;
   margin: 0 auto;
   text-align: center;
 `

@@ -211,6 +211,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
             <Card key={ability.name}>
               <AbilityButton
                 ability={ability}
+                accent={currentAbility.name === ability.name}
                 onClick={() => setCurrentAbility(ability)}
               />
             </Card>
@@ -252,7 +253,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
 const CharacterSheetWrapper = styled.div`
   max-width: 90%;
   min-width: 60%;
-  height: 100%;
+  min-height: 84vh;
   margin: 0 auto;
 `
 const ToggleWrapper = styled.div`
@@ -313,12 +314,14 @@ const InfoArea = styled.div`
   background-color: ${color.backgroundHighContrast};
   min-height: 80px;
 `
-const EditArea = styled.div``
+const EditArea = styled.div`
+  margin-bottom: ${space.l};
+`
 const EditWeapon = styled.div`
   display: flex;
   align-items: center;
   column-gap: ${space.xxs};
-  margin-top: ${space.s};
+  margin: ${space.s} 0 0 ${space.xs};
 `
 const EditWeaponIcon = styled.img`
   width: 2em;
@@ -329,7 +332,7 @@ const EditWeaponIcon = styled.img`
 const EditScrollX = styled.div`
   display: flex;
   width: 100%;
-  margin-top: ${space.xxs};
+  margin: ${space.xxs} 0;
   overflow-x: scroll;
 `
 const ButtonsWrapper = styled.div`

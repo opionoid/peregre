@@ -1,9 +1,9 @@
-import { Reveal } from "react-genie"
-import { Animation } from "react-genie-styled-components"
-import { Link } from "react-router-dom"
-import { color } from "src/assets/style"
-import { ROUTE } from "src/constants"
-import styled, { css } from "styled-components"
+import { Reveal } from 'react-genie'
+import { Animation } from 'react-genie-styled-components'
+import { Link } from 'react-router-dom'
+import { color } from 'src/assets/style'
+import { ROUTE } from 'src/constants'
+import styled, { css } from 'styled-components'
 
 export const TopPage: React.VFC = () => {
   return (
@@ -13,54 +13,95 @@ export const TopPage: React.VFC = () => {
         <Title>Peregre</Title>
       </Hero>
       <div>
-        <Wave xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <Wave
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 150 28"
+          preserveAspectRatio="none"
+          shape-rendering="auto"
+        >
           <defs>
-            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            <path
+              id="gentle-wave"
+              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+            />
           </defs>
           <Parallax>
-            <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(254, 248, 231, 0.7)" />
-            <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(254, 248, 231, 0.5)" />
-            <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(254, 248, 231, 0.3)" />
-            <use xlinkHref="#gentle-wave" x="48" y="7" fill={color.background} />
+            <use
+              xlinkHref="#gentle-wave"
+              x="48"
+              y="0"
+              fill="rgba(254, 248, 231, 0.7)"
+            />
+            <use
+              xlinkHref="#gentle-wave"
+              x="48"
+              y="3"
+              fill="rgba(254, 248, 231, 0.5)"
+            />
+            <use
+              xlinkHref="#gentle-wave"
+              x="48"
+              y="5"
+              fill="rgba(254, 248, 231, 0.3)"
+            />
+            <use
+              xlinkHref="#gentle-wave"
+              x="48"
+              y="7"
+              fill={color.background}
+            />
           </Parallax>
         </Wave>
       </div>
       <article>
-      <Reveal animation={Animation.FadeInUp}>
-        <section>
-          <TitleH2>目指すは、廃都ラトリス</TitleH2>
-          <p>あなたたちは、あるときは鍛冶屋として、またあるときは水売りとして、呪いを解くため巡礼の旅に出る。目指すは忌まわしき廃都ラトリス。神に触れようとしたため裁きを受けたとされる地は、いまなお人々に罰を与え続けているという。</p>
-        </section>
+        <Reveal animation={Animation.FadeInUp}>
+          <section>
+            <TitleH2>目指すは、廃都ラトリス</TitleH2>
+            <p>
+              あなたたちは、あるときは鍛冶屋として、またあるときは水売りとして、呪いを解くため巡礼の旅に出る。目指すは忌まわしき廃都ラトリス。神に触れようとしたため裁きを受けたとされる地は、いまなお人々に罰を与え続けているという。
+            </p>
+          </section>
         </Reveal>
         <Reveal animation={Animation.FadeInUp}>
-        <hr />
+          <hr />
           <Aphorism>
-            かねて種に水はあり、朽ちて湖へ還る。<br />芽生えし者よ、空を恐れたまえ。
+            かねて種に水はあり、朽ちて湖へ還る。
+            <br />
+            芽生えし者よ、空を恐れたまえ。
           </Aphorism>
-        <hr />
+          <hr />
         </Reveal>
         <Reveal animation={Animation.FadeInUp}>
-        <section>
-          <TitleH2Right>ROGUELITE<br/>TRPG</TitleH2Right>
-          <ImageAndText>
-            <TextRight>遊ぶたび、新たな巡礼者として旅路を行く。そのだれもが異なる器と異なる技術を持ち、紡がれる物語もまた、それぞれ変化していくことだろう。</TextRight>
-          </ImageAndText>
-        </section>
+          <section>
+            <TitleH2Right>
+              ROGUELIKE
+              <br />
+              TRPG
+            </TitleH2Right>
+            <ImageAndText>
+              <TextRight>
+                遊ぶたび、新たな巡礼者として旅路を行く。そのだれもが異なる器と異なる技術を持ち、紡がれる物語もまた、それぞれ変化していくことだろう。
+              </TextRight>
+            </ImageAndText>
+          </section>
         </Reveal>
         <Reveal animation={Animation.FadeInUp}>
-        <NavSection>
-          <TitleH2Center>旅が、はじまる</TitleH2Center>
-          <NavLinks>
-            {/** Chrome対策 */}
-            <Link to={ROUTE.rules} style={{ textDecoration: 'none' }}>
-              <NavLinkToRules>RULES<span /></NavLinkToRules>
-            </Link>
-            <Link to={ROUTE.character} style={{ textDecoration: 'none' }}>
-              <NavLinkToCharacter>CHARACTER</NavLinkToCharacter>
-            </Link>
-          </NavLinks>
-        </NavSection>
+          <NavSection>
+            <TitleH2Center>旅が、はじまる</TitleH2Center>
+            <NavLinks>
+              {/** Chrome対策 */}
+              <Link to={ROUTE.rules} style={{ textDecoration: 'none' }}>
+                <NavLinkToRules>
+                  RULES
+                  <span />
+                </NavLinkToRules>
+              </Link>
+              <Link to={ROUTE.character} style={{ textDecoration: 'none' }}>
+                <NavLinkToCharacter>CHARACTER</NavLinkToCharacter>
+              </Link>
+            </NavLinks>
+          </NavSection>
         </Reveal>
       </article>
     </Top>
@@ -96,33 +137,33 @@ const Wave = styled.svg`
   margin-top: -16em;
 `
 const Parallax = styled.g`
-> use {
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
-}
-> use:nth-child(1) {
-  animation-delay: -4s;
-  animation-duration: 7s;
-}
-> use:nth-child(2) {
-  animation-delay: -6.6s;
-  animation-duration: 10s;
-}
-> use:nth-child(3) {
-  animation-delay: -8.8s;
-  animation-duration: 13s;
-}
-> use:nth-child(4) {
-  animation-delay: -10s;
-  animation-duration: 20s;
-}
-@keyframes move-forever {
-  0% {
-   transform: translate3d(-90px,0,0);
+  > use {
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
   }
-  100% { 
-    transform: translate3d(85px,0,0);
+  > use:nth-child(1) {
+    animation-delay: -4s;
+    animation-duration: 7s;
   }
-}
+  > use:nth-child(2) {
+    animation-delay: -6.6s;
+    animation-duration: 10s;
+  }
+  > use:nth-child(3) {
+    animation-delay: -8.8s;
+    animation-duration: 13s;
+  }
+  > use:nth-child(4) {
+    animation-delay: -10s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+      transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+      transform: translate3d(85px, 0, 0);
+    }
+  }
 `
 const Aphorism = styled.p`
   font-family: 'New Tegomin';
@@ -170,8 +211,8 @@ const NavSection = styled.section`
   margin-left: min(calc(-0.5 * (100vw - 38em)), -2em);
   color: ${color.fontInHighContrast};
   background-color: ${color.backgroundHighContrast};
-  padding: 3.375em 0 11em;
-  margin-top: 6.75em;
+  padding: 6.375em 0 11em;
+  margin-top: 9.75em;
 `
 const NavLinks = styled.div`
   width: 100%;
@@ -185,7 +226,7 @@ const NavLinkCss = css`
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid ${color.backgroundHighContrast};
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
   background-size: cover;
   background-size: 1% 1%;
 

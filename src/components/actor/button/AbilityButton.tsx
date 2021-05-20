@@ -6,16 +6,18 @@ import { ButtonBase } from './ButtonBase'
 
 export interface IAbilityButtonProps {
   ability: IAbility
+  accent?: boolean
   onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export const AbilityButton: React.VFC<IAbilityButtonProps> = ({
   ability,
+  accent = false,
   onClick,
 }) => {
   return (
     <AbilityButtonWrapper>
-      <ButtonBase onClick={onClick}>
+      <ButtonBase onClick={onClick} accent={accent}>
         <Icon {...ability.icon} />
         <Label>{ability.name}</Label>
       </ButtonBase>
