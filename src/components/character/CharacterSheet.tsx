@@ -21,6 +21,7 @@ import { ButtonBase } from '../actor/button/ButtonBase'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { IRollResult, ROLL_RESULT } from 'src/constants'
 import { rollDice10 } from 'src/utils/Math'
+import { encodeTextToObfuscated } from 'src/utils/Obfuscation'
 
 const EditToggle: IToggleButtonProps = {
   defaultImage: {
@@ -271,7 +272,9 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
       </ButtonsWrapper>
       <CopyWrapper>
         <CopyToClipboard
-          text={`${location}?seed=${/** TODO */ 111}&name=${name}&hp=${hp}`}
+          text={encodeTextToObfuscated(
+            `${location}?seed=${/** TODO */ 111}&name=${name}&hp=${hp}`,
+          )}
           onCopy={() => alert('data is saved!')}
         >
           <CopyButtonWrapper>
