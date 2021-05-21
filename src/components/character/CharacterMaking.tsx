@@ -15,7 +15,10 @@ import {
 import { IAbility, IWeapon } from 'src/interfaces'
 import { randomizeXorShift } from 'src/utils/Math'
 import { ButtonBase } from '../actor/button/ButtonBase'
-import { Icons } from 'src/assets/icons/index'
+import {
+  getAbilityFromDirtyData,
+  getWeaponFromDirtyData,
+} from 'src/utils/Mapper'
 
 export interface ICharacterMakingProps {}
 
@@ -51,43 +54,14 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
   const weaponsData = useRecoilValue(allWeaponListAtom)
   const weaponsTable: IWeapon[] = [...Array(4)].map((_, i) => {
     const dirtyData = weaponsData[getRD(i) % weaponsData.length]
-    return {
-      name: dirtyData.name,
-      range: dirtyData.range,
-      description: dirtyData.description,
-      icon: {
-        src: Icons[dirtyData.icon],
-        alt: '',
-      },
-      hp: parseInt(dirtyData.hp),
-      skillList: dirtyData.skills.map((skill) => ({
-        icon: {
-          src: Icons[dirtyData.icon],
-          alt: '',
-        },
-        name: skill.name || '',
-        depth: parseInt(skill.depth) || 0,
-        description: skill.description || '',
-        shouldCast: skill.shouldCast === 'TRUE',
-        isUlt: skill.isUlt === 'TRUE',
-      })),
-    }
+    return getWeaponFromDirtyData(dirtyData)
   })
 
   // アビリティテーブル作成
   const abilitiesData = useRecoilValue(allAbilityListAtom)
   const abilitiesTable: IAbility[] = [...Array(10)].map((_, i) => {
     const dirtyData = abilitiesData[getRD(i) % abilitiesData.length]
-    return {
-      name: dirtyData.name,
-      description: dirtyData.description,
-      icon: {
-        src: Icons[dirtyData.icon],
-        alt: '', // nameと同じなのでからっぽ
-      },
-      // [成功率, 出現率] = [[90%, 25%], [70%, 33%], [60%, 47%]]
-      successRate: 2 * Math.max(getRD(i) % 4, getRD(i) % 3, 1.7) + 0.3,
-    }
+    return getAbilityFromDirtyData(dirtyData, i)
   })
 
   /**
