@@ -9,11 +9,3 @@ export const CharacterPage: React.VFC = () => {
 
   return <>{shouldShowSheet ? <CharacterSheet /> : <CharacterMaking />}</>
 }
-
-/**
- * config（デフォルトは全てオフ）
- * - バトルモードと設定モードのボタンの色を反転
- * - リロードボタンを表示
- * - スキル使用前の確認をスキップ
- * -
- */
