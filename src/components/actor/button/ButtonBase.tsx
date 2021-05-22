@@ -50,7 +50,6 @@ const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   padding: ${space.xs};
   border: 0;
   border-radius: inherit;
-  outline: 0;
   transition: all ease-out 0.3s;
   font-size: 1.125rem;
   box-shadow: 2px 2px 6px ${color.backgroundLowContrastShadowDarken},

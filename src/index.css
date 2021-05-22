@@ -124,6 +124,7 @@ ol li::before {
 a {
   border-bottom: 1px solid #e0c3ac;
   text-decoration: none;
+  outline-color: #729168;
 }
 
 @supports (text-decoration-skip-ink: auto) {
@@ -132,6 +133,10 @@ a {
     text-decoration: underline solid #e0c3ac;
     text-decoration-skip-ink: auto;
   }
+}
+
+button {
+  outline-color: #729168;
 }
 
 /** 上つき文字／下つき文字 */
