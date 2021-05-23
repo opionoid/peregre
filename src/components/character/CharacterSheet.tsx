@@ -52,6 +52,8 @@ const AdventureToggle: IToggleButtonProps = {
   reversedLabel: '探索',
 }
 
+const SUB_WEAPON_SKILL_SURPLUS = 3 as const
+
 type IData = {
   name: string
   hp: number
@@ -81,7 +83,9 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   const skills: ISkill[] = React.useMemo(
     () => [
       ...mainWeapon.skillList,
-      ...subWeapon.skillList.filter((skill) => skill.isUlt !== true),
+      ...subWeapon.skillList.filter(
+        (_, i) => i % SUB_WEAPON_SKILL_SURPLUS !== 1 /** seed % 3 */,
+      ),
     ],
     [mainWeapon, subWeapon],
   )
@@ -188,18 +192,20 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
         <h2>{subWeapon.name}</h2>
       </EditWeapon>
       <EditScrollX>
-        {subWeapon.skillList.map((skill, i) => (
-          <div
-            key={`${i}-${skill.name}`}
-            style={{ width: '142px', marginRight: space.xs }}
-          >
-            <WeaponButton
-              skill={skill}
-              accent={skillHand.includes(skill)}
-              onClick={() => handleClickOnEditMode(skill)}
-            />
-          </div>
-        ))}
+        {subWeapon.skillList
+          .filter((_, i) => i % SUB_WEAPON_SKILL_SURPLUS !== 1 /** seed % 3 */)
+          .map((skill, i) => (
+            <div
+              key={`${i}-${skill.name}`}
+              style={{ width: '142px', marginRight: space.xs }}
+            >
+              <WeaponButton
+                skill={skill}
+                accent={skillHand.includes(skill)}
+                onClick={() => handleClickOnEditMode(skill)}
+              />
+            </div>
+          ))}
       </EditScrollX>
     </>
   )
