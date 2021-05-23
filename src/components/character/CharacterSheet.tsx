@@ -220,6 +220,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   const [shouldShowLoadInput, toggleVisibleLoadInput] = useToggle(false)
   const [dataToLoad, setDataToLoad] = React.useState('')
   const handleClickToLoad = (): void => {
+    if (!dataToLoad) return
     const textData = decodeObfuscatedTextToReadable(dataToLoad)
     const jsonData: IData = JSON.parse(textData)
 
@@ -235,29 +236,39 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   return (
     <CharacterSheetWrapper>
       <CopyWrapper>
-        <LoadButton>
-          <ButtonBase onClick={() => toggleVisibleLoadInput()}>読込</ButtonBase>
-        </LoadButton>
+        {shouldShowLoadInput && (
+          <LoadInputField>
+            <LoadInput
+              value={dataToLoad}
+              onChange={(e) => setDataToLoad(e.currentTarget.value)}
+            />
+            <LoadSubmitButton>
+              <ButtonBase onClick={handleClickToLoad}>
+                <img src={Icons.Paste} alt="paste" style={{ width: '32px' }} />
+              </ButtonBase>
+            </LoadSubmitButton>
+          </LoadInputField>
+        )}
+        <SaveAndLoadButton>
+          <ButtonBase
+            lighten
+            aria-pressed
+            onClick={() => toggleVisibleLoadInput()}
+          >
+            <img src={Icons.Load} alt="load" style={{ width: '32px' }} />
+          </ButtonBase>
+        </SaveAndLoadButton>
         <CopyToClipboard
           text={(() => handleClickToSave())()}
           onCopy={() => alert('data is saved!')}
         >
-          <CopyButtonWrapper>
-            <ButtonBase>保存</ButtonBase>
-          </CopyButtonWrapper>
+          <SaveAndLoadButton>
+            <ButtonBase lighten>
+              <img src={Icons.Save} alt="save" style={{ width: '32px' }} />
+            </ButtonBase>
+          </SaveAndLoadButton>
         </CopyToClipboard>
       </CopyWrapper>
-      {shouldShowLoadInput && (
-        <LoadInputField>
-          <LoadInput
-            value={dataToLoad}
-            onChange={(e) => setDataToLoad(e.currentTarget.value)}
-          />
-          <LoadSubmitButton>
-            <ButtonBase onClick={handleClickToLoad}></ButtonBase>
-          </LoadSubmitButton>
-        </LoadInputField>
-      )}
       <Name>{name}</Name>
       <HeadWrapper>
         <ToggleWrapper>
@@ -350,18 +361,33 @@ const CharacterSheetWrapper = styled.div`
 const CopyWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   column-gap: ${space.xs};
 `
-const LoadButton = styled.div``
-const CopyButtonWrapper = styled.div``
+const SaveAndLoadButton = styled.div`
+  width: 3.625em;
+  height: 3.5em;
+  border-radius: 50%;
+`
 const LoadInputField = styled.div`
   display: flex;
+  margin-right: ${space.xxs};
+  align-items: center;
+  height: 3rem;
 `
-const LoadInput = styled.input``
-const LoadSubmitButton = styled.div``
+const LoadInput = styled.input`
+  border: 1px solid ${color.backgroundHighContrastShadowLighten};
+  background-color: inherit;
+  max-width: 30vw;
+  height: 3rem;
+`
+const LoadSubmitButton = styled.div`
+  width: 3.25rem;
+  height: 3.25rem;
+`
 
 const Name = styled.h1`
-  margin-bottom: ${space.l};
+  margin: ${space.l} auto;
 `
 const HeadWrapper = styled.div`
   display: flex;

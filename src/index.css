@@ -138,6 +138,9 @@ a {
 button {
   outline-color: #729168;
 }
+input {
+  outline-color: #729168;
+}
 
 /** 上つき文字／下つき文字 */
 sub {

@@ -12,6 +12,7 @@ import Enlightenment from './Enlightenment.svg'
 import FirstAid from './FirstAid.svg'
 import Hidden from './Hidden.svg'
 import Indoctrinating from './Indoctrinating.svg'
+import Load from './Load.svg'
 import LockPicking from './LockPicking.svg'
 import MalleusMaleficarum from './MalleusMaleficarum.svg'
 import MaxDepth from './MaxDepth.svg'
@@ -21,10 +22,12 @@ import Navigation from './Navigation.svg'
 import Negotiation from './Negotiation.svg'
 import Oration from './Oration.svg'
 import Painting from './Painting.svg'
+import Paste from './Paste.svg'
 import Performance from './Performance.svg'
 import Perfuming from './Perfuming.svg'
 import Philosophy from './Philosophy.svg'
 import Robust from './Robust.svg'
+import Save from './Save.svg'
 import Theology from './Theology.svg'
 import Torture from './Torture.svg'
 import Training from './Training.svg'
@@ -45,6 +48,7 @@ export const Icons = {
   FirstAid,
   Hidden,
   Indoctrinating,
+  Load,
   LockPicking,
   MalleusMaleficarum,
   MaxDepth,
@@ -54,10 +58,12 @@ export const Icons = {
   Negotiation,
   Oration,
   Painting,
+  Paste,
   Performance,
   Perfuming,
   Philosophy,
   Robust,
+  Save,
   Theology,
   Torture,
   Training,

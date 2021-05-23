@@ -54,7 +54,8 @@ const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
   font-size: 1.125rem;
   box-shadow: 2px 2px 6px ${color.backgroundLowContrastShadowDarken},
     -2px -2px 6px ${color.backgroundLowContrastShadowLighten};
-  &:active {
+  &:active,
+  &[aria-pressed='true'] {
     box-shadow: inset 2px 2px 6px ${color.backgroundLowContrastShadowDarken},
       inset -2px -2px 6px ${color.backgroundLowContrastShadowLighten};
     transform: scale3d(0.98, 0.98, 0.99);
