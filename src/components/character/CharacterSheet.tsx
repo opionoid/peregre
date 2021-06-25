@@ -152,6 +152,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   // 編集
   const [hasEditError, setHasEditError] = React.useState(false)
   const handleClickOnEditMode = (skill: ISkill) => {
+    setCurrentSkill(skill)
     if (hasEditError) setHasEditError(false)
     if (skillHand.includes(skill)) {
       const tmp = skillHand.filter((hand) => hand.name !== skill.name)
