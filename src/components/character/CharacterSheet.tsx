@@ -234,6 +234,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     setMainWeapon(jsonData.mainWeapon ?? mainWeapon)
     setSubWeapon(jsonData.subWeapon ?? subWeapon)
     setAbilities(jsonData.abilities ?? abilities)
+    setSkillHand([...Array(5)].map((_, i) => jsonData.mainWeapon.skillList[i]))
 
     toggleVisibleLoadInput(false)
     setDataToLoad('')
