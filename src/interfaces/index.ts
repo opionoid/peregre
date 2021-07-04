@@ -69,3 +69,11 @@ export interface IDirtySkill {
   shouldCast: string
   isUlt: string
 }
+
+export interface IDirtyStory {
+  title: string
+  slug: string
+  leading: string
+  participants: string
+  time: string
+}
