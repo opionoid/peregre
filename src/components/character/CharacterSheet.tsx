@@ -117,6 +117,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
         <p style={{ fontSize: '1.4rem', lineHeight: '1', margin: '0' }}>
           <img
             src={Icons.Depth}
+            alt=""
             width={24}
             height={24}
             style={{ marginRight: '0.625rem' }}
