@@ -88,7 +88,8 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         return [[INITIAL_WEAPON, INITIAL_WEAPON]]
     }
   }, [currentStepIndex, weaponsTable, abilitiesTable])
-
+  
+  // 二者択一のうち1つ目を選択中かどうか
   const [isFirstIndex, setIsFirstIndex] = React.useState<boolean>(true)
   const handleChoice = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsFirstIndex(e.currentTarget.value === 'first')
