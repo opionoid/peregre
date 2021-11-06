@@ -1,7 +1,11 @@
 import { Icons } from 'src/assets/icons'
 import { IDirtyAbility, IDirtyWeapon } from 'src/interfaces'
-import { randomizeXorShift } from './Math'
 
+/**
+ * 武器データ取得
+ * @param dirtyData 全部が string または undefined の武器データ
+ * @returns 整形後の武器データ
+ */
 export const getWeaponFromDirtyData = (dirtyData: IDirtyWeapon) => ({
   name: dirtyData.name,
   range: dirtyData.range,
@@ -24,12 +28,15 @@ export const getWeaponFromDirtyData = (dirtyData: IDirtyWeapon) => ({
   })),
 })
 
-const seed = 1111 /** TODO */
-const getRD = (i: number): number => randomizeXorShift(seed + i)
-
+/**
+ * アビリティデータ取得
+ * @param dirtyData 名前と効果とアイコンsrcしかないアビリティデータ
+ * @param randomNumber 乱数
+ * @returns 整形後のアビリティデータ
+ */
 export const getAbilityFromDirtyData = (
   dirtyData: IDirtyAbility,
-  i: number,
+  randomNumber: number,
 ) => ({
   name: dirtyData.name,
   description: dirtyData.description,
@@ -38,5 +45,5 @@ export const getAbilityFromDirtyData = (
     alt: '', // nameと同じなのでからっぽ
   },
   // [成功率, 出現率] = [[90%, 25%], [70%, 33%], [60%, 47%]]
-  successRate: 2 * Math.max(getRD(i) % 4, getRD(i) % 3, 1.7) + 0.3,
+  successRate: 2 * Math.max(randomNumber % 4, randomNumber % 3, 1.7) + 0.3,
 })

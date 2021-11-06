@@ -1,8 +1,8 @@
 import * as UtilMath from 'src/utils/Math'
 
 /*
-test('Math/randomizeXorShift', () => {
-  expect(() => UtilMath.randomizeXorShift(1111)).???(() => UtilMath.randomizeXorShift(1112))
+test('Math/randomizeXorshift', () => {
+  expect(() => UtilMath.randomizeXorshift(1111)).???(() => UtilMath.randomizeXorshift(1112))
 })
 */
 

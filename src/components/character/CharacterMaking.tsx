@@ -13,7 +13,7 @@ import {
   subWeaponAtom,
 } from 'src/data/atom'
 import { IAbility, IWeapon } from 'src/interfaces'
-import { randomizeXorShift } from 'src/utils/Math'
+import { randomizeXorshift } from 'src/utils/Math'
 import { ButtonBase } from '../actor/button/ButtonBase'
 import {
   getAbilityFromDirtyData,
@@ -48,7 +48,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
    * シード
    */
   const seed = /** TODO */ 1111
-  const getRD = (i: number): number => randomizeXorShift(seed + i)
+  const getRD = (i: number): number => randomizeXorshift(seed + i)
 
   // 武器テーブル作成
   const weaponsData = useRecoilValue(allWeaponListAtom)
