@@ -95,40 +95,30 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
     setIsFirstIndex(e.currentTarget.value === 'first')
   }
 
+  /**
+   * 選択されたものを反映
+   */
   const setMainWeapon = useSetRecoilState(mainWeaponAtom)
   const setSubWeapon = useSetRecoilState(subWeaponAtom)
   const setAbilities = useSetRecoilState(abilityListAtom)
   const setName = useSetRecoilState(nameAtom)
+
+  // 作成終了フラグ
   const setIsMakingFinished = useSetRecoilState(isMakingFinishedAtom)
 
-  const handleClickToNextStep = () => {
+  // setXXX を現在のステップに応じて出し分ける
+  const setItemByStep = () => {
     switch (STEPS[currentStepIndex]) {
       case 'weaponMain':
         setMainWeapon(weaponsTable[isFirstIndex ? 0 : 1])
-        setIsFirstIndex(true)
-        setCurrentStepIndex((prev) => prev + 1)
         return
       case 'weaponSub':
         setSubWeapon(weaponsTable[isFirstIndex ? 2 : 3])
-        setIsFirstIndex(true)
-        setCurrentStepIndex((prev) => prev + 1)
         return
-      // アビリティは5回選択する必要がある
       case 'ability':
+        // 1回目のみ選択したアビリティで初期化
         if (currentAbilityStep === 0) {
-          setAbilities([abilitiesTable[isFirstIndex ? 0 : 1]]) // 1回目のみアビリティリストを選択したアビリティで初期化
-          setCurrentAbilityStep((prev) => prev + 1)
-          setIsFirstIndex(true)
-        } else if (currentAbilityStep === 4) {
-          setAbilities((prev) => [
-            ...prev,
-            abilitiesTable[
-              isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
-            ],
-          ])
-          setCurrentAbilityStep(0) // 意図しない参照バグを防止
-          setIsFirstIndex(true)
-          setCurrentStepIndex((prev) => prev + 1) // 5回目のみ次のステップ（名前入力）へ移行
+          setAbilities([abilitiesTable[isFirstIndex ? 0 : 1]]) 
         } else {
           setAbilities((prev) => [
             ...prev,
@@ -136,14 +126,27 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
               isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
             ],
           ])
-          setCurrentAbilityStep((prev) => prev + 1)
-          setIsFirstIndex(true)
         }
         return
       case 'name':
         setIsMakingFinished(true)
-        return
+        return // 名前が最後のステップ
     }
+  }
+
+  // 現在のステップに応じて適切な次のステップを設定する
+  const goNextStep = () => {
+    if (STEPS[currentStepIndex] !== 'ability' || currentAbilityStep === 4) {
+      setCurrentStepIndex((prev) => prev + 1)
+    } else {
+      setCurrentAbilityStep((prev) => prev + 1)
+    }
+  }
+
+  const handleClickToNextStep = () => {
+    setItemByStep()
+    setIsFirstIndex(true) // 選択状況を初期化
+    goNextStep()
   }
 
   const buttonLabel =
