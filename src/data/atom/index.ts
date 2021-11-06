@@ -4,6 +4,13 @@ import { IAbility, IDirtyAbility, IDirtyWeapon, IWeapon } from 'src/interfaces'
 import ability from '../json/ability.json'
 import weapon from '../json/weapon.json'
 
+// TODO: コンフィグ項目とか増えてくるならファイル分けた方がよさそう
+
+/**
+ * キャラメイク関連
+ * TODO: いつか命名変えたいような
+ */
+
 export const allAbilityListAtom: RecoilState<IDirtyAbility[]> = atom({
   key: 'allAbilityListAtom',
   default: ability as IDirtyAbility[],
@@ -37,4 +44,13 @@ export const nameAtom: RecoilState<string> = atom({
 export const isMakingFinishedAtom: RecoilState<boolean> = atom({
   key: 'isMakingFinishedAtom',
   default: false as boolean,
+})
+
+/**
+ * コンフィグ
+ */
+
+export const configDiscordWebhookUrl: RecoilState<string> = atom({
+  key: 'configDiscordWebhookUrl',
+  default: ''
 })

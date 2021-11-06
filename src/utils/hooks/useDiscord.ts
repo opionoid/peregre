@@ -1,8 +1,9 @@
-import React from 'react'
 import axios from "axios"
+import { useRecoilValue } from 'recoil'
+import { configDiscordWebhookUrl } from 'src/data/atom'
 
 export const useDiscord = () => {
-  const [webhookUrl, setWebhookUrl] = React.useState('')
+  const webhookUrl = useRecoilValue(configDiscordWebhookUrl)
 
   const sendMessage = (message: string, sender = 'システムメッセージ') => {
     const messageData = {
@@ -22,8 +23,6 @@ export const useDiscord = () => {
   }
 
   return {
-    webhookUrl,
-    setWebhookUrl,
     sendMessage
   }
 }
