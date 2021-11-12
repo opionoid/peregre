@@ -157,11 +157,9 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     if (hasEditError) setHasEditError(false)
     if (skillHand.includes(skill)) {
       const tmp = skillHand.filter((hand) => hand.name !== skill.name)
-      console.log(`${skill.name} is included`)
       setSkillHand(tmp)
     } else if (skillHand.length < 5) {
       const tmp = skillHand
-      console.log(`${skill.name} is pushed`)
       setSkillHand([...tmp, skill])
     } else {
       setHasEditError(true)
