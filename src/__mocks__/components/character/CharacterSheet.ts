@@ -1,4 +1,4 @@
-import { ICharacterSheetProps } from 'src/components/character/CharacterSheet';
+import { ICharacterSheetProps } from 'src/components/character/sheet/CharacterSheet';
 
 const MOCK_CHARACTER_SHEET_PROPS: ICharacterSheetProps = {};
 

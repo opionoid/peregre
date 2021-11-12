@@ -1,4 +1,4 @@
-import { CharacterMaking } from 'src/components/character/CharacterMaking'
+import { CharacterMaking } from 'src/components/character/making/CharacterMaking'
 import MOCK_CHARACTER_MAKING_PROPS from 'src/__mocks__/components/character/CharacterMaking'
 import { render } from '@testing-library/react'
 

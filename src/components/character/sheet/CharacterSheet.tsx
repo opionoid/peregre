@@ -12,12 +12,12 @@ import {
 } from 'src/data/atom'
 import { IAbility, ISkill, IWeapon } from 'src/interfaces'
 import { useToggle } from 'react-use'
-import { AbilityButton } from '../actor/button/AbilityButton'
+import { AbilityButton } from '../../actor/button/AbilityButton'
 import { color, space } from 'src/assets/style'
-import { IToggleButtonProps, ToggleButton } from '../actor/button/ToggleButton'
+import { IToggleButtonProps, ToggleButton } from '../../actor/button/ToggleButton'
 import { Icons } from 'src/assets/icons'
-import { WeaponButton } from '../actor/button/WeaponButton'
-import { ButtonBase } from '../actor/button/ButtonBase'
+import { WeaponButton } from '../../actor/button/WeaponButton'
+import { ButtonBase } from '../../actor/button/ButtonBase'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { IRollResult, ROLL_RESULT } from 'src/constants'
 import { rollDice10 } from 'src/utils/Math'
@@ -25,6 +25,8 @@ import {
   decodeObfuscatedTextToReadable,
   encodeTextToObfuscated,
 } from 'src/utils/Obfuscation'
+import { AbilityInfo } from './molecules/AbilityInfo'
+import { SkillInfo } from './molecules/SkillInfo'
 
 const EditToggle: IToggleButtonProps = {
   defaultImage: {
@@ -36,7 +38,7 @@ const EditToggle: IToggleButtonProps = {
     src: Icons.Agitation,
     alt: '',
   },
-  reversedLabel: '編集中...',
+  reversedLabel: '確定',
 }
 
 const AdventureToggle: IToggleButtonProps = {
@@ -71,7 +73,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   const [subWeapon, setSubWeapon] = useRecoilState(subWeaponAtom)
   const [abilities, setAbilities] = useRecoilState(abilityListAtom)
 
-  // 魂魄量、深度
+  // 戦闘可変データ：魂魄量、深度
   const maxHp = React.useMemo(
     () => Math.ceil(mainWeapon.hp * 0.6 + subWeapon.hp * 0.4),
     [mainWeapon, subWeapon],
@@ -83,6 +85,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   const skills: ISkill[] = React.useMemo(
     () => [
       ...mainWeapon.skillList,
+      // サブ武器のスキル数は少ない
       ...subWeapon.skillList.filter(
         (_, i) => i % SUB_WEAPON_SKILL_SURPLUS !== 1 /** seed % 3 */,
       ),
@@ -102,33 +105,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   // モード
   const [isAdventureMode, toggleAdventureMode] = useToggle(false) // 探索 / 戦闘
   const [isEditMode, toggleEditMode] = useToggle(false) // 編集モードは戦闘モードの子要素
-
-  // インフォ TODO: 別コンポーネントにする
-  const abilityInfo = (
-    <>
-      <h3>{currentAbility.name}</h3>
-      <p>{currentAbility.description}</p>
-    </>
-  )
-  const skillInfo = (
-    <>
-      <div style={{ display: 'flex', columnGap: '32px', alignItems: 'center' }}>
-        <h3 style={{ minWidth: '25%' }}>{currentSkill.name}</h3>
-        <p style={{ fontSize: '1.4rem', lineHeight: '1', margin: '0' }}>
-          <img
-            src={Icons.Depth}
-            alt=""
-            width={24}
-            height={24}
-            style={{ marginRight: '0.625rem' }}
-          />
-          {currentSkill.depth}
-        </p>
-      </div>
-      <p>{currentSkill.description}</p>
-    </>
-  )
-  const infoArea = isAdventureMode ? abilityInfo : skillInfo
+  const infoArea = isAdventureMode ? <AbilityInfo {...currentAbility} /> : <SkillInfo {...currentSkill} />
 
   // 使用
   const handleClickToUse = () => {
@@ -210,6 +187,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     </>
   )
 
+  // TODO: コンポーネント化
   // 保存 / 読込
   const handleClickToSave = (): string => {
     const jsonData: IData = {
@@ -236,6 +214,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     setAbilities(jsonData.abilities ?? abilities)
     setSkillHand([...Array(5)].map((_, i) => jsonData.mainWeapon.skillList[i]))
 
+    // 常に見えてていいからトグルしなくてよさそう
     toggleVisibleLoadInput(false)
     setDataToLoad('')
   }

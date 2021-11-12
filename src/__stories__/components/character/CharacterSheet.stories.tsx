@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react'
-import { CharacterSheet, ICharacterSheetProps } from 'src/components/character/CharacterSheet'
+import { CharacterSheet, ICharacterSheetProps } from 'src/components/character/sheet/CharacterSheet'
 import MOCK_CHARACTER_SHEET_PROPS from 'src/__mocks__/components/character/CharacterSheet'
 import { RecoilRoot } from 'recoil'
 

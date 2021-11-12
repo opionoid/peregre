@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react'
-import { CharacterMaking, ICharacterMakingProps } from 'src/components/character/CharacterMaking'
+import { CharacterMaking, ICharacterMakingProps } from 'src/components/character/making/CharacterMaking'
 import MOCK_CHARACTER_MAKING_PROPS from 'src/__mocks__/components/character/CharacterMaking'
 import { RecoilRoot } from 'recoil'
 

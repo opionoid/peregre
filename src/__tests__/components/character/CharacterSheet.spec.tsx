@@ -1,4 +1,4 @@
-import { CharacterSheet } from 'src/components/character/CharacterSheet'
+import { CharacterSheet } from 'src/components/character/sheet/CharacterSheet'
 import MOCK_CHARACTER_SHEET_PROPS from 'src/__mocks__/components/character/CharacterSheet'
 import { render } from '@testing-library/react'
 

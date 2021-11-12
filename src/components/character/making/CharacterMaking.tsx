@@ -14,7 +14,7 @@ import {
 } from 'src/data/atom'
 import { IAbility, IWeapon } from 'src/interfaces'
 import { randomizeXorshift } from 'src/utils/Math'
-import { ButtonBase } from '../actor/button/ButtonBase'
+import { ButtonBase } from '../../actor/button/ButtonBase'
 import {
   getAbilityFromDirtyData,
   getWeaponFromDirtyData,
