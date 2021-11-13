@@ -22,24 +22,24 @@ export const ModeAbility: React.VFC = () => {
     <section>
       <CardList>
         {abilities.map((ability) => (
-            <Card key={ability.name}>
-              <AbilityButton
-                ability={ability}
-                accent={currentAbility.name === ability.name}
-                onClick={() => setCurrentAbility(ability)}
-              />
-            </Card>
-          ))}
+          <Card key={ability.name}>
+            <AbilityButton
+              ability={ability}
+              accent={currentAbility.name === ability.name}
+              onClick={() => setCurrentAbility(ability)}
+            />
+          </Card>
+        ))}
       </CardList>
       <InfoArea>
         <h3>{currentAbility.name}</h3>
         <p>{currentAbility.description}</p>
       </InfoArea>
       <ActionButton>
-            <ButtonBase onClick={handleClick}>
-              使用
-            </ButtonBase>
-          </ActionButton>
+        <ButtonBase onClick={handleClick}>
+          使用
+        </ButtonBase>
+      </ActionButton>
     </section>
   )
 }
@@ -65,6 +65,7 @@ const InfoArea = styled.div`
   min-height: 80px;
 `
 const ActionButton = styled.div`
+  margin: ${space.s} auto;
   display: flex;
   justify-content: center;
   align-items: center;

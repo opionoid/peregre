@@ -101,5 +101,8 @@ const EditScrollX = styled.div`
   display: flex;
   width: 100%;
   margin: ${space.xxs} 0;
-  overflow-x: scroll;
+  padding-bottom: ${space.xs};
+  overflow-x: auto;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
 `

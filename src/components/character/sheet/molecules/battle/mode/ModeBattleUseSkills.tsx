@@ -25,26 +25,26 @@ export const ModeBattleUseSkills: React.VFC<IModeBattleUseSkills> = ({
   const name = useRecoilValue(nameAtom)
   const { onClickSkill } = useBattle()
   const handleClick = () => onClickSkill(currentSkill, setDepth, name)
-  
+
   return (
     <>
-    <CardList>
-      {skillHand.map((skill) => (
-            <Card key={skill.name}>
-              <WeaponButton
-                skill={skill}
-                accent={currentSkill.name === skill.name}
-                onClick={() => setCurrentSkill(skill)}
-              />
-            </Card>
-          ))}
-    </CardList>
-    <SkillInfo currentSkill={currentSkill} />
-    <ActionButton>
-            <ButtonBase onClick={handleClick}>
-              使用
-            </ButtonBase>
-          </ActionButton>
+      <CardList>
+        {skillHand.map((skill) => (
+          <Card key={skill.name}>
+            <WeaponButton
+              skill={skill}
+              accent={currentSkill.name === skill.name}
+              onClick={() => setCurrentSkill(skill)}
+            />
+          </Card>
+        ))}
+      </CardList>
+      <SkillInfo currentSkill={currentSkill} />
+      <ActionButton>
+        <ButtonBase onClick={handleClick}>
+          使用
+        </ButtonBase>
+      </ActionButton>
     </>
   )
 }
@@ -61,6 +61,7 @@ const Card = styled.div`
   margin-top: ${space.s};
 `
 const ActionButton = styled.div`
+  margin: ${space.s} auto;
   display: flex;
   justify-content: center;
   align-items: center;
