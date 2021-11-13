@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import { useRecoilValue } from 'recoil'
 import { mainWeaponAtom, subWeaponAtom } from 'src/data/atom'
 import { color, space } from 'src/assets/style'
+import { useToggle } from 'react-use'
 import { ISkill } from 'src/interfaces'
 import { Icons } from 'src/assets/icons'
 import { ModeBattleEditSkills } from './mode/ModeBattleEditSkills'
 import { ModeBattleUseSkills } from './mode/ModeBattleUseSkills'
+import { ToggleButton } from 'src/components/actor/button/ToggleButton'
 
 const SUB_WEAPON_SKILL_SURPLUS = 3 as const
 
@@ -36,11 +38,13 @@ export const ModeBattle = () => {
   )
   const [currentSkill, setCurrentSkill] = React.useState<ISkill>(skillHand[0])
 
+  const [isEditMode, toggleMode] = useToggle(false)
+
   return (
     <section>
       <BaseStatus>
         <HeadingWrapper>
-          <h3>戦闘</h3>
+          <ToggleButton defaultImage={{ src: Icons.Oration }} defaultLabel='戦闘' reversedImage={{ src: Icons.Training }} reversedLabel='編集' onClick={() => toggleMode()} isReversed={isEditMode} />
         </HeadingWrapper>
         <StatusWrapper>
           <Hp>
@@ -67,10 +71,10 @@ export const ModeBattle = () => {
           </Depth>
         </StatusWrapper>
       </BaseStatus>
-      <div>
+      <div aria-hidden={isEditMode}>
         <ModeBattleUseSkills setDepth={setDepth} currentSkill={currentSkill} setCurrentSkill={setCurrentSkill} skillHand={skillHand} />
       </div>
-      <div>
+      <div aria-hidden={!isEditMode}>
         <ModeBattleEditSkills currentSkill={currentSkill} setCurrentSkill={setCurrentSkill} skillHand={skillHand} setSkillHand={setSkillHand} subWeaponSkillSurplus={SUB_WEAPON_SKILL_SURPLUS} />
       </div>
     </section>

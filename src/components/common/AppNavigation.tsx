@@ -28,28 +28,28 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
         </HamburgerMenu>
       </Top>
       <Links>
-        <Item aria-hidden={!expanded}>
+        <Item aria-expanded={!expanded}>
           <Link className="link" to={ROUTE.rules} onClick={close} style={{ textDecoration: 'none' }}>
             RULES
           </Link>
         </Item>
-        <Item aria-hidden={!expanded}>
+        <Item aria-expanded={!expanded}>
           <Link className="link" to={ROUTE.character} onClick={close} style={{ textDecoration: 'none' }}>
             CHARACTER
           </Link>
         </Item>
-        <Item aria-hidden={!expanded}>
+        <Item aria-expanded={!expanded}>
           <Link className="link" to={ROUTE.stories} onClick={close} style={{ textDecoration: 'none' }}>
             STORIES
           </Link>
         </Item>
-        <Item aria-hidden={!expanded}>
+        <Item aria-expanded={!expanded}>
           <Link className="link" to={ROUTE.news} onClick={close} style={{ textDecoration: 'none' }}>
             NEWS
           </Link>
         </Item>
       </Links>
-      <Config aria-hidden={!expanded}>
+      <Config aria-expanded={!expanded}>
         <Link className="link" to={ROUTE.config} onClick={close} style={{ textDecoration: 'none' }}>
           Config
         </Link>
@@ -157,7 +157,7 @@ const Item = styled.li`
   ${ItemCss};
 
   @media screen and (max-width: 46em) {
-    &[aria-hidden='true'] {
+    &[aria-expanded='true'] {
       display: none;
     }
   }
@@ -168,7 +168,8 @@ const Config = styled.li`
 
   @media screen and (max-width: 46em) {
     margin-top: 2.25em;
-    &[aria-hidden='true'] {
+
+    &[aria-expanded='true'] {
       display: none;
     }
   }

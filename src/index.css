@@ -58,6 +58,11 @@ body::before {
   }
 }
 
+/** 非表示 */
+*[aria-hidden='true'] {
+  display: none;
+}
+
 /** 要素のフォントサイズ */
 h1 {
   font-size: calc(0.8rem + 3.2vmin);
