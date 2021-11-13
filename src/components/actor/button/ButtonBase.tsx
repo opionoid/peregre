@@ -11,6 +11,7 @@ export interface IButtonBaseProps {
   lighten?: boolean
   name?: string
   value?: any
+  disabled?: boolean
 }
 
 export const ButtonBase: React.FC<IButtonBaseProps> = ({
@@ -22,6 +23,7 @@ export const ButtonBase: React.FC<IButtonBaseProps> = ({
   lighten = false,
   name,
   value,
+  disabled = false
 }) => {
   return (
     <ButtonBaseWrapper
@@ -32,6 +34,7 @@ export const ButtonBase: React.FC<IButtonBaseProps> = ({
       lighten={lighten}
       name={name}
       value={value}
+      aria-disabled={disabled}
     >
       {children}
     </ButtonBaseWrapper>
@@ -59,6 +62,10 @@ const ButtonBaseWrapper = styled.button<IButtonBaseProps>`
     box-shadow: inset 2px 2px 6px ${color.backgroundLowContrastShadowDarken},
       inset -2px -2px 6px ${color.backgroundLowContrastShadowLighten};
     transform: scale3d(0.98, 0.98, 0.99);
+  }
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    background-color: ${color.backgroundLowContrast};
   }
 
   ${(props) =>

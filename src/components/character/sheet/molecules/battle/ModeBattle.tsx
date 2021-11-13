@@ -72,7 +72,13 @@ export const ModeBattle = () => {
         </StatusWrapper>
       </BaseStatus>
       <div aria-hidden={isEditMode}>
-        <ModeBattleUseSkills setDepth={setDepth} currentSkill={currentSkill} setCurrentSkill={setCurrentSkill} skillHand={skillHand} />
+        <ModeBattleUseSkills
+          depth={depth}
+          setDepth={setDepth}
+          currentSkill={currentSkill}
+          setCurrentSkill={setCurrentSkill}
+          skillHand={skillHand}
+        />
       </div>
       <div aria-hidden={!isEditMode}>
         <ModeBattleEditSkills currentSkill={currentSkill} setCurrentSkill={setCurrentSkill} skillHand={skillHand} setSkillHand={setSkillHand} subWeaponSkillSurplus={SUB_WEAPON_SKILL_SURPLUS} />

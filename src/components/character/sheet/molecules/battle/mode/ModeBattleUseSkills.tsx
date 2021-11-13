@@ -10,6 +10,7 @@ import { nameAtom } from 'src/data/atom'
 import { SkillInfo } from './SkillInfo'
 
 export interface IModeBattleUseSkills {
+  depth: 0 | 1 | 2 | 3 | 4
   setDepth: React.Dispatch<React.SetStateAction<0 | 1 | 2 | 3 | 4>>
   currentSkill: ISkill
   setCurrentSkill: React.Dispatch<React.SetStateAction<ISkill>>
@@ -17,6 +18,7 @@ export interface IModeBattleUseSkills {
 }
 
 export const ModeBattleUseSkills: React.VFC<IModeBattleUseSkills> = ({
+  depth,
   setDepth,
   currentSkill,
   setCurrentSkill,
@@ -24,7 +26,11 @@ export const ModeBattleUseSkills: React.VFC<IModeBattleUseSkills> = ({
 }) => {
   const name = useRecoilValue(nameAtom)
   const { onClickSkill } = useBattle()
-  const handleClick = () => onClickSkill(currentSkill, setDepth, name)
+  const canUseSkill = React.useMemo(() => depth >= -currentSkill.depth, [depth, currentSkill.depth])
+  const handleClick = () => {
+    if (!canUseSkill) return
+    onClickSkill(currentSkill, setDepth, name)
+  }
 
   return (
     <>
@@ -41,7 +47,7 @@ export const ModeBattleUseSkills: React.VFC<IModeBattleUseSkills> = ({
       </CardList>
       <SkillInfo currentSkill={currentSkill} />
       <ActionButton>
-        <ButtonBase onClick={handleClick}>
+        <ButtonBase disabled={!canUseSkill} onClick={handleClick}>
           使用
         </ButtonBase>
       </ActionButton>
