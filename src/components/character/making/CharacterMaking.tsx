@@ -47,7 +47,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
   /**
    * シード
    */
-  const seed = /** TODO */ 1111
+  const seed = 1231 /** TODO */
   const getRD = (i: number): number => randomizeXorshift(seed + i)
 
   // 武器テーブル作成
@@ -88,7 +88,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         return [[INITIAL_WEAPON, INITIAL_WEAPON]]
     }
   }, [currentStepIndex, weaponsTable, abilitiesTable])
-  
+
   // 二者択一のうち1つ目を選択中かどうか
   const [isFirstIndex, setIsFirstIndex] = React.useState<boolean>(true)
   const handleChoice = (e: React.MouseEvent<HTMLButtonElement>) => {
