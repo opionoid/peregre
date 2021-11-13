@@ -288,4 +288,20 @@ export const RulesPage: React.VFC = () => {
 
 const Rules = styled.article`
   margin-bottom: 9em;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-image: url('https://picsum.photos/1200/1200');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    filter: opacity(0.1) grayscale(0.1) blur(4px) sepia(1);
+  }
 `

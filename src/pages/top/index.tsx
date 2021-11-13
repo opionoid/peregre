@@ -7,7 +7,7 @@ import styled, { css } from 'styled-components'
 
 export const TopPage: React.VFC = () => {
   return (
-    <Top>
+    <Top id="top">
       {/** TODO: HeroはCanvasにする v2.0 */}
       <Hero>
         <Title>Peregre</Title>
