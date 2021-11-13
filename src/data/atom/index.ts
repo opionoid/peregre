@@ -50,6 +50,11 @@ export const isMakingFinishedAtom: RecoilState<boolean> = atom({
  * コンフィグ
  */
 
+export const configShouldCopyTextOnClick: RecoilState<boolean> = atom({
+  key: 'configShouldCopyTextOnClick',
+  default: false as boolean
+})
+
 export const configDiscordWebhookUrl: RecoilState<string> = atom({
   key: 'configDiscordWebhookUrl',
   default: ''

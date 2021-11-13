@@ -6,6 +6,8 @@ export const useDiscord = () => {
   const webhookUrl = useRecoilValue(configDiscordWebhookUrl)
 
   const sendMessage = (message: string, sender = 'システムメッセージ') => {
+    if (webhookUrl == null) return
+
     const messageData = {
       username: sender,
       content: message
