@@ -138,8 +138,16 @@ a {
 button {
   outline-color: #729168;
 }
+button:focus-visible {
+  outline-style: double;
+  outline-width: 0.25rem;
+}
 input {
   outline-color: #729168;
+}
+input:focus-visible {
+  outline-style: double;
+  outline-width: 0.25rem;
 }
 
 /** 上つき文字／下つき文字 */
