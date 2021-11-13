@@ -5,6 +5,7 @@ import { useDiscord } from './useDiscord'
 
 export const useAdventure = () => {
   const { sendMessage } = useDiscord()
+  
   const onClickAbility = (ability: IAbility, sender: string) => {
     const diceNumber = rollDice10()
     const rollResult: IRollResult = (() => {
