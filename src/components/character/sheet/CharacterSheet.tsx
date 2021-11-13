@@ -14,7 +14,7 @@ import { IAbility, ISkill, IWeapon } from 'src/interfaces'
 import { useToggle } from 'react-use'
 import { AbilityButton } from '../../actor/button/AbilityButton'
 import { color, space } from 'src/assets/style'
-import { IToggleButtonProps, ToggleButton } from '../../actor/button/ToggleButton'
+import { ToggleButton } from '../../actor/button/ToggleButton'
 import { Icons } from 'src/assets/icons'
 import { WeaponButton } from '../../actor/button/WeaponButton'
 import { ButtonBase } from '../../actor/button/ButtonBase'
@@ -27,32 +27,6 @@ import { AbilityInfo } from './molecules/AbilityInfo'
 import { SkillInfo } from './molecules/SkillInfo'
 import { useBattle } from 'src/utils/hooks/useBattle'
 import { useAdventure } from 'src/utils/hooks/useAdventure'
-
-const EditToggle: IToggleButtonProps = {
-  defaultImage: {
-    src: Icons.Acting, // TODO
-    alt: 'モード',
-  },
-  defaultLabel: '編集',
-  reversedImage: {
-    src: Icons.Agitation,
-    alt: '',
-  },
-  reversedLabel: '確定',
-}
-
-const AdventureToggle: IToggleButtonProps = {
-  defaultImage: {
-    src: Icons.Oration,
-    alt: '',
-  },
-  defaultLabel: '戦闘',
-  reversedImage: {
-    src: Icons.Navigation,
-    alt: '',
-  },
-  reversedLabel: '探索',
-}
 
 const SUB_WEAPON_SKILL_SURPLUS = 3 as const
 
@@ -236,7 +210,10 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
       <HeadWrapper>
         <ToggleWrapper>
           <ToggleButton
-            {...AdventureToggle}
+            defaultImage={{ src: Icons.Oration, alt: '' }}
+            defaultLabel='戦闘'
+            reversedImage={{ src: Icons.Navigation, alt: '' }}
+            reversedLabel='探索'
             onClick={toggleAdventureMode}
             isReversed={isAdventureMode}
           />
@@ -293,7 +270,10 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
       <ButtonsWrapper>
         {!isAdventureMode && (
           <ToggleButton
-            {...EditToggle}
+            defaultImage={{ src: Icons.Acting, alt: 'モード切り替え' }}
+            defaultLabel='編集'
+            reversedImage={{ src: Icons.Agitation, alt: '' }}
+            reversedLabel='確定'
             onClick={toggleEditMode}
             isReversed={isEditMode}
             lighten
