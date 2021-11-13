@@ -19,14 +19,14 @@ import { Icons } from 'src/assets/icons'
 import { WeaponButton } from '../../actor/button/WeaponButton'
 import { ButtonBase } from '../../actor/button/ButtonBase'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { IRollResult, ROLL_RESULT } from 'src/constants'
-import { rollDice10 } from 'src/utils/Math'
 import {
   decodeObfuscatedTextToReadable,
   encodeTextToObfuscated,
 } from 'src/utils/Obfuscation'
 import { AbilityInfo } from './molecules/AbilityInfo'
 import { SkillInfo } from './molecules/SkillInfo'
+import { useBattle } from 'src/utils/hooks/useBattle'
+import { useAdventure } from 'src/utils/hooks/useAdventure'
 
 const EditToggle: IToggleButtonProps = {
   defaultImage: {
@@ -67,13 +67,14 @@ type IData = {
 export interface ICharacterSheetProps {}
 
 export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
-  // 基礎データ
+  /**
+   * 基礎データ
+   */
   const [name, setName] = useRecoilState(nameAtom)
   const [mainWeapon, setMainWeapon] = useRecoilState(mainWeaponAtom)
   const [subWeapon, setSubWeapon] = useRecoilState(subWeaponAtom)
   const [abilities, setAbilities] = useRecoilState(abilityListAtom)
 
-  // 戦闘可変データ：魂魄量、深度
   const maxHp = React.useMemo(
     () => Math.ceil(mainWeapon.hp * 0.6 + subWeapon.hp * 0.4),
     [mainWeapon, subWeapon],
@@ -81,7 +82,6 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   const [hp, setHp] = React.useState<number>(maxHp) // TODO 0~maxHp の整数に制限する
   const [depth, setDepth] = React.useState<0 | 1 | 2 | 3 | 4>(1)
 
-  // スキル
   const skills: ISkill[] = React.useMemo(
     () => [
       ...mainWeapon.skillList,
@@ -97,33 +97,24 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   )
   const [currentSkill, setCurrentSkill] = React.useState<ISkill>(skillHand[0])
 
-  // アビリティ
   const [currentAbility, setCurrentAbility] = React.useState<IAbility>(
     abilities[0],
   )
 
-  // モード
+  /**
+   * モード：探索 / 戦闘
+   */
   const [isAdventureMode, toggleAdventureMode] = useToggle(false) // 探索 / 戦闘
   const [isEditMode, toggleEditMode] = useToggle(false) // 編集モードは戦闘モードの子要素
   const infoArea = isAdventureMode ? <AbilityInfo {...currentAbility} /> : <SkillInfo {...currentSkill} />
 
-  // 使用
+  const { onClickAbility } = useAdventure()
+  const { onClickSkill } = useBattle()
   const handleClickToUse = () => {
     if (isAdventureMode) {
-      const diceNumber = rollDice10()
-      const rollResult: IRollResult = (() => {
-        if (diceNumber === 1) return ROLL_RESULT.CRITICAL
-        else if (diceNumber === 10) return ROLL_RESULT.FUMBLE
-        else if (diceNumber < currentAbility.successRate)
-          return ROLL_RESULT.SUCCESS
-        else return ROLL_RESULT.FAILURE
-      })()
-      console.log(`${currentAbility.name}: ${diceNumber}${rollResult}`)
-      // const message = `${currentAbility.name}: ${diceNumber}${rollResult}`
-      // sendMessageToDiscord('ability', message)
+      onClickAbility(currentAbility, name)
     } else {
-      // sendMessageToDiscord
-      console.log(currentSkill)
+      onClickSkill(currentSkill, setDepth, name)
     }
   }
 
@@ -201,7 +192,6 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     const textData = JSON.stringify(jsonData)
     return encodeTextToObfuscated(textData)
   }
-  const [shouldShowLoadInput, toggleVisibleLoadInput] = useToggle(false)
   const [dataToLoad, setDataToLoad] = React.useState('')
   const handleClickToLoad = (): void => {
     if (!dataToLoad) return
@@ -214,36 +204,23 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     setAbilities(jsonData.abilities ?? abilities)
     setSkillHand([...Array(5)].map((_, i) => jsonData.mainWeapon.skillList[i]))
 
-    // 常に見えてていいからトグルしなくてよさそう
-    toggleVisibleLoadInput(false)
     setDataToLoad('')
   }
 
   return (
     <CharacterSheetWrapper>
       <CopyWrapper>
-        {shouldShowLoadInput && (
-          <LoadInputField>
-            <LoadInput
-              value={dataToLoad}
-              onChange={(e) => setDataToLoad(e.currentTarget.value)}
-            />
-            <LoadSubmitButton>
-              <ButtonBase onClick={handleClickToLoad}>
-                <img src={Icons.Paste} alt="paste" style={{ width: '32px' }} />
-              </ButtonBase>
-            </LoadSubmitButton>
-          </LoadInputField>
-        )}
-        <SaveAndLoadButton>
-          <ButtonBase
-            lighten
-            aria-pressed
-            onClick={() => toggleVisibleLoadInput()}
-          >
-            <img src={Icons.Load} alt="load" style={{ width: '32px' }} />
-          </ButtonBase>
-        </SaveAndLoadButton>
+        <LoadInputField>
+          <LoadInput
+            value={dataToLoad}
+            onChange={(e) => setDataToLoad(e.currentTarget.value)}
+          />
+          <SaveAndLoadButton>
+            <ButtonBase onClick={handleClickToLoad}>
+              <img src={Icons.Paste} alt="paste" style={{ width: '32px' }} />
+            </ButtonBase>
+          </SaveAndLoadButton>
+        </LoadInputField>
         <CopyToClipboard
           text={(() => handleClickToSave())()}
           onCopy={() => alert('data is saved!')}
@@ -350,11 +327,6 @@ const CopyWrapper = styled.div`
   align-items: center;
   column-gap: ${space.xs};
 `
-const SaveAndLoadButton = styled.div`
-  width: 3.625em;
-  height: 3.5em;
-  border-radius: 50%;
-`
 const LoadInputField = styled.div`
   display: flex;
   margin-right: ${space.xxs};
@@ -366,10 +338,18 @@ const LoadInput = styled.input`
   background-color: inherit;
   max-width: 30vw;
   height: 3rem;
+  border-radius: 0.5rem;
 `
-const LoadSubmitButton = styled.div`
+const SaveAndLoadButton = styled.div`
   width: 3.25rem;
   height: 3.25rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    height: 3rem;
+    padding: 0.125rem 0;
+    border-radius: 0.2rem;
+  }
 `
 
 const Name = styled.h1`
