@@ -9,6 +9,7 @@ import { Icons } from 'src/assets/icons'
 import { ModeBattleEditSkills } from './mode/ModeBattleEditSkills'
 import { ModeBattleUseSkills } from './mode/ModeBattleUseSkills'
 import { ToggleButton } from 'src/components/actor/button/ToggleButton'
+import { INITIAL_SKILL } from 'src/constants'
 
 const SUB_WEAPON_SKILL_SURPLUS = 3 as const
 
@@ -23,28 +24,27 @@ export const ModeBattle = () => {
   const [hp, setHp] = React.useState<number>(maxHp) // TODO 0~maxHp の整数に制限する
   const [depth, setDepth] = React.useState<0 | 1 | 2 | 3 | 4>(1)
 
-  const skills: ISkill[] = React.useMemo(
-    () => [
-      ...mainWeapon.skillList,
-      // サブ武器のスキル数は少ない
-      ...subWeapon.skillList.filter(
-        (_, i) => i % SUB_WEAPON_SKILL_SURPLUS !== 1 /** seed % 3 */,
-      ),
-    ],
-    [mainWeapon, subWeapon],
-  )
-  const [skillHand, setSkillHand] = React.useState(
-    [...Array(5)].map((_, i) => skills[i]),
-  )
-  const [currentSkill, setCurrentSkill] = React.useState<ISkill>(skillHand[0])
+  const [skillHand, setSkillHand] = React.useState<ISkill[]>([])
+  const [currentSkill, setCurrentSkill] = React.useState<ISkill>(INITIAL_SKILL)
 
-  const [isEditMode, toggleMode] = useToggle(false)
+  const [isEditMode, toggleMode] = useToggle(true)
+  const handleToggle = () => {
+    if (!skillHand.length) setCurrentSkill(INITIAL_SKILL)
+    toggleMode()
+  }
 
   return (
     <section>
       <BaseStatus>
         <HeadingWrapper>
-          <ToggleButton defaultImage={{ src: Icons.Oration }} defaultLabel='戦闘' reversedImage={{ src: Icons.Training }} reversedLabel='編集' onClick={() => toggleMode()} isReversed={isEditMode} />
+          <ToggleButton
+            defaultImage={{ src: Icons.Oration }}
+            defaultLabel='戦闘'
+            reversedImage={{ src: Icons.Training }}
+            reversedLabel='編集'
+            onClick={handleToggle}
+            isReversed={isEditMode}
+          />
         </HeadingWrapper>
         <StatusWrapper>
           <Hp>

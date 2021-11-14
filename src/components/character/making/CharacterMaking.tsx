@@ -2,7 +2,7 @@ import React from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import styled from 'styled-components'
 import { color, space } from 'src/assets/style'
-import { INITIAL_WEAPON } from 'src/constants'
+import { INITIAL_MAIN_WEAPON, INITIAL_SUB_WEAPON } from 'src/constants'
 import {
   abilityListAtom,
   allAbilityListAtom,
@@ -20,7 +20,7 @@ import {
   getWeaponFromDirtyData,
 } from 'src/utils/Mapper'
 
-export interface ICharacterMakingProps {}
+export interface ICharacterMakingProps { }
 
 // TODO 文言は constants > words とかにいれたほうがいい？
 const WORDS = {
@@ -74,20 +74,20 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
   const choiceItems:
     | [IAbility, IAbility][]
     | [IWeapon, IWeapon][] = React.useMemo(() => {
-    switch (STEPS[currentStepIndex]) {
-      case 'weaponMain':
-        return [[weaponsTable[0], weaponsTable[1]]]
-      case 'weaponSub':
-        return [[weaponsTable[2], weaponsTable[3]]]
-      case 'ability':
-        return [...Array(5)].map((_, i) => [
-          abilitiesTable[i * 2],
-          abilitiesTable[i * 2 + 1],
-        ])
-      default:
-        return [[INITIAL_WEAPON, INITIAL_WEAPON]]
-    }
-  }, [currentStepIndex, weaponsTable, abilitiesTable])
+      switch (STEPS[currentStepIndex]) {
+        case 'weaponMain':
+          return [[weaponsTable[0], weaponsTable[1]]]
+        case 'weaponSub':
+          return [[weaponsTable[2], weaponsTable[3]]]
+        case 'ability':
+          return [...Array(5)].map((_, i) => [
+            abilitiesTable[i * 2],
+            abilitiesTable[i * 2 + 1],
+          ])
+        default:
+          return [[INITIAL_MAIN_WEAPON, INITIAL_SUB_WEAPON]]
+      }
+    }, [currentStepIndex, weaponsTable, abilitiesTable])
 
   // 二者択一のうち1つ目を選択中かどうか
   const [isFirstIndex, setIsFirstIndex] = React.useState<boolean>(true)
@@ -123,7 +123,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
           setAbilities((prev) => [
             ...prev,
             abilitiesTable[
-              isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
+            isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
             ],
           ])
           setCurrentAbilityStep(0) // 意図しない参照バグを防止
@@ -133,7 +133,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
           setAbilities((prev) => [
             ...prev,
             abilitiesTable[
-              isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
+            isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
             ],
           ])
           setCurrentAbilityStep((prev) => prev + 1)

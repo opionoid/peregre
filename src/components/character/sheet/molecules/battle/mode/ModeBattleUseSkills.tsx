@@ -34,9 +34,10 @@ export const ModeBattleUseSkills: React.VFC<IModeBattleUseSkills> = ({
 
   return (
     <>
+      {/** TODO: FIXME: スキルが存在しないとき CardList の箇所に 0 という文字が出る */}
       <CardList>
         {skillHand?.length && skillHand.map((skill) => (
-          skill && <Card key={skill.name}>
+          <Card key={skill.name}>
             <WeaponButton
               skill={skill}
               accent={currentSkill.name === skill.name}

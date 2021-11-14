@@ -2,6 +2,26 @@ import { Icons } from 'src/assets/icons'
 import { IDirtyAbility, IDirtyWeapon } from 'src/interfaces'
 
 /**
+ * アビリティデータ取得
+ * @param dirtyData 名前と効果とアイコンsrcしかないアビリティデータ
+ * @param randomNumber 乱数
+ * @returns 整形後のアビリティデータ
+ */
+export const getAbilityFromDirtyData = (
+  dirtyData: IDirtyAbility,
+  randomNumber: number,
+) => ({
+  name: dirtyData.name,
+  description: dirtyData.description,
+  icon: {
+    src: Icons[dirtyData.icon],
+    alt: '', // nameと同じなのでからっぽ
+  },
+  // 出現率：1D10 で判定
+  successRate: Math.max(randomNumber % 6, randomNumber % 4, 2) + 4,
+})
+
+/**
  * 武器データ取得
  * @param dirtyData 全部が string または undefined の武器データ
  * @returns 整形後の武器データ
@@ -26,24 +46,4 @@ export const getWeaponFromDirtyData = (dirtyData: IDirtyWeapon) => ({
     shouldCast: skill.shouldCast === 'TRUE',
     isUlt: skill.isUlt === 'TRUE',
   })),
-})
-
-/**
- * アビリティデータ取得
- * @param dirtyData 名前と効果とアイコンsrcしかないアビリティデータ
- * @param randomNumber 乱数
- * @returns 整形後のアビリティデータ
- */
-export const getAbilityFromDirtyData = (
-  dirtyData: IDirtyAbility,
-  randomNumber: number,
-) => ({
-  name: dirtyData.name,
-  description: dirtyData.description,
-  icon: {
-    src: Icons[dirtyData.icon],
-    alt: '', // nameと同じなのでからっぽ
-  },
-  // [成功率, 出現率] = [[90%, 25%], [70%, 33%], [60%, 47%]]
-  successRate: 2 * Math.max(randomNumber % 4, randomNumber % 3, 1.7) + 0.3,
 })

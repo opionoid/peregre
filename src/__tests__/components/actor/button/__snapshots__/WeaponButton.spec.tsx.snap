@@ -19,7 +19,7 @@ exports[`actor/button default test 1`] = `
         <p
           class="sc-hKwCoD"
         >
-          未設定
+          スキルが未設定です
         </p>
       </button>
     </div>

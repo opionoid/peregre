@@ -47,9 +47,9 @@ export const ModeBattleEditSkills: React.VFC<IModeBattleEditSkills> = ({
         <h2>{mainWeapon.name}</h2>
       </EditWeapon>
       <EditScrollX>
-        {mainWeapon.skillList.map((skill, i) => (
+        {mainWeapon.skillList.map((skill) => (
           <div
-            key={`${i}-${skill.name}`}
+            key={skill.name}
             style={{ width: '142px', marginRight: space.xs }}
           >
             <WeaponButton
@@ -67,9 +67,9 @@ export const ModeBattleEditSkills: React.VFC<IModeBattleEditSkills> = ({
       <EditScrollX>
         {subWeapon.skillList
           .filter((_, i) => i % subWeaponSkillSurplus !== 1 /** seed % 3 */)
-          .map((skill, i) => (
+          .map((skill) => (
             <div
-              key={`${i}-${skill.name}`}
+              key={skill.name}
               style={{ width: '142px', marginRight: space.xs }}
             >
               <WeaponButton

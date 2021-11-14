@@ -21,8 +21,8 @@ export const ModeAbility: React.VFC = () => {
   return (
     <section>
       <CardList>
-        {abilities.map((ability) => (
-          <Card key={ability.name}>
+        {abilities?.length && abilities.map((ability) => (
+          ability && <Card key={ability.name}>
             <AbilityButton
               ability={ability}
               accent={currentAbility.name === ability.name}

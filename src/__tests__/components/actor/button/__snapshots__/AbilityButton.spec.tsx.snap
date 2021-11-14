@@ -4,19 +4,20 @@ exports[`actor/button default test 1`] = `
 <body>
   <div>
     <div
-      class="sc-gsDJrp klUCAp"
+      class="sc-gsDJrp jQLRGH"
     >
       <button
-        class="sc-bdvvaa kOvQAv"
+        aria-disabled="false"
+        class="sc-bdvvaa gazzRl"
         type="button"
       >
         <img
           alt=""
-          class="sc-dkPtyc gsmpjX"
-          src=""
+          class="sc-dkPtyc cooIAe"
+          src="Navigation.svg"
         />
         <p
-          class="sc-hKwCoD bpiNNo"
+          class="sc-hKwCoD"
         >
           未設定
         </p>
