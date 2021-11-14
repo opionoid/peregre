@@ -35,8 +35,8 @@ export const ModeBattleUseSkills: React.VFC<IModeBattleUseSkills> = ({
   return (
     <>
       <CardList>
-        {skillHand.map((skill) => (
-          <Card key={skill.name}>
+        {skillHand?.length && skillHand.map((skill) => (
+          skill && <Card key={skill.name}>
             <WeaponButton
               skill={skill}
               accent={currentSkill.name === skill.name}

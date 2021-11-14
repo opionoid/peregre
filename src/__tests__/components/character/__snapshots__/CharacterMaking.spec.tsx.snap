@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`character default test 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-gsDJrp fCXcPv"
+    >
+      <h2
+        class="sc-dkPtyc XNbfd"
+      >
+        Main Weapon
+      </h2>
+      <div
+        class="sc-hKwCoD gZFer"
+      >
+        <div
+          class="sc-eCImvq bcegye"
+        >
+          <button
+            aria-disabled="false"
+            class="sc-bdvvaa gazzRl"
+            type="button"
+            value="first"
+          >
+            竜の杖
+          </button>
+        </div>
+        <div
+          class="sc-eCImvq bcegye"
+        >
+          <button
+            aria-disabled="false"
+            class="sc-bdvvaa fubKHy"
+            type="button"
+            value="second"
+          >
+            案内人のランタン
+          </button>
+        </div>
+      </div>
+      <p
+        class="sc-jRQAMF gpDTCf"
+      >
+        「火から大地を守るよう竜は雲を作り、妖精は大地を肥やすよう穏やかな風を作った。」
+      </p>
+      <div
+        class="sc-iCfLBT kbmBsx"
+      >
+        <button
+          aria-disabled="false"
+          class="sc-bdvvaa gazzRl"
+          type="button"
+        >
+          次へ
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;

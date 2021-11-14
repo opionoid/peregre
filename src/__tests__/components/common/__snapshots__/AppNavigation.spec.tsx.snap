@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common default test 1`] = `
+<body>
+  <div>
+    <nav>
+      <ul
+        class="sc-bdvvaa fEaskq"
+      >
+        <li
+          class="sc-dkPtyc hWcuzK"
+        >
+          <a
+            class="link"
+            href="/"
+            style="text-decoration: none;"
+          >
+            Peregre
+          </a>
+          <button
+            aria-expanded="false"
+            class="sc-hKwCoD ffYizP"
+          >
+            ξ
+          </button>
+        </li>
+        <li>
+          <ul
+            class="sc-gsDJrp kwhPwZ"
+          >
+            <li
+              aria-expanded="true"
+              class="sc-eCImvq iDUuly"
+            >
+              <a
+                class="link"
+                href="/rules"
+                style="text-decoration: none;"
+              >
+                RULES
+              </a>
+            </li>
+            <li
+              aria-expanded="true"
+              class="sc-eCImvq iDUuly"
+            >
+              <a
+                class="link"
+                href="/character"
+                style="text-decoration: none;"
+              >
+                CHARACTER
+              </a>
+            </li>
+            <li
+              aria-expanded="true"
+              class="sc-eCImvq iDUuly"
+            >
+              <a
+                class="link"
+                href="/stories"
+                style="text-decoration: none;"
+              >
+                STORIES
+              </a>
+            </li>
+            <li
+              aria-expanded="true"
+              class="sc-eCImvq iDUuly"
+            >
+              <a
+                class="link"
+                href="/news"
+                style="text-decoration: none;"
+              >
+                NEWS
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
+          aria-expanded="true"
+          class="sc-jRQAMF kstTgy"
+        >
+          <a
+            class="link"
+            href="/config"
+            style="text-decoration: none;"
+          >
+            Config
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</body>
+`;

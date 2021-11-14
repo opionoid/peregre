@@ -1,0 +1,487 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`character default test 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-iJKOzS kOsIXN"
+    >
+      <div
+        class="sc-giYgFv jxrirr"
+      >
+        <div
+          class="sc-ezbkgU liPFEk"
+        >
+          <input
+            class="sc-bYoCmx iWykTM"
+            value=""
+          />
+          <div
+            class="sc-kLwgWK bulKhe"
+          >
+            <button
+              aria-disabled="false"
+              class="sc-bdvvaa gazzRl"
+              type="button"
+            >
+              <img
+                alt="paste"
+                src="Paste.svg"
+                style="width: 32px;"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          class="sc-kLwgWK bulKhe"
+        >
+          <button
+            aria-disabled="false"
+            class="sc-bdvvaa fubKHy"
+            type="button"
+          >
+            <img
+              alt="save"
+              src="Save.svg"
+              style="width: 32px;"
+            />
+          </button>
+        </div>
+      </div>
+      <h1
+        class="sc-ikJzcn hvWPtt"
+      />
+      <div
+        class="sc-fotPbf jqKhnr"
+      >
+        <button
+          aria-disabled="false"
+          class="sc-bdvvaa gazzRl"
+          type="button"
+        >
+          <div
+            class="sc-fFehDp dzAHwA"
+          >
+            <p>
+              戦闘
+            </p>
+            <img
+              class="sc-bkkfTU eBKecI"
+              src="Philosophy.svg"
+            />
+          </div>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+      >
+        <section>
+          <div
+            class="sc-eCImvq jAlJLK"
+          >
+            <div
+              class="sc-jRQAMF loghJb"
+            >
+              <div
+                class="sc-gsDJrp jQLRGH"
+              >
+                <button
+                  aria-disabled="false"
+                  class="sc-bdvvaa gTEdOA"
+                  type="button"
+                >
+                  <img
+                    alt=""
+                    class="sc-dkPtyc cooIAe"
+                    src="Navigation.svg"
+                  />
+                  <p
+                    class="sc-hKwCoD"
+                  >
+                    未設定
+                  </p>
+                </button>
+              </div>
+            </div>
+            <div
+              class="sc-jRQAMF loghJb"
+            >
+              <div
+                class="sc-gsDJrp jQLRGH"
+              >
+                <button
+                  aria-disabled="false"
+                  class="sc-bdvvaa gTEdOA"
+                  type="button"
+                >
+                  <img
+                    alt=""
+                    class="sc-dkPtyc cooIAe"
+                    src="Navigation.svg"
+                  />
+                  <p
+                    class="sc-hKwCoD"
+                  >
+                    未設定
+                  </p>
+                </button>
+              </div>
+            </div>
+            <div
+              class="sc-jRQAMF loghJb"
+            >
+              <div
+                class="sc-gsDJrp jQLRGH"
+              >
+                <button
+                  aria-disabled="false"
+                  class="sc-bdvvaa gTEdOA"
+                  type="button"
+                >
+                  <img
+                    alt=""
+                    class="sc-dkPtyc cooIAe"
+                    src="Navigation.svg"
+                  />
+                  <p
+                    class="sc-hKwCoD"
+                  >
+                    未設定
+                  </p>
+                </button>
+              </div>
+            </div>
+            <div
+              class="sc-jRQAMF loghJb"
+            >
+              <div
+                class="sc-gsDJrp jQLRGH"
+              >
+                <button
+                  aria-disabled="false"
+                  class="sc-bdvvaa gTEdOA"
+                  type="button"
+                >
+                  <img
+                    alt=""
+                    class="sc-dkPtyc cooIAe"
+                    src="Navigation.svg"
+                  />
+                  <p
+                    class="sc-hKwCoD"
+                  >
+                    未設定
+                  </p>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-gKckTs kLRlln"
+          >
+            <h3>
+              未設定
+            </h3>
+            <p>
+              このアビリティは未設定です。本来表示されない画面なのでバグが疑われます。@EggoggE にご連絡くださると大変うれしいです。
+            </p>
+          </div>
+          <div
+            class="sc-iCfLBT bdOhtl"
+          >
+            <button
+              aria-disabled="false"
+              class="sc-bdvvaa gazzRl"
+              type="button"
+            >
+              使用
+            </button>
+          </div>
+        </section>
+      </div>
+      <div
+        aria-hidden="false"
+      >
+        <section>
+          <div
+            class="sc-ieebsP kMqMEO"
+          >
+            <div
+              class="sc-dJjZJu kkUKjt"
+            >
+              <div
+                class="sc-fotPbf CYoxx"
+              >
+                <button
+                  aria-disabled="false"
+                  class="sc-bdvvaa gazzRl"
+                  type="button"
+                >
+                  <div
+                    class="sc-fFehDp dzAHwA"
+                  >
+                    <p>
+                      戦闘
+                    </p>
+                    <img
+                      class="sc-bkkfTU eBKecI"
+                      src="Oration.svg"
+                    />
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div
+              class="sc-hGPAah bGLEDw"
+            >
+              <div
+                class="sc-dlVyqM iPhAgp"
+              >
+                <img
+                  alt="魂魄量"
+                  class="sc-kfPtPH oFDsg"
+                  src="MaxHp.svg"
+                />
+                <input
+                  class="sc-fKVsgm GnLwt"
+                  value="0"
+                />
+                <p
+                  class="sc-bBHwJV fnLvwx"
+                >
+                  0
+                </p>
+              </div>
+              <div
+                class="sc-iwjezw ihebvs"
+              >
+                <img
+                  alt="深度"
+                  class="sc-kfPtPH oFDsg"
+                  src="MaxDepth.svg"
+                />
+                <input
+                  class="sc-cxpRKc kGlove"
+                  value="1"
+                />
+                <p
+                  class="sc-llYToB bYhHwu"
+                >
+                  4
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="false"
+          >
+            <div
+              class="sc-bqiQRQ lnHtdj"
+            >
+              <div
+                class="sc-ksdxAp glonyR"
+              >
+                <div
+                  class="sc-furvIG jXWUNK"
+                >
+                  <button
+                    aria-disabled="false"
+                    class="sc-bdvvaa gTEdOA"
+                    type="button"
+                  >
+                    <img
+                      alt=""
+                      class="sc-pVTma fIDpBx"
+                      src="FirstAid.svg"
+                    />
+                    <p
+                      class="sc-jrQzUz"
+                    >
+                      未設定
+                    </p>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="sc-ksdxAp glonyR"
+              >
+                <div
+                  class="sc-furvIG jXWUNK"
+                >
+                  <button
+                    aria-disabled="false"
+                    class="sc-bdvvaa gTEdOA"
+                    type="button"
+                  >
+                    <img
+                      alt=""
+                      class="sc-pVTma fIDpBx"
+                      src="FirstAid.svg"
+                    />
+                    <p
+                      class="sc-jrQzUz"
+                    >
+                      未設定
+                    </p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="sc-kDThTU WZyMW"
+            >
+              <div
+                style="display: flex; column-gap: 32px; align-items: center;"
+              >
+                <h3
+                  style="min-width: 25%;"
+                >
+                  未設定
+                </h3>
+                <p
+                  style="font-size: 1.4rem; line-height: 1; margin: 0px;"
+                >
+                  <img
+                    alt=""
+                    height="24"
+                    src="Depth.svg"
+                    style="margin-right: 0.625rem;"
+                    width="24"
+                  />
+                  0
+                </p>
+              </div>
+              <p>
+                このスキルは未設定です。スキル設定モードにしますか？
+              </p>
+            </div>
+            <div
+              class="sc-hBURRC kbygFr"
+            >
+              <button
+                aria-disabled="false"
+                class="sc-bdvvaa gazzRl"
+                type="button"
+              >
+                使用
+              </button>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+          >
+            <div
+              class="sc-iqsfdx hklqBd"
+            >
+              <img
+                alt=""
+                class="sc-crHlIS dKpJed"
+                src=""
+              />
+              <h2>
+                未設定
+              </h2>
+            </div>
+            <div
+              class="sc-egiSv faIlQB"
+            >
+              <div
+                style="width: 142px; margin-right: 1.25rem;"
+              >
+                <div
+                  class="sc-furvIG jXWUNK"
+                >
+                  <button
+                    aria-disabled="false"
+                    class="sc-bdvvaa gTEdOA"
+                    type="button"
+                  >
+                    <img
+                      alt=""
+                      class="sc-pVTma fIDpBx"
+                      src="FirstAid.svg"
+                    />
+                    <p
+                      class="sc-jrQzUz"
+                    >
+                      未設定
+                    </p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="sc-iqsfdx hklqBd"
+            >
+              <img
+                alt=""
+                class="sc-crHlIS dKpJed"
+                src=""
+              />
+              <h2>
+                未設定
+              </h2>
+            </div>
+            <div
+              class="sc-egiSv faIlQB"
+            >
+              <div
+                style="width: 142px; margin-right: 1.25rem;"
+              >
+                <div
+                  class="sc-furvIG jXWUNK"
+                >
+                  <button
+                    aria-disabled="false"
+                    class="sc-bdvvaa gTEdOA"
+                    type="button"
+                  >
+                    <img
+                      alt=""
+                      class="sc-pVTma fIDpBx"
+                      src="FirstAid.svg"
+                    />
+                    <p
+                      class="sc-jrQzUz"
+                    >
+                      未設定
+                    </p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="sc-kDThTU WZyMW"
+            >
+              <div
+                style="display: flex; column-gap: 32px; align-items: center;"
+              >
+                <h3
+                  style="min-width: 25%;"
+                >
+                  未設定
+                </h3>
+                <p
+                  style="font-size: 1.4rem; line-height: 1; margin: 0px;"
+                >
+                  <img
+                    alt=""
+                    height="24"
+                    src="Depth.svg"
+                    style="margin-right: 0.625rem;"
+                    width="24"
+                  />
+                  0
+                </p>
+              </div>
+              <p>
+                このスキルは未設定です。スキル設定モードにしますか？
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+`;

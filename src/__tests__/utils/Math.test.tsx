@@ -7,14 +7,14 @@ test('Math/randomizeXorshift', () => {
 */
 
 test('Math/getRandomizedIndex', () => {
-  expect(() => UtilMath.getRandomizedIndex(10, 1111)).toBeGreaterThanOrEqual(0)
-  expect(() => UtilMath.getRandomizedIndex(10, 1111)).toBeLessThanOrEqual(9)
+  expect(UtilMath.getRandomizedIndex(10, 1111)).toBeGreaterThanOrEqual(0)
+  expect(UtilMath.getRandomizedIndex(10, 1111)).toBeLessThanOrEqual(9)
 })
 
 test('Math/rollDice10', () => {
-  expect(() => UtilMath.rollDice10()).toBeGreaterThanOrEqual(1);
-  expect(() => UtilMath.rollDice10()).toBeLessThanOrEqual(10);
+  expect(UtilMath.rollDice10()).toBeGreaterThanOrEqual(1);
+  expect(UtilMath.rollDice10()).toBeLessThanOrEqual(10);
 
-  expect(() => UtilMath.rollDice10(10)).toBeGreaterThanOrEqual(10);
-  expect(() => UtilMath.rollDice10(10)).toBeLessThanOrEqual(100);
+  expect(UtilMath.rollDice10(10)).toBeGreaterThanOrEqual(10);
+  expect(UtilMath.rollDice10(10)).toBeLessThanOrEqual(100);
 })
