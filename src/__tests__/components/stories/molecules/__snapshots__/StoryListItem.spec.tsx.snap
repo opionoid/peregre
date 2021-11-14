@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stories/molecules default test 1`] = `
+<body>
+  <div>
+    <section
+      class="sc-bdvvaa"
+    />
+  </div>
+</body>
+`;

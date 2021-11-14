@@ -5,7 +5,7 @@ import { color } from 'src/assets/style'
 import { ROUTE } from 'src/constants'
 import styled, { css } from 'styled-components'
 
-export interface IAppNavigationProps {}
+export interface IAppNavigationProps { }
 
 export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
   const [expanded, toggleHamburger] = useToggle(false)
@@ -15,46 +15,48 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
   /** Chrome では Link に text-decoration: none を直接指定しない限り消えない（Safariは消える） */
   return (
     <nav>
-    <AppNavigationWrapper className={expanded ? '-expanded' : ''}>
-      <Top>
-        <Link className="link" to={ROUTE.top} onClick={close} style={{ textDecoration: 'none' }}>
-          Peregre
-        </Link>
-        <HamburgerMenu
-          aria-expanded={expanded}
-          onClick={handleClick}
-        >
-          {expanded ? 'χ' : 'ξ'}
-        </HamburgerMenu>
-      </Top>
-      <Links>
-        <Item aria-expanded={!expanded}>
-          <Link className="link" to={ROUTE.rules} onClick={close} style={{ textDecoration: 'none' }}>
-            RULES
+      <AppNavigationWrapper className={expanded ? '-expanded' : ''}>
+        <Top>
+          <Link className="link" to={ROUTE.top} onClick={close} style={{ textDecoration: 'none' }}>
+            Peregre
           </Link>
-        </Item>
-        <Item aria-expanded={!expanded}>
-          <Link className="link" to={ROUTE.character} onClick={close} style={{ textDecoration: 'none' }}>
-            CHARACTER
+          <HamburgerMenu
+            aria-expanded={expanded}
+            onClick={handleClick}
+          >
+            {expanded ? 'χ' : 'ξ'}
+          </HamburgerMenu>
+        </Top>
+        <li>
+          <Links>
+            <Item aria-expanded={!expanded}>
+              <Link className="link" to={ROUTE.rules} onClick={close} style={{ textDecoration: 'none' }}>
+                RULES
+              </Link>
+            </Item>
+            <Item aria-expanded={!expanded}>
+              <Link className="link" to={ROUTE.character} onClick={close} style={{ textDecoration: 'none' }}>
+                CHARACTER
+              </Link>
+            </Item>
+            <Item aria-expanded={!expanded}>
+              <Link className="link" to={ROUTE.stories} onClick={close} style={{ textDecoration: 'none' }}>
+                STORIES
+              </Link>
+            </Item>
+            <Item aria-expanded={!expanded}>
+              <Link className="link" to={ROUTE.news} onClick={close} style={{ textDecoration: 'none' }}>
+                NEWS
+              </Link>
+            </Item>
+          </Links>
+        </li>
+        <Config aria-expanded={!expanded}>
+          <Link className="link" to={ROUTE.config} onClick={close} style={{ textDecoration: 'none' }}>
+            Config
           </Link>
-        </Item>
-        <Item aria-expanded={!expanded}>
-          <Link className="link" to={ROUTE.stories} onClick={close} style={{ textDecoration: 'none' }}>
-            STORIES
-          </Link>
-        </Item>
-        <Item aria-expanded={!expanded}>
-          <Link className="link" to={ROUTE.news} onClick={close} style={{ textDecoration: 'none' }}>
-            NEWS
-          </Link>
-        </Item>
-      </Links>
-      <Config aria-expanded={!expanded}>
-        <Link className="link" to={ROUTE.config} onClick={close} style={{ textDecoration: 'none' }}>
-          Config
-        </Link>
-      </Config>
-    </AppNavigationWrapper>
+        </Config>
+      </AppNavigationWrapper>
     </nav>
   )
 }
@@ -87,8 +89,10 @@ const AppNavigationWrapper = styled.ul`
     }
   }
 `
-const Links = styled.div`
+const Links = styled.ul`
   display: flex;
+  list-style: none;
+  padding: 0;
 
   @media screen and (max-width: 46em) {
     display: block;

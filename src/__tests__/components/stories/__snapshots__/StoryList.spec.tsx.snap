@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stories default test 1`] = `
+<body>
+  <div>
+    <ul
+      class="sc-gsDJrp"
+    >
+      <li>
+        <section
+          class="sc-bdvvaa"
+        />
+      </li>
+    </ul>
+  </div>
+</body>
+`;

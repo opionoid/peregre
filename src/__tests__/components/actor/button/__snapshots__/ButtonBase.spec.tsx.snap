@@ -4,7 +4,8 @@ exports[`actor/button default test 1`] = `
 <body>
   <div>
     <button
-      class="sc-bdvvaa lfkahD"
+      aria-disabled="false"
+      class="sc-bdvvaa gazzRl"
       type="button"
     />
   </div>

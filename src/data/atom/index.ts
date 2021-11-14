@@ -55,6 +55,18 @@ export const configShouldCopyTextOnClick: RecoilState<boolean> = atom({
   default: false as boolean
 })
 
+// 実装するべきか要考慮
+export const configShouldUseAbilityOnClickingIcon: RecoilState<boolean> = atom({
+  key: 'configShouldUseAbilityOnClickingIcon',
+  default: false as boolean
+})
+
+// 実装するべきか要考慮
+export const configShouldUseSkillOnClickingIcon: RecoilState<boolean> = atom({
+  key: 'configShouldUseSkillOnClickingIcon',
+  default: false as boolean
+})
+
 export const configDiscordWebhookUrl: RecoilState<string> = atom({
   key: 'configDiscordWebhookUrl',
   default: ''

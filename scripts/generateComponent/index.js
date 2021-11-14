@@ -12,7 +12,8 @@ const SRC_DIR = path.resolve(__dirname, '../../src');
 const COMPONENT_DIR = path.resolve(SRC_DIR, 'components');
 const TEST_DIR = path.resolve(SRC_DIR, '__tests__/components');
 const MOCK_DIR = path.resolve(SRC_DIR, '__mocks__/components');
-const STORY_DIR = path.resolve(SRC_DIR, '__stories__/components');
+// storybook はディレクトリ構造がサイドバーに反映される & コンポーネント以外必要ないのでネストを浅くする
+const STORY_DIR = path.resolve(SRC_DIR, '__stories__');
 const prefixUpper = (val) => val.charAt(0).toUpperCase() + val.slice(1);
 
 const questions = [
@@ -36,7 +37,7 @@ const questions = [
 
 const main = async () => {
   const fields = await inquirer.prompt(questions);
-  const {componentName: _componentName, resolveDir} = fields;
+  const { componentName: _componentName, resolveDir } = fields;
   const componentName = prefixUpper(_componentName);
   console.log('generate component:');
   await generateComponent(componentName, resolveDir);
@@ -74,8 +75,8 @@ const generateComponent = async (componentName, resolveDir) => {
 };
 
 const makeFile = async (templates) => {
-  await Promise.all(templates.map(({dir}) => mkdirp(dir)));
-  await Promise.all(templates.map(({name, template}) => fs.writeFile(name, template)));
+  await Promise.all(templates.map(({ dir }) => mkdirp(dir)));
+  await Promise.all(templates.map(({ name, template }) => fs.writeFile(name, template)));
 };
 
 main();

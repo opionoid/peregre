@@ -65,7 +65,6 @@
     "@storybook/addon-essentials": "^6.2.3",
     "@storybook/addon-links": "^6.2.3",
     "@storybook/addon-options": "^5.3.21",
-    "@storybook/addon-storyshots": "^6.2.3",
     "@storybook/addon-storysource": "^6.2.3",
     "@storybook/addon-viewport": "^6.2.9",
     "@storybook/node-logger": "^6.2.3",
