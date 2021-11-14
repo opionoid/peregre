@@ -11,6 +11,8 @@ import { RulesPage } from './pages/rules'
 import { StoriesPage } from './pages/stories'
 import { TopPage } from './pages/top'
 import { color } from './assets/style'
+import { PrivacyPage } from './pages/privacy'
+import { TermsPage } from './pages/terms'
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
                 <Route exact path={ROUTE.character} component={CharacterPage} />
                 <Route exact path={ROUTE.stories} component={StoriesPage} />
                 <Route exact path={ROUTE.news} component={NewsPage} />
+                <Route exact path={ROUTE.privacy} component={PrivacyPage} />
+                <Route exact path={ROUTE.terms} component={TermsPage} />
                 <Route exact path={ROUTE.top} component={TopPage} />
                 <Route component={TopPage} />
               </Switch>

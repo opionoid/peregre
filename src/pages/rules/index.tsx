@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export const RulesPage: React.VFC = () => {
   return (
     <Rules>
-      <h1>RULES</h1>
+      <h1 aria-label="rules">RULES</h1>
       <Reveal animation={Animation.FadeInUp}>
         <hr />
         {/** 果たしてここにフルーロンを入れてもよいものか */}

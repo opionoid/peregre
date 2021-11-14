@@ -9,13 +9,10 @@
 /** Shippori Mincho */
 @import url('https://fonts.googleapis.com/css2?family=New+Tegomin&family=Noto+Sans+JP:wght@100&family=Shippori+Mincho:wght@500&display=swap');
 
-body {
-  margin: 0;
-  background-color: #fef8e7;
-  color: #2f3846;
+* {
   font-family: 'Shippori Mincho', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
+  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+  'Helvetica Neue', sans-serif;
   font-kerning: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,6 +23,12 @@ body {
   -ms-hyphenate-limit-last: always;
   -ms-hyphenate-limit-zone: 8%;
   line-height: 1.7;
+}
+
+body {
+  margin: 0;
+  background-color: #fef8e7;
+  color: #2f3846;
 }
 
 @media screen and (min-width: 60em) {
@@ -215,11 +218,11 @@ aside {
   }
 }
 article details {
-  margin-top: 1.125em;
+  margin-bottom: 1.7em;
 }
 article details > p {
   margin-bottom: 0;
-  margin-left: 2.25em;
+  margin-left: 1.125em;
   font-size: 0.9em;
 }
 article details > p + p {

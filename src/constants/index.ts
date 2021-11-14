@@ -9,6 +9,8 @@ export const ROUTE = {
   stories: '/stories',
   news: '/news',
   config: '/config',
+  privacy: '/privacy-policy',
+  terms: '/terms'
 }
 
 export type IRollResult = typeof ROLL_RESULT[keyof typeof ROLL_RESULT]
