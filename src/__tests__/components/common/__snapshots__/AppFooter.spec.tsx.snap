@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common default test 1`] = `
+<body>
+  <div>
+    <footer>
+      <div
+        class="sc-bdvvaa hFUSGk"
+      >
+        <p>
+          ©︎ 2021, ことれの
+        </p>
+        <ul
+          class="sc-gsDJrp kbvHwc"
+        >
+          <li
+            class="sc-dkPtyc buZlmq"
+          >
+            <a
+              href="/terms"
+            >
+              利用規約
+            </a>
+          </li>
+          <li
+            class="sc-dkPtyc buZlmq"
+          >
+            <a
+              href="/privacy-policy"
+            >
+              プライバシーポリシー
+            </a>
+          </li>
+          <li
+            class="sc-dkPtyc buZlmq"
+          >
+            <a
+              href="/"
+            >
+              お問い合わせ
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</body>
+`;

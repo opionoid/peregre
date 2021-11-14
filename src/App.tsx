@@ -10,9 +10,9 @@ import { NewsPage } from './pages/news'
 import { RulesPage } from './pages/rules'
 import { StoriesPage } from './pages/stories'
 import { TopPage } from './pages/top'
-import { color } from './assets/style'
 import { PrivacyPage } from './pages/privacy'
 import { TermsPage } from './pages/terms'
+import { AppFooter } from './components/common/AppFooter'
 
 function App() {
   return (
@@ -33,9 +33,7 @@ function App() {
                 <Route exact path={ROUTE.top} component={TopPage} />
                 <Route component={TopPage} />
               </Switch>
-              <footer>
-                <FooterItem>©︎ 2021, ことれの</FooterItem>
-              </footer>
+              <AppFooter />
             </Body>
           </Reveal>
         </Router>
@@ -46,13 +44,6 @@ function App() {
 
 const Body = styled.div`
   padding-top: 7.875rem;
-`
-const FooterItem = styled.div`
-  width: 100%;
-  padding: 1.125em 0;
-  background-color: ${color.backgroundHighContrast};
-  text-align: center;
-  color: ${color.fontInHighContrast};
 `
 
 export default App
