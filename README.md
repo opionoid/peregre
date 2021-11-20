@@ -21,7 +21,7 @@ All you do to change data is Overwriting `src/data/json/ability.json` and `src/d
 
 ### documents
 
-TODO: docsify でまとめる
+TODO: make them by docsify
 
 |documents|path|
 |:-:|:-:|
