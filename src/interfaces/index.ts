@@ -22,6 +22,8 @@ export type ILink = {
 
 export type IIconKey = keyof typeof Icons
 
+export type IDifficulty = '平易' | '標準' | '困難'
+
 export interface IAbility {
   name: string
   icon: IIconImage

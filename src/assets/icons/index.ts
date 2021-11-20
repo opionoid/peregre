@@ -28,12 +28,14 @@ import Painting from './Painting.svg'
 import Paste from './Paste.svg'
 import Performance from './Performance.svg'
 import Perfuming from './Perfuming.svg'
+import Person from './Person.svg'
 import Philosophy from './Philosophy.svg'
 import PilotLantern from './PilotLantern.svg'
 import Robust from './Robust.svg'
 import Save from './Save.svg'
 import SpearOfTheCavalryKing from './SpearOfTheCavalryKing.svg'
 import Theology from './Theology.svg'
+import Time from './Time.svg'
 import Torture from './Torture.svg'
 import Training from './Training.svg'
 import Writing from './Writing.svg'
@@ -69,12 +71,14 @@ export const Icons = {
   Paste,
   Performance,
   Perfuming,
+  Person,
   Philosophy,
   PilotLantern,
   Robust,
   Save,
   SpearOfTheCavalryKing,
   Theology,
+  Time,
   Torture,
   Training,
   Writing,

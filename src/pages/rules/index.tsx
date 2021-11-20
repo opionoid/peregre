@@ -8,7 +8,6 @@ export const RulesPage: React.VFC = () => {
       <h1 aria-label="rules">RULES</h1>
       <Reveal animation={Animation.FadeInUp}>
         <hr />
-        {/** 果たしてここにフルーロンを入れてもよいものか */}
         <section>
           <h2>基本的なルール</h2>
           <h3>概要</h3>
@@ -52,15 +51,8 @@ export const RulesPage: React.VFC = () => {
           </p>
           <h3>キャラクターロスト</h3>
           <p>
-            個別ロスト、全滅ロスト、ノーロストを採用できます。
+            Peregre ではロストの条件を定めませんが、進行役の指定がなければ最終戦闘以外でロストしないものとします。
           </p>
-          <ul>
-            <li>個別ロスト：0になった瞬間にロストする。</li>
-            <li>
-              全滅ロスト：誰か1人が勝利／逃走すれば魂魄量1で皆が生存する。
-            </li>
-            <li>ノーロスト：最終戦闘で参加者が望まない限りロストしない。</li>
-          </ul>
         </section>
       </Reveal>
       <hr />
