@@ -13,6 +13,8 @@ import { TopPage } from './pages/top'
 import { PrivacyPage } from './pages/privacy'
 import { TermsPage } from './pages/terms'
 import { AppFooter } from './components/common/AppFooter'
+import { StoryPage } from './pages/stories/_id'
+import { Suspense } from 'react'
 
 function App() {
   return (
@@ -20,22 +22,25 @@ function App() {
       <ReactGenieAnimations />
       <RecoilRoot>
         <Router>
-          <AppNavigation />
-          <Reveal animation={Animation.FadeInUp}>
-            <Body>
-              <Switch>
-                <Route exact path={ROUTE.rules} component={RulesPage} />
-                <Route exact path={ROUTE.character} component={CharacterPage} />
-                <Route exact path={ROUTE.stories} component={StoriesPage} />
-                <Route exact path={ROUTE.news} component={NewsPage} />
-                <Route exact path={ROUTE.privacy} component={PrivacyPage} />
-                <Route exact path={ROUTE.terms} component={TermsPage} />
-                <Route exact path={ROUTE.top} component={TopPage} />
-                <Route component={TopPage} />
-              </Switch>
-              <AppFooter />
-            </Body>
-          </Reveal>
+          <Suspense fallback={<p>読み込み中</p>}>
+            <AppNavigation />
+            <Reveal animation={Animation.FadeInUp}>
+              <Body>
+                <Switch>
+                  <Route exact path={ROUTE.rules} component={RulesPage} />
+                  <Route exact path={ROUTE.character} component={CharacterPage} />
+                  <Route exact path={ROUTE.stories} component={StoriesPage} />
+                  <Route path={`${ROUTE.stories}/:id`} component={StoryPage} />
+                  <Route exact path={ROUTE.news} component={NewsPage} />
+                  <Route exact path={ROUTE.privacy} component={PrivacyPage} />
+                  <Route exact path={ROUTE.terms} component={TermsPage} />
+                  <Route exact path={ROUTE.top} component={TopPage} />
+                  <Route component={TopPage} />
+                </Switch>
+                <AppFooter />
+              </Body>
+            </Reveal>
+          </Suspense>
         </Router>
       </RecoilRoot>
     </>
