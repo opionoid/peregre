@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stories default test 1`] = `
+<body>
+  <div>
+    <article
+      class="sc-gsDJrp jycdiW"
+    >
+      <img
+        alt=""
+        class="sc-dkPtyc jTnJlB"
+        src="https://picsum.photos/id/1037/400/300"
+      />
+      <h1
+        class="sc-hKwCoD kXtqUB"
+      >
+        タイトル
+      </h1>
+      <p
+        class="sc-eCImvq eXSYDF"
+      >
+        ことれの
+      </p>
+      <ul
+        class="sc-jRQAMF dIEAXp"
+      >
+        <li
+          class="sc-gKckTs jaqPkv"
+        >
+          <img
+            class="sc-iCfLBT lpnpD"
+            decoding="async"
+            src="Person.svg"
+          />
+          2
+          ~
+          3
+        </li>
+        <li
+          class="sc-gKckTs jaqPkv"
+        >
+          <img
+            class="sc-iCfLBT lpnpD"
+            decoding="async"
+            src="Time.svg"
+          />
+          4
+          h
+        </li>
+        <li
+          class="sc-gKckTs jaqPkv"
+        >
+          <img
+            alt="難易度"
+            class="sc-iCfLBT lpnpD"
+            decoding="async"
+            src="MaxDepth.svg"
+          />
+          標準
+        </li>
+      </ul>
+      <p
+        class="sc-furvIG gJtkME"
+      >
+        テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+      </p>
+      <hr />
+      <div
+        aria-hidden="false"
+      >
+        <button
+          aria-disabled="false"
+          class="sc-bdvvaa gazzRl"
+          type="button"
+        >
+          書を読み進める
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        id="story-contents"
+      >
+        サンプル
+      </div>
+    </article>
+  </div>
+</body>
+`;

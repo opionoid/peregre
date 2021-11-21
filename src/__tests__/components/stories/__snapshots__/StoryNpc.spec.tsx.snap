@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stories default test 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-gsDJrp"
+    >
+      <div
+        class="sc-dkPtyc ioGHyZ"
+      >
+        <h4>
+          敵の名前
+        </h4>
+        <div
+          class="sc-hKwCoD btgqqQ"
+        >
+          <label
+            aria-label="魂魄量"
+          >
+            <img
+              class="sc-eCImvq iISsqW"
+              src="MaxHp.svg"
+            />
+          </label>
+          <input
+            class="sc-jRQAMF"
+          />
+        </div>
+        <div
+          class="sc-hKwCoD btgqqQ"
+        >
+          <label
+            aria-label="魂魄量"
+          >
+            <img
+              class="sc-eCImvq iISsqW"
+              src="MaxDepth.svg"
+            />
+          </label>
+          <span>
+            2
+          </span>
+        </div>
+        <div
+          class="sc-gKckTs djhTm"
+        >
+          <button
+            aria-disabled="false"
+            class="sc-bdvvaa gazzRl"
+            type="button"
+          >
+            スキル表示
+          </button>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        id="skills"
+      >
+        <div
+          class="sc-iCfLBT gtiDrz"
+        >
+          <div
+            class="sc-furvIG bCKutc"
+          >
+            <div
+              class="sc-pVTma daERSX"
+            >
+              なんか長そうな名前です
+            </div>
+            <div
+              class="sc-jrQzUz kxgwgW"
+            >
+              <img
+                class="sc-eCImvq iISsqW"
+                src="MaxDepth.svg"
+              />
+              0
+            </div>
+          </div>
+          <p
+            class="sc-kDThTU eMtZin"
+          >
+            このスキルを使用したとき何かを発動する。何かを発動して敵が何かの状態であれば、何かの追加効果を発生させる。
+          </p>
+          <div
+            class="sc-iqsfdx gkQVDy"
+          >
+            <button
+              aria-disabled="false"
+              class="sc-bdvvaa gazzRl"
+              type="button"
+            >
+              使用
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

@@ -52,7 +52,7 @@ export const isMakingFinishedAtom: RecoilState<boolean> = atom({
 
 export const configShouldCopyTextOnClick: RecoilState<boolean> = atom({
   key: 'configShouldCopyTextOnClick',
-  default: false as boolean
+  default: true as boolean
 })
 
 // 実装するべきか要考慮
