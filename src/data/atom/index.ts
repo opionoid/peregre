@@ -16,9 +16,9 @@ export const allAbilityListAtom: RecoilState<IDirtyAbility[]> = atom({
   default: ability as IDirtyAbility[],
 })
 
-export const abilityListAtom: RecoilState<IAbility[]> = atom({
-  key: 'abilityListAtom',
-  default: [INITIAL_ABILITY]
+export const abilityAtom: RecoilState<IAbility> = atom({
+  key: 'abilityAtom',
+  default: INITIAL_ABILITY
 })
 
 export const allWeaponListAtom: RecoilState<IDirtyWeapon[]> = atom({

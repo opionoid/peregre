@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useRecoilValue } from 'recoil'
 import { IAbility } from "src/interfaces"
-import { abilityListAtom, nameAtom } from 'src/data/atom'
+import { abilityAtom, nameAtom } from 'src/data/atom'
 import { color, space } from 'src/assets/style'
 import { AbilityButton } from 'src/components/actor/button/AbilityButton'
 import { ButtonBase } from 'src/components/actor/button/ButtonBase'
@@ -10,27 +10,21 @@ import { useAdventure } from 'src/utils/hooks/useAdventure'
 
 export const ModeAbility: React.VFC = () => {
   const name = useRecoilValue(nameAtom)
-  const abilities = useRecoilValue(abilityListAtom)
-  const [currentAbility, setCurrentAbility] = React.useState<IAbility>(
-    abilities[0],
-  )
+  const ability = useRecoilValue(abilityAtom)
+  const [currentAbility, setCurrentAbility] = React.useState<IAbility>(ability)
 
   const { onClickAbility } = useAdventure()
   const handleClick = () => onClickAbility(currentAbility, name)
 
   return (
     <section>
-      <CardList>
-        {abilities?.length && abilities.map((ability) => (
-          ability && <Card key={ability.name}>
-            <AbilityButton
-              ability={ability}
-              accent={currentAbility.name === ability.name}
-              onClick={() => setCurrentAbility(ability)}
-            />
-          </Card>
-        ))}
-      </CardList>
+      {ability && <Card key={ability.name}>
+        <AbilityButton
+          ability={ability}
+          accent={currentAbility.name === ability.name}
+          onClick={() => setCurrentAbility(ability)}
+        />
+      </Card>}
       <InfoArea>
         <h3>{currentAbility.name}</h3>
         <p>{currentAbility.description}</p>
@@ -44,14 +38,6 @@ export const ModeAbility: React.VFC = () => {
   )
 }
 
-const CardList = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  column-gap: ${space.s};
-  margin-top: ${space.m};
-`
 const Card = styled.div`
   margin-top: ${space.s};
 `

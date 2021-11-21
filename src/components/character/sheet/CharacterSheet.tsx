@@ -5,7 +5,7 @@ import React from 'react'
 import { useRecoilState } from 'recoil'
 import styled from 'styled-components'
 import {
-  abilityListAtom,
+  abilityAtom,
   mainWeaponAtom,
   nameAtom,
   subWeaponAtom,
@@ -28,10 +28,10 @@ type IData = {
   name: string
   mainWeapon: IWeapon
   subWeapon: IWeapon
-  abilities: IAbility[]
+  ability: IAbility
 }
 
-export interface ICharacterSheetProps {}
+export interface ICharacterSheetProps { }
 
 export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   /**
@@ -40,7 +40,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   const [name, setName] = useRecoilState(nameAtom)
   const [mainWeapon, setMainWeapon] = useRecoilState(mainWeaponAtom)
   const [subWeapon, setSubWeapon] = useRecoilState(subWeaponAtom)
-  const [abilities, setAbilities] = useRecoilState(abilityListAtom)
+  const [ability, setAbility] = useRecoilState(abilityAtom)
 
   /**
    * モード：探索 / 戦闘
@@ -57,7 +57,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
       mainWeapon: mainWeapon,
       subWeapon: subWeapon,
       // skillHand: skillHand... recoil に含めるかどうか
-      abilities: abilities,
+      ability: ability,
     }
     const textData = JSON.stringify(jsonData)
     return encodeTextToObfuscated(textData)
@@ -71,7 +71,7 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
     setName(jsonData.name ?? name)
     setMainWeapon(jsonData.mainWeapon ?? mainWeapon)
     setSubWeapon(jsonData.subWeapon ?? subWeapon)
-    setAbilities(jsonData.abilities ?? abilities)
+    setAbility(jsonData.ability ?? ability)
 
     setDataToLoad('')
   }

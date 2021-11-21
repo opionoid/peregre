@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { color, space } from 'src/assets/style'
 import { INITIAL_MAIN_WEAPON, INITIAL_SUB_WEAPON } from 'src/constants'
 import {
-  abilityListAtom,
+  abilityAtom,
   allAbilityListAtom,
   allWeaponListAtom,
   isMakingFinishedAtom,
@@ -59,7 +59,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
 
   // アビリティテーブル作成
   const abilitiesData = useRecoilValue(allAbilityListAtom)
-  const abilitiesTable: IAbility[] = [...Array(10)].map((_, i) => {
+  const abilitiesTable: IAbility[] = [...Array(2)].map((_, i) => {
     const dirtyData = abilitiesData[getRD(i) % abilitiesData.length]
     return getAbilityFromDirtyData(dirtyData, i)
   })
@@ -68,24 +68,20 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
    * 各質問に応じた制御
    */
   const [currentStepIndex, setCurrentStepIndex] = React.useState<number>(0)
-  const [currentAbilityStep, setCurrentAbilityStep] = React.useState<number>(0)
 
   // 2pick用タプル
   const choiceItems:
-    | [IAbility, IAbility][]
-    | [IWeapon, IWeapon][] = React.useMemo(() => {
+    | [IAbility, IAbility]
+    | [IWeapon, IWeapon] = React.useMemo(() => {
       switch (STEPS[currentStepIndex]) {
         case 'weaponMain':
-          return [[weaponsTable[0], weaponsTable[1]]]
+          return [weaponsTable[0], weaponsTable[1]]
         case 'weaponSub':
-          return [[weaponsTable[2], weaponsTable[3]]]
+          return [weaponsTable[2], weaponsTable[3]]
         case 'ability':
-          return [...Array(5)].map((_, i) => [
-            abilitiesTable[i * 2],
-            abilitiesTable[i * 2 + 1],
-          ])
+          return [abilitiesTable[0], abilitiesTable[1]]
         default:
-          return [[INITIAL_MAIN_WEAPON, INITIAL_SUB_WEAPON]]
+          return [INITIAL_MAIN_WEAPON, INITIAL_SUB_WEAPON]
       }
     }, [currentStepIndex, weaponsTable, abilitiesTable])
 
@@ -97,7 +93,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
 
   const setMainWeapon = useSetRecoilState(mainWeaponAtom)
   const setSubWeapon = useSetRecoilState(subWeaponAtom)
-  const setAbilities = useSetRecoilState(abilityListAtom)
+  const setAbility = useSetRecoilState(abilityAtom)
   const setName = useSetRecoilState(nameAtom)
   const setIsMakingFinished = useSetRecoilState(isMakingFinishedAtom)
 
@@ -113,32 +109,10 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
         setIsFirstIndex(true)
         setCurrentStepIndex((prev) => prev + 1)
         return
-      // アビリティは5回選択する必要がある
       case 'ability':
-        if (currentAbilityStep === 0) {
-          setAbilities([abilitiesTable[isFirstIndex ? 0 : 1]]) // 1回目のみアビリティリストを選択したアビリティで初期化
-          setCurrentAbilityStep((prev) => prev + 1)
-          setIsFirstIndex(true)
-        } else if (currentAbilityStep === 4) {
-          setAbilities((prev) => [
-            ...prev,
-            abilitiesTable[
-            isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
-            ],
-          ])
-          setCurrentAbilityStep(0) // 意図しない参照バグを防止
-          setIsFirstIndex(true)
-          setCurrentStepIndex((prev) => prev + 1) // 5回目のみ次のステップ（名前入力）へ移行
-        } else {
-          setAbilities((prev) => [
-            ...prev,
-            abilitiesTable[
-            isFirstIndex ? currentAbilityStep * 2 : currentAbilityStep * 2 + 1
-            ],
-          ])
-          setCurrentAbilityStep((prev) => prev + 1)
-          setIsFirstIndex(true)
-        }
+        setAbility(abilitiesTable[isFirstIndex ? 0 : 1])
+        setIsFirstIndex(true)
+        setCurrentStepIndex((prev) => prev + 1)
         return
       case 'name':
         setIsMakingFinished(true)
@@ -165,7 +139,7 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
                 value="first"
                 lighten={!isFirstIndex}
               >
-                {choiceItems[currentAbilityStep][0].name}
+                {choiceItems[0].name}
               </ButtonBase>
             </ChoiceCard>
             <ChoiceCard>
@@ -174,12 +148,12 @@ export const CharacterMaking: React.VFC<ICharacterMakingProps> = () => {
                 value="second"
                 lighten={isFirstIndex}
               >
-                {choiceItems[currentAbilityStep][1].name}
+                {choiceItems[1].name}
               </ButtonBase>
             </ChoiceCard>
           </ChoiceCardArea>
           <ChoiceDescription>
-            {choiceItems[currentAbilityStep][isFirstIndex ? 0 : 1].description}
+            {choiceItems[isFirstIndex ? 0 : 1].description}
           </ChoiceDescription>
         </>
       )}

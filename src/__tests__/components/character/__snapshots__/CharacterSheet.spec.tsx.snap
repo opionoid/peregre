@@ -4,20 +4,20 @@ exports[`character default test 1`] = `
 <body>
   <div>
     <div
-      class="sc-iJKOzS kOsIXN"
+      class="sc-llYToB gmcOhP"
     >
       <div
-        class="sc-giYgFv jxrirr"
+        class="sc-iJKOzS cWtjDx"
       >
         <div
-          class="sc-ezbkgU liPFEk"
+          class="sc-giYgFv kfpQDY"
         >
           <input
-            class="sc-bYoCmx iWykTM"
+            class="sc-ezbkgU glbxXO"
             value=""
           />
           <div
-            class="sc-kLwgWK bulKhe"
+            class="sc-bYoCmx koUNJn"
           >
             <button
               aria-disabled="false"
@@ -33,7 +33,7 @@ exports[`character default test 1`] = `
           </div>
         </div>
         <div
-          class="sc-kLwgWK bulKhe"
+          class="sc-bYoCmx koUNJn"
         >
           <button
             aria-disabled="false"
@@ -49,10 +49,10 @@ exports[`character default test 1`] = `
         </div>
       </div>
       <h1
-        class="sc-ikJzcn hvWPtt"
+        class="sc-kLwgWK iTCysJ"
       />
       <div
-        class="sc-fotPbf jqKhnr"
+        class="sc-hBURRC loGFyG"
       >
         <button
           aria-disabled="false"
@@ -60,13 +60,13 @@ exports[`character default test 1`] = `
           type="button"
         >
           <div
-            class="sc-fFehDp dzAHwA"
+            class="sc-fotPbf fXlftg"
           >
             <p>
               戦闘
             </p>
             <img
-              class="sc-bkkfTU eBKecI"
+              class="sc-fFehDp irLgHc"
               src="Philosophy.svg"
             />
           </div>
@@ -77,35 +77,31 @@ exports[`character default test 1`] = `
       >
         <section>
           <div
-            class="sc-eCImvq jAlJLK"
+            class="sc-eCImvq bYaaRV"
           >
             <div
-              class="sc-jRQAMF loghJb"
+              class="sc-gsDJrp jQLRGH"
             >
-              <div
-                class="sc-gsDJrp jQLRGH"
+              <button
+                aria-disabled="false"
+                class="sc-bdvvaa gTEdOA"
+                type="button"
               >
-                <button
-                  aria-disabled="false"
-                  class="sc-bdvvaa gTEdOA"
-                  type="button"
+                <img
+                  alt=""
+                  class="sc-dkPtyc cooIAe"
+                  src="Navigation.svg"
+                />
+                <p
+                  class="sc-hKwCoD"
                 >
-                  <img
-                    alt=""
-                    class="sc-dkPtyc cooIAe"
-                    src="Navigation.svg"
-                  />
-                  <p
-                    class="sc-hKwCoD"
-                  >
-                    未設定
-                  </p>
-                </button>
-              </div>
+                  未設定
+                </p>
+              </button>
             </div>
           </div>
           <div
-            class="sc-gKckTs kLRlln"
+            class="sc-jRQAMF hiVDmz"
           >
             <h3>
               未設定
@@ -115,7 +111,7 @@ exports[`character default test 1`] = `
             </p>
           </div>
           <div
-            class="sc-iCfLBT bdOhtl"
+            class="sc-gKckTs ikCtEA"
           >
             <button
               aria-disabled="false"
@@ -132,13 +128,13 @@ exports[`character default test 1`] = `
       >
         <section>
           <div
-            class="sc-ieebsP kMqMEO"
+            class="sc-bkkfTU ipqOsL"
           >
             <div
-              class="sc-dJjZJu kkUKjt"
+              class="sc-ieebsP iPrtHQ"
             >
               <div
-                class="sc-fotPbf jqKhnr"
+                class="sc-hBURRC loGFyG"
               >
                 <button
                   aria-disabled="false"
@@ -146,13 +142,13 @@ exports[`character default test 1`] = `
                   type="button"
                 >
                   <div
-                    class="sc-fFehDp dzAHwA"
+                    class="sc-fotPbf fXlftg"
                   >
                     <p>
                       編集
                     </p>
                     <img
-                      class="sc-bkkfTU eBKecI"
+                      class="sc-fFehDp irLgHc"
                       src="Training.svg"
                     />
                   </div>
@@ -160,40 +156,40 @@ exports[`character default test 1`] = `
               </div>
             </div>
             <div
-              class="sc-hGPAah bGLEDw"
+              class="sc-dJjZJu jsNcXy"
             >
               <div
-                class="sc-dlVyqM iPhAgp"
+                class="sc-hGPAah grmoVF"
               >
                 <img
                   alt="魂魄量"
-                  class="sc-kfPtPH oFDsg"
+                  class="sc-dlVyqM glWOWu"
                   src="MaxHp.svg"
                 />
                 <input
-                  class="sc-fKVsgm GnLwt"
+                  class="sc-kfPtPH iDAWGO"
                   value="0"
                 />
                 <p
-                  class="sc-bBHwJV fnLvwx"
+                  class="sc-fKVsgm YqkzQ"
                 >
                   0
                 </p>
               </div>
               <div
-                class="sc-iwjezw ihebvs"
+                class="sc-bBHwJV gdEmuP"
               >
                 <img
                   alt="深度"
-                  class="sc-kfPtPH oFDsg"
+                  class="sc-dlVyqM glWOWu"
                   src="MaxDepth.svg"
                 />
                 <input
-                  class="sc-cxpRKc kGlove"
+                  class="sc-iwjezw ieYwev"
                   value="1"
                 />
                 <p
-                  class="sc-llYToB bYhHwu"
+                  class="sc-cxpRKc dJVzj"
                 >
                   4
                 </p>
@@ -204,12 +200,12 @@ exports[`character default test 1`] = `
             aria-hidden="true"
           >
             <div
-              class="sc-bqiQRQ lnHtdj"
+              class="sc-egiSv lcNUKd"
             >
               0
             </div>
             <div
-              class="sc-kDThTU WZyMW"
+              class="sc-jrQzUz cznIgU"
             >
               <div
                 style="display: flex; column-gap: 32px; align-items: center;"
@@ -237,7 +233,7 @@ exports[`character default test 1`] = `
               </p>
             </div>
             <div
-              class="sc-hBURRC kbygFr"
+              class="sc-ksdxAp brOVZi"
             >
               <button
                 aria-disabled="false"
@@ -252,11 +248,11 @@ exports[`character default test 1`] = `
             aria-hidden="false"
           >
             <div
-              class="sc-iqsfdx hklqBd"
+              class="sc-kDThTU eDwtFa"
             >
               <img
                 alt=""
-                class="sc-crHlIS dKpJed"
+                class="sc-iqsfdx fDQNvj"
                 src=""
               />
               <h2>
@@ -264,13 +260,13 @@ exports[`character default test 1`] = `
               </h2>
             </div>
             <div
-              class="sc-egiSv faIlQB"
+              class="sc-crHlIS fkYXVw"
             >
               <div
                 style="width: 142px; margin-right: 1.25rem;"
               >
                 <div
-                  class="sc-furvIG jXWUNK"
+                  class="sc-iCfLBT YhKvB"
                 >
                   <button
                     aria-disabled="false"
@@ -279,11 +275,11 @@ exports[`character default test 1`] = `
                   >
                     <img
                       alt=""
-                      class="sc-pVTma fIDpBx"
+                      class="sc-furvIG klBbPG"
                       src="FirstAid.svg"
                     />
                     <p
-                      class="sc-jrQzUz"
+                      class="sc-pVTma"
                     >
                       スキルが未設定です
                     </p>
@@ -292,11 +288,11 @@ exports[`character default test 1`] = `
               </div>
             </div>
             <div
-              class="sc-iqsfdx hklqBd"
+              class="sc-kDThTU eDwtFa"
             >
               <img
                 alt=""
-                class="sc-crHlIS dKpJed"
+                class="sc-iqsfdx fDQNvj"
                 src=""
               />
               <h2>
@@ -304,13 +300,13 @@ exports[`character default test 1`] = `
               </h2>
             </div>
             <div
-              class="sc-egiSv faIlQB"
+              class="sc-crHlIS fkYXVw"
             >
               <div
                 style="width: 142px; margin-right: 1.25rem;"
               >
                 <div
-                  class="sc-furvIG jXWUNK"
+                  class="sc-iCfLBT YhKvB"
                 >
                   <button
                     aria-disabled="false"
@@ -319,11 +315,11 @@ exports[`character default test 1`] = `
                   >
                     <img
                       alt=""
-                      class="sc-pVTma fIDpBx"
+                      class="sc-furvIG klBbPG"
                       src="FirstAid.svg"
                     />
                     <p
-                      class="sc-jrQzUz"
+                      class="sc-pVTma"
                     >
                       スキルが未設定です
                     </p>
@@ -332,7 +328,7 @@ exports[`character default test 1`] = `
               </div>
             </div>
             <div
-              class="sc-kDThTU WZyMW"
+              class="sc-jrQzUz cznIgU"
             >
               <div
                 style="display: flex; column-gap: 32px; align-items: center;"
