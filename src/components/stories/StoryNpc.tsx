@@ -11,10 +11,11 @@ import { ButtonBase } from '../actor/button/ButtonBase'
 export interface IStoryNpcProps {
   name: string
   hp: number
-  skills: Omit<ISkill, 'icon'>[]
+  skills: Omit<ISkill, 'icon' | 'isUlt'>[]
 }
 
 export const StoryNpc: React.VFC<IStoryNpcProps> = (props) => {
+  const [hp, setHp] = React.useState(props.hp)
   const [shouldShowSkills, toggleShown] = useToggle(false)
 
   const { onClickSkill } = useBattle()
@@ -27,7 +28,7 @@ export const StoryNpc: React.VFC<IStoryNpcProps> = (props) => {
         <h4>{props.name}</h4>
         <Status>
           <label aria-label="魂魄量"><Icon src={Icons.MaxHp} /></label>
-          <HpInput />
+          <HpInput value={hp} onChange={(e) => setHp(Number(e.target.value))} />
         </Status>
         <Status>
           <label aria-label="魂魄量"><Icon src={Icons.MaxDepth} /></label>
@@ -39,14 +40,14 @@ export const StoryNpc: React.VFC<IStoryNpcProps> = (props) => {
       </Info>
       <div id="skills" aria-hidden={!shouldShowSkills}>
         {props.skills.map(skill => (
-          <Skill>
+          <Skill key={skill.name}>
             <SkillRow>
               <SkillName>{skill.name}</SkillName>
               <SkillDepth><Icon src={Icons.MaxDepth} />{skill.depth}</SkillDepth>
             </SkillRow>
             <SkillDescription>{skill.description}</SkillDescription>
             <SkillButton>
-              <ButtonBase onClick={() => handleClick({ ...skill, icon: { src: '' } })}>使用</ButtonBase>
+              <ButtonBase onClick={() => handleClick({ ...skill, icon: { src: '' }, isUlt: false })}>使用</ButtonBase>
             </SkillButton>
           </Skill>
         ))}
@@ -80,6 +81,7 @@ height: 1.2rem;
 `
 const Skill = styled.div`
 display: flex;
+justify-content: space-between;
 align-items: center;
 flex-wrap: wrap;
 & > * {
@@ -89,6 +91,7 @@ flex-wrap: wrap;
 const SkillRow = styled.div`
 display: flex;
 align-items: center;
+justify-content: space-between;
 min-width: 14rem;
 flex-shrink: 0;
 `

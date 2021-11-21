@@ -25,6 +25,7 @@ exports[`stories default test 1`] = `
           </label>
           <input
             class="sc-jRQAMF"
+            value="10"
           />
         </div>
         <div
@@ -59,10 +60,10 @@ exports[`stories default test 1`] = `
         id="skills"
       >
         <div
-          class="sc-iCfLBT gtiDrz"
+          class="sc-iCfLBT kFSFip"
         >
           <div
-            class="sc-furvIG bCKutc"
+            class="sc-furvIG gNYUpW"
           >
             <div
               class="sc-pVTma daERSX"
