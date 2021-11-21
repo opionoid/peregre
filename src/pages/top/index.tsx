@@ -57,9 +57,10 @@ export const TopPage: React.VFC = () => {
       <article>
         <Reveal animation={Animation.FadeInUp}>
           <section>
-            <TitleH2>目指すは、廃都ラトリス</TitleH2>
+            <TitleH2>妖異を祓え</TitleH2>
             <p>
-              あなたたちは、あるときは鍛冶屋として、またあるときは水売りとして、呪いを解くため巡礼の旅に出る。目指すは忌まわしき廃都ラトリス。神に触れようとしたため裁きを受けたとされる地は、いまなお人々に罰を与え続けているという。
+              妖異を祓える異能のものがいる。彼らは神官、巡礼者、祓い士、神主など、さまざまな呼び名でひっそりと平穏を保ってきた。
+              しかし彼らもまた妖異に近い存在。あるときふと、隣にいるものが何かに憑かれているかも、と思う時がある。
             </p>
           </section>
         </Reveal>
@@ -75,13 +76,15 @@ export const TopPage: React.VFC = () => {
         <Reveal animation={Animation.FadeInUp}>
           <section>
             <TitleH2Right>
-              ROGUELIKE
+              散らばってしまった
               <br />
-              TRPG
+              運命
             </TitleH2Right>
             <ImageAndText>
               <TextRight>
-                遊ぶたび、新たな巡礼者として旅路を行く。そのだれもが異なる器と異なる技術を持ち、紡がれる物語もまた、それぞれ変化していくことだろう。
+                妖異を祓うものが、妖異に取り込まれたり、協力したり、あるいはより冷徹になったり。
+                みなの関係性がほつれては結びつき、結びついてはほつれていく。
+                誰もが最善の結末を望んでいたが、今はもう、どこへ向かえばよいか分からない。
               </TextRight>
             </ImageAndText>
           </section>
