@@ -42,7 +42,7 @@ export interface IWeapon {
   icon: IIconImage
   description: string
   hp: number
-  range: string
+  range: number
   skillList: ISkill[]
 }
 

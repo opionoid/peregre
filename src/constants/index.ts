@@ -46,7 +46,7 @@ export const INITIAL_SKILL: ISkill = {
 
 export const INITIAL_MAIN_WEAPON: IWeapon = {
   name: '未設定メイン武器',
-  range: '中距離',
+  range: 3,
   description:
     'このアビリティは未設定です。本来表示されない画面なのでバグが疑われます。@EggoggE にご連絡くださると大変うれしいです。',
   icon: {
@@ -59,7 +59,7 @@ export const INITIAL_MAIN_WEAPON: IWeapon = {
 
 export const INITIAL_SUB_WEAPON: IWeapon = {
   name: '未設定サブ武器',
-  range: '中距離',
+  range: 1,
   description:
     'このアビリティは未設定です。本来表示されない画面なのでバグが疑われます。@EggoggE にご連絡くださると大変うれしいです。',
   icon: {

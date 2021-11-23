@@ -38,14 +38,23 @@ const DIRTY_WEAPON: IDirtyWeapon = {
   icon: 'Acting',
   description: 'テスト用武器',
   hp: '10',
-  range: '中距離',
-  skills: [{
-    name: 'テストスキル',
-    description: 'テスト用スキル',
-    depth: '-4',
-    shouldCast: '',
-    isUlt: 'TRUE',
-  }]
+  range: '3',
+  skills: [
+    {
+      name: 'テストスキル',
+      description: 'テスト用スキル',
+      depth: '-4',
+      shouldCast: '',
+      isUlt: 'TRUE',
+    },
+    {
+      name: 'テストスキル',
+      description: '射程0。テスト用スキル',
+      depth: '-4',
+      shouldCast: '',
+      isUlt: 'TRUE',
+    },
+  ]
 }
 
 const WEAPON: IWeapon = {
@@ -56,18 +65,31 @@ const WEAPON: IWeapon = {
   },
   description: 'テスト用武器',
   hp: 10,
-  range: '中距離',
-  skillList: [{
-    name: 'テストスキル',
-    description: 'テスト用スキル',
-    icon: {
-      src: Icons['Acting'],
-      alt: ''
+  range: 3,
+  skillList: [
+    {
+      name: 'テストスキル',
+      description: '射程3。テスト用スキル',
+      icon: {
+        src: Icons['Acting'],
+        alt: ''
+      },
+      depth: -4,
+      shouldCast: false,
+      isUlt: true
     },
-    depth: -4,
-    shouldCast: false,
-    isUlt: true
-  }]
+    {
+      name: 'テストスキル',
+      description: '射程0。テスト用スキル',
+      icon: {
+        src: Icons['Acting'],
+        alt: ''
+      },
+      depth: -4,
+      shouldCast: false,
+      isUlt: true
+    }
+  ]
 }
 
 test('Mapper/getWeaponFromDirtyData', () => {

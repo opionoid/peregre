@@ -28,7 +28,7 @@ export const getAbilityFromDirtyData = (
  */
 export const getWeaponFromDirtyData = (dirtyData: IDirtyWeapon) => ({
   name: dirtyData.name,
-  range: dirtyData.range,
+  range: parseInt(dirtyData.range),
   description: dirtyData.description,
   icon: {
     src: Icons[dirtyData.icon],
@@ -42,7 +42,7 @@ export const getWeaponFromDirtyData = (dirtyData: IDirtyWeapon) => ({
     },
     name: skill.name || '',
     depth: parseInt(skill.depth) || 0,
-    description: skill.description || '',
+    description: skill.description.includes('射程') ? skill.description : `射程${parseInt(dirtyData.range)}。${skill.description}`,
     shouldCast: skill.shouldCast === 'TRUE',
     isUlt: skill.isUlt === 'TRUE',
   })),
