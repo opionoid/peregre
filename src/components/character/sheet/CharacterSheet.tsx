@@ -11,7 +11,6 @@ import {
   subWeaponAtom,
 } from 'src/data/atom'
 import { IAbility, IWeapon } from 'src/interfaces'
-import { useToggle } from 'react-use'
 import { color, space } from 'src/assets/style'
 import { Icons } from 'src/assets/icons'
 import { ButtonBase } from '../../actor/button/ButtonBase'
@@ -22,7 +21,6 @@ import {
 } from 'src/utils/Obfuscation'
 import { ModeAbility } from './molecules/ability/ModeAbility'
 import { ModeBattle } from './molecules/battle/ModeBattle'
-import { ToggleButton } from 'src/components/actor/button/ToggleButton'
 
 type IData = {
   name: string
@@ -41,11 +39,6 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
   const [mainWeapon, setMainWeapon] = useRecoilState(mainWeaponAtom)
   const [subWeapon, setSubWeapon] = useRecoilState(subWeaponAtom)
   const [ability, setAbility] = useRecoilState(abilityAtom)
-
-  /**
-   * モード：探索 / 戦闘
-   */
-  const [isAdventureMode, toggleAdventureMode] = useToggle(false)
 
   /**
    * 保存・読込
@@ -102,11 +95,10 @@ export const CharacterSheet: React.VFC<ICharacterSheetProps> = () => {
         </CopyToClipboard>
       </CopyWrapper>
       <Name>{name}</Name>
-      <ToggleButton defaultImage={{ src: Icons.Theology }} defaultLabel='探索' reversedImage={{ src: Icons.Philosophy }} reversedLabel='戦闘' onClick={toggleAdventureMode} isReversed={!isAdventureMode} />
-      <div aria-hidden={!isAdventureMode}>
+      <div>
         <ModeAbility />
       </div>
-      <div aria-hidden={isAdventureMode}>
+      <div>
         <ModeBattle />
       </div>
     </CharacterSheetWrapper>

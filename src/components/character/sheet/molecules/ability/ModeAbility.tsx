@@ -1,33 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useRecoilValue } from 'recoil'
-import { IAbility } from "src/interfaces"
 import { abilityAtom, nameAtom } from 'src/data/atom'
 import { color, space } from 'src/assets/style'
-import { AbilityButton } from 'src/components/actor/button/AbilityButton'
 import { ButtonBase } from 'src/components/actor/button/ButtonBase'
 import { useAdventure } from 'src/utils/hooks/useAdventure'
 
 export const ModeAbility: React.VFC = () => {
   const name = useRecoilValue(nameAtom)
   const ability = useRecoilValue(abilityAtom)
-  const [currentAbility, setCurrentAbility] = React.useState<IAbility>(ability)
 
   const { onClickAbility } = useAdventure()
-  const handleClick = () => onClickAbility(currentAbility, name)
+  const handleClick = () => onClickAbility(ability, name)
 
   return (
     <section>
-      {ability && <Card key={ability.name}>
-        <AbilityButton
-          ability={ability}
-          accent={currentAbility.name === ability.name}
-          onClick={() => setCurrentAbility(ability)}
-        />
-      </Card>}
       <InfoArea>
-        <h3>{currentAbility.name}</h3>
-        <p>{currentAbility.description}</p>
+        <h3>{ability.name}</h3>
+        <p>{ability.description}</p>
       </InfoArea>
       <ActionButton>
         <ButtonBase onClick={handleClick}>
@@ -38,9 +28,6 @@ export const ModeAbility: React.VFC = () => {
   )
 }
 
-const Card = styled.div`
-  margin-top: ${space.s};
-`
 const InfoArea = styled.div`
   margin-top: ${space.s};
   padding: calc(0.8rem + 1.2vmin) calc(1.2rem + 2.6vmin) calc(1rem + 2.4vmin)

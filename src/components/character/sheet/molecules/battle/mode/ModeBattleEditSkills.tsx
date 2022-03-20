@@ -39,7 +39,6 @@ export const ModeBattleEditSkills: React.VFC<IModeBattleEditSkills> = ({
     }
   }
 
-  // 編集エリア TODO: 別コンポーネントに切り出す
   return (
     <>
       <EditWeapon>

@@ -39,9 +39,9 @@ export const ModeBattle = () => {
         <HeadingWrapper>
           <ToggleButton
             defaultImage={{ src: Icons.Oration }}
-            defaultLabel='戦闘'
+            defaultLabel='編集'
             reversedImage={{ src: Icons.Training }}
-            reversedLabel='編集'
+            reversedLabel='完了'
             onClick={handleToggle}
             isReversed={isEditMode}
           />
