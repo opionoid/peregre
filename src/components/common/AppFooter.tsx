@@ -19,9 +19,11 @@ export const AppFooter: React.VFC<IAppFooterProps> = () => {
           <ListItem>
             <Link to={ROUTE.privacy}>プライバシーポリシー</Link>
           </ListItem>
+          {/*
           <ListItem>
             <Link to="/">お問い合わせ</Link>
           </ListItem>
+          */}
         </LinkList>
       </FooterItem>
     </footer>
