@@ -24,7 +24,7 @@ export const AppNavigation: React.VFC<IAppNavigationProps> = () => {
             aria-expanded={expanded}
             onClick={handleClick}
           >
-            {expanded ? 'χ' : 'ξ'}
+            {expanded ? <span aria-label='ナビゲーションを閉じる'>χ</span> : <span aria-label='ナビゲーションを開く'>ξ</span>}
           </HamburgerMenu>
         </Top>
         <li>
