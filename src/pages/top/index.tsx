@@ -10,7 +10,7 @@ export const TopPage: React.VFC = () => {
     <Top id="top">
       {/** TODO: HeroはCanvasにする v2.0 */}
       <Hero>
-        <Title>Peregre</Title>
+        <Title aria-label='ペレグレ'>Peregre</Title>
       </Hero>
       <div>
         <Wave
@@ -57,34 +57,31 @@ export const TopPage: React.VFC = () => {
       <article>
         <Reveal animation={Animation.FadeInUp}>
           <section>
-            <TitleH2>妖異を祓え</TitleH2>
+            <TitleH2>来訪者</TitleH2>
             <p>
-              妖異を祓える異能のものがいる。彼らは神官、巡礼者、祓い士、神主など、さまざまな呼び名でひっそりと平穏を保ってきた。
-              しかし彼らもまた妖異に近い存在。あるときふと、隣にいるものが何かに憑かれているかも、と思う時がある。
+              晴れぬ霧に閉ざされ何人も立ち入ることのなかった土地、ラトリス。神話で栄華を語られる都市の沈黙は、寒々とした冬空の下破られた。来る者はもはや眠らず、村々を蝕んでいく。あなたは、そんな噂を確かめるべく派遣された調査団の1人だ。
             </p>
           </section>
         </Reveal>
         <Reveal animation={Animation.FadeInUp}>
           <hr />
           <Aphorism>
-            かねて種に水はあり、朽ちて湖へ還る。
-            <br />
-            芽生えし者よ、空を恐れたまえ。
+              火よ、火よ
+              <br />
+              然あれかし
           </Aphorism>
           <hr />
         </Reveal>
         <Reveal animation={Animation.FadeInUp}>
           <section>
             <TitleH2Right>
-              散らばってしまった
-              <br />
-              運命
+              警句を求めよ
             </TitleH2Right>
             <ImageAndText>
               <TextRight>
-                妖異を祓うものが、妖異に取り込まれたり、協力したり、あるいはより冷徹になったり。
-                みなの関係性がほつれては結びつき、結びついてはほつれていく。
-                誰もが最善の結末を望んでいたが、今はもう、どこへ向かえばよいか分からない。
+                襲いくるそれらは伝承に語られる。
+                <br />
+                だが古い信仰は潰え、言葉は失われた。
               </TextRight>
             </ImageAndText>
           </section>
@@ -170,7 +167,7 @@ const Parallax = styled.g`
 `
 const Aphorism = styled.p`
   font-family: 'New Tegomin';
-  font-size: 1.125rem;
+  font-size: 1.6rem;
   text-indent: 0;
   text-align: center;
 `
